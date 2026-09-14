@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Fantasy Trade Generator — Shareable</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2b;--panel2:#0f1829;--text:#f5f7fb;--muted:#98a2b3;--border:#2a3650;--accent:#6ea8fe;--good:#65d6a6;--warn:#f0b35a;--bad:#ff7a90}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#0b1020,#0f1728);color:var(--text)}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 44px}.hero{text-align:center;margin-bottom:20px}h1{font-size:clamp(28px,5vw,48px);margin:0 0 8px}.sub{color:var(--muted);font-size:13px;line-height:1.45}
+.panel,.trade{background:rgba(18,26,43,.95);border:1px solid var(--border);border-radius:18px;padding:16px}.controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.field label{display:block;font-size:11px;color:var(--muted);margin:0 0 5px;font-weight:700}.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);background:#0e1626;color:var(--text);border-radius:11px;padding:11px 12px;font-size:14px;outline:none}.field textarea{min-height:125px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}.btn{border:1px solid var(--border);background:#17243b;color:var(--text);border-radius:11px;padding:10px 14px;cursor:pointer;font-weight:800}.btn.primary{background:#1e3a60;border-color:#3f6fa8}.btn:hover{filter:brightness(1.08)}
+.custom{margin-top:12px;border-top:1px solid var(--border);padding-top:12px}.custom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.import-card{background:#0f1829;border:1px solid var(--border);border-radius:14px;padding:13px}.import-card h4{margin:0 0 10px;font-size:14px}.privacy{font-size:10px;color:var(--muted);margin-top:6px;line-height:1.4}.help{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.45}.status{font-size:12px;color:var(--muted);margin-top:10px}
+.results{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}.trade{padding:16px}.trade-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.trade-title{font-size:17px;font-weight:850}.score{font-size:12px;font-weight:850;border:1px solid var(--border);padding:6px 9px;border-radius:999px;white-space:nowrap}.score.good{color:var(--good)}.score.ok{color:var(--warn)}
+.sides{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.side{background:var(--panel2);border:1px solid var(--border);border-radius:13px;padding:12px}.side-label{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.04em}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.chip{border:1px solid var(--border);border-radius:999px;padding:6px 9px;font-size:12px;font-weight:700}.why{margin-top:11px;font-size:12px;color:var(--muted);line-height:1.5}.fit{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.pill{font-size:11px;padding:5px 8px;border:1px solid var(--border);border-radius:999px}.plus{color:var(--good)}.minus{color:var(--bad)}.neutral{color:var(--muted)}
+.empty{border:1px dashed var(--border);border-radius:14px;padding:25px;text-align:center;color:var(--muted);margin-top:16px}.section-title{margin:0 0 10px;font-size:16px}.hidden{display:none!important}
+.footer{margin-top:16px;color:var(--muted);font-size:11px;line-height:1.5;text-align:center}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:18px;z-index:9999}
+.modal-backdrop.hidden{display:none}
+.modal-card{width:min(520px,100%);background:#121a2b;border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 22px 60px rgba(0,0,0,.45)}
+.modal-card h3{margin:0 0 10px;font-size:22px}
+.modal-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.modal-actions .btn{flex:1;min-width:140px}
+
+@media(max-width:900px){.controls{grid-template-columns:1fr 1fr}.custom-grid{grid-template-columns:1fr}}@media(max-width:650px){.controls,.sides{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>Fantasy Trade Generator</h1>
+    <div class="sub">Uses hidden researched trade values plus roster fit to generate realistic ideas for both teams.</div>
+  </div>
+
+  <section class="panel">
+    <div class="controls">
+      <div class="field"><label>League</label><select id="leagueMode"><option value="custom" selected>Load a league</option></select></div>
+      <div class="field"><label>Focus team</label><select id="focus"></select></div>
+      <div class="field"><label>Trade with</label><select id="target"><option value="ANY">Any team</option></select></div>
+      <div class="field"><label>Trade type</label><select id="tradeType"><option value="two">2-team ideas</option><option value="three">3-team cycles (experimental)</option></select></div>
+      <div class="field"><label>Goal</label><select id="goal"><option value="best" selected>Best overall fit</option><option value="rb">Upgrade RB</option><option value="wr">Upgrade WR</option><option value="te">Upgrade TE</option><option value="qb">Upgrade QB</option><option value="consolidate">Consolidate into better starters</option><option value="depth">Add depth</option></select></div>
+      <div class="field"><label>Protected players</label><input id="protect" value="" placeholder="Optional — comma-separated"></div>
+      <div class="field"><label>Players to shop / prioritize</label><input id="shop" value="" placeholder="Optional — comma-separated"></div>
+      <div class="field"><label>Deal structure</label><select id="structure">
+        <option value="any" selected>Any structure</option>
+        <option value="1x1">1-for-1 only</option>
+        <option value="2x1">2-for-1 / 1-for-2</option>
+        <option value="3x2">3-for-2 / 2-for-3</option>
+        <option value="3max">Any deal up to 3 per side</option>
+      </select></div>
+      <div class="field"><label>How much do you want to win?</label><select id="appeal">
+        <option value="mutual">Help both teams — mutually beneficial</option>
+        <option value="slight" selected>Slight win — 1–2%</option>
+        <option value="solid">Solid win — 2–3%</option>
+        <option value="strong">Strong trade — 3–5%</option>
+        <option value="fleece">Fleece — 5–10%</option>
+      </select></div>
+      <div class="field"><label>Minimum value balance</label><select id="balance"><option value="65">65% — more ideas</option><option value="75" selected>75% — realistic</option><option value="85">85% — very close</option><option value="92">92% — nearly even</option></select></div>
+    </div>
+    <div class="actions"><button id="generate" class="btn primary">Generate trades</button><button id="randomize" class="btn">Fresh set</button></div>
+    <div class="help" style="margin-top:10px"><b>How much do you want to win?</b> Help both teams searches for a near-even trade where both rosters improve. Slight win targets a <b>1–2%</b> adjusted-value win for the focus team, Solid win <b>2–3%</b>, Strong trade <b>3–5%</b>, and Fleece <b>5–10%</b>. In 2-for-1 and 3-for-2 deals, the larger package is reduced by <b>60 per extra player</b> before that win percentage is calculated.</div>
+    <div id="status" class="status">Load Sleeper, ESPN, Yahoo, or paste rosters below. QB/RB/WR/TE are valued; K and D/ST are ignored.</div>
+
+    <div id="customArea" class="custom">
+      <h3 class="section-title">Load a league</h3>
+      <div class="custom-grid">
+        <div class="import-card">
+          <h4>Sleeper</h4>
+          <div class="field"><label>Sleeper league ID</label><input id="sleeperId" placeholder="Paste Sleeper league ID"></div>
+          <div class="actions"><button id="sleeperBtn" class="btn">Import Sleeper</button></div>
+          <div class="help">Direct roster import through Sleeper's public API.</div>
+        </div>
+
+        <div class="import-card">
+          <h4>ESPN Fantasy</h4>
+          <div class="field"><label>ESPN league ID or league URL</label><input id="espnId" placeholder="League ID or ESPN fantasy URL"></div>
+          <div class="field" style="margin-top:8px"><label>Season</label><input id="espnSeason" type="number" min="2020" max="2035" value="2026"></div>
+          <div class="actions"><button id="espnBtn" class="btn">Import ESPN</button></div>
+          <div class="help">Works directly for ESPN leagues the API can read without private authentication. Private leagues may need to be made public or pasted manually.</div>
+        </div>
+
+        <div class="import-card">
+          <h4>Yahoo Fantasy</h4>
+          <div class="field"><label>Yahoo league key or league ID</label><input id="yahooKey" placeholder="Example: nfl.l.123456 or 123456"></div>
+          <div class="field" style="margin-top:8px"><label>Yahoo OAuth access token</label><input id="yahooToken" type="password" autocomplete="off" placeholder="Required for Yahoo API import"></div>
+          <div class="actions"><button id="yahooBtn" class="btn">Import Yahoo</button></div>
+          <div class="help">Yahoo requires OAuth authorization for Fantasy API access. A plain league ID alone is not enough for direct API access.</div>
+          <div class="privacy">The token is used only in this page session for the import request. This file does not save it to localStorage or embed it in exported data.</div>
+        </div>
+
+        <div class="import-card">
+          <h4>Manual / universal import</h4>
+          <div class="field"><label>Paste rosters</label><textarea id="manual" placeholder="Team A: Player One, Player Two, Player Three&#10;Team B: Player Four, Player Five, Player Six"></textarea></div>
+          <div class="actions"><button id="manualBtn" class="btn">Load pasted league</button></div>
+          <div class="help">Works for ESPN, Yahoo, NFL.com, or anything else. One team per line: <b>Team Name: Player, Player, Player</b>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="results" class="results"><div class="empty">Choose a goal and click <b>Generate trades</b>.</div></div>
+  <div class="footer">The generator favors trades with similar hidden package value and better roster construction on both sides. Uneven deals use the same −60 replacement-level roster-slot adjustment, so a 2-for-1 or 3-for-2 is judged on the extra roster spot it consumes or opens.</div>
+</div>
+<script>
+const PLAYERS=[["Josh Allen","QB",91.0],["Lamar Jackson","QB",89.5],["Caleb Williams","QB",88.5],["Jalen Hurts","QB",87.0],["Jayden Daniels","QB",84.5],["Trevor Lawrence","QB",83.0],["Joe Burrow","QB",82.0],["Jaxson Dart","QB",81.0],["Patrick Mahomes","QB",80.0],["Tyler Shough","QB",79.5],["Brock Purdy","QB",77.0],["Drake Maye","QB",76.5],["Justin Herbert","QB",76.5],["Jordan Love","QB",74.5],["Dak Prescott","QB",72.0],["Bo Nix","QB",70.0],["Jared Goff","QB",69.5],["Matthew Stafford","QB",69.5],["Baker Mayfield","QB",67.5],["C.J. Stroud","QB",66.5],["Bryce Young","QB",66.0],["Kyler Murray","QB",65.5],["Aaron Rodgers","QB",59.0],["Jacoby Brissett","QB",58.5],["Sam Darnold","QB",57.5],["Geno Smith","QB",57.0],["Cam Ward","QB",56.5],["Kirk Cousins","QB",52.0],["Daniel Jones","QB",50.0],["Deshaun Watson","QB",50.0],["Malik Willis","QB",50.0],["Jahmyr Gibbs","RB",99.5],["Bijan Robinson","RB",99.0],["Derrick Henry","RB",95.0],["Jonathan Taylor","RB",94.8],["Ashton Jeanty","RB",94.5],["Christian McCaffrey","RB",94.0],["James Cook III","RB",92.3],["De'Von Achane","RB",92.0],["Saquon Barkley","RB",92.0],["Chase Brown","RB",91.0],["Kenneth Walker III","RB",91.0],["D'Andre Swift","RB",86.8],["Javonte Williams","RB",86.0],["Breece Hall","RB",85.5],["Omarion Hampton","RB",85.0],["Kyren Williams","RB",84.5],["Jeremiyah Love","RB",82.8],["David Montgomery","RB",82.0],["Bucky Irving","RB",80.5],["Cam Skattebo","RB",80.0],["Travis Etienne Jr.","RB",80.0],["Rhamondre Stevenson","RB",75.5],["Bhayshul Tuten","RB",74.5],["Chuba Hubbard","RB",74.0],["Jadarian Price","RB",73.5],["Quinshon Judkins","RB",73.0],["MarShawn Lloyd","RB",71.0],["Jaylen Warren","RB",70.5],["Kyle Monangai","RB",70.0],["Rico Dowdle","RB",70.0],["Jacory Croskey-Merritt","RB",69.5],["Jordan Mason","RB",69.0],["J.K. Dobbins","RB",68.5],["TreVeyon Henderson","RB",68.5],["RJ Harvey","RB",68.0],["Tony Pollard","RB",67.5],["Jonathon Brooks","RB",66.0],["Kenneth Gainwell","RB",66.0],["Woody Marks","RB",65.0],["Kaelon Black","RB",64.5],["Aaron Jones Sr.","RB",64.0],["Zach Charbonnet","RB",63.0],["Josh Jacobs","RB",62.5],["Blake Corum","RB",62.0],["Rachaad White","RB",62.0],["Tyjae Spears","RB",62.0],["Tyler Allgeier","RB",61.5],["Kendre Miller","RB",61.0],["Alvin Kamara","RB",60.5],["Brian Robinson Jr.","RB",59.5],["Chris Rodriguez Jr.","RB",58.5],["Isiah Pacheco","RB",58.5],["Keaton Mitchell","RB",58.5],["Ray Davis","RB",58.5],["Jaylen Wright","RB",56.5],["Justice Hill","RB",56.5],["Samaje Perine","RB",55.5],["Jonah Coleman","RB",55.0],["Mike Washington Jr.","RB",55.0],["Devin Singletary","RB",54.5],["Will Shipley","RB",54.5],["Ameer Abdullah","RB",54.0],["Chris Brooks","RB",54.0],["Tyrone Tracy Jr.","RB",53.5],["Tank Bigsby","RB",52.0],["Raheim Sanders","RB",51.5],["Sione Vaki","RB",49.0],["Puka Nacua","WR",98.0],["Jaxon Smith-Njigba","WR",97.5],["Amon-Ra St. Brown","WR",97.0],["Ja'Marr Chase","WR",96.8],["Justin Jefferson","WR",96.5],["CeeDee Lamb","WR",93.0],["Chris Olave","WR",92.5],["Nico Collins","WR",88.8],["Drake London","WR",87.0],["Malik Nabers","WR",86.8],["George Pickens","WR",85.5],["Zay Flowers","WR",84.8],["DeVonta Smith","WR",84.5],["Garrett Wilson","WR",84.5],["Rashee Rice","WR",84.5],["Ladd McConkey","WR",83.8],["Christian Watson","WR",83.0],["DJ Moore","WR",83.0],["Emeka Egbuka","WR",83.0],["Tetairoa McMillan","WR",83.0],["A.J. Brown","WR",82.5],["Jaylen Waddle","WR",81.5],["Tee Higgins","WR",81.5],["Jameson Williams","WR",80.5],["Parker Washington","WR",80.0],["Davante Adams","WR",79.5],["Luther Burden III","WR",79.5],["Mike Evans","WR",79.0],["Brian Thomas Jr.","WR",77.5],["Rome Odunze","WR",76.5],["Jalen Coker","WR",76.0],["Matthew Golden","WR",74.0],["Terry McLaurin","WR",73.5],["DK Metcalf","WR",72.5],["Marvin Harrison Jr.","WR",72.5],["Chris Godwin Jr.","WR",71.0],["Jayden Reed","WR",71.0],["Jordan Addison","WR",70.5],["Alec Pierce","WR",70.0],["Courtland Sutton","WR",69.5],["Quentin Johnston","WR",69.5],["Michael Pittman Jr.","WR",69.0],["Xavier Worthy","WR",69.0],["Josh Downs","WR",68.0],["Stefon Diggs","WR",68.0],["Jakobi Meyers","WR",67.0],["Michael Wilson","WR",67.0],["Denzel Boston","WR",66.0],["Khalil Shakir","WR",66.0],["Deebo Samuel","WR",65.5],["KC Concepcion","WR",65.5],["Carnell Tate","WR",65.0],["Dontayvion Wicks","WR",64.5],["Keenan Allen","WR",63.5],["Caleb Douglas","WR",62.5],["Jauan Jennings","WR",62.5],["Malik Washington","WR",62.5],["Devaughn Vele","WR",61.5],["Joshua Palmer","WR",61.5],["Tre Tucker","WR",61.5],["Wan'Dale Robinson","WR",61.5],["Makai Lemon","WR",61.0],["Jack Bech","WR",60.5],["Jalen Nailor","WR",60.5],["Jaylin Noel","WR",60.5],["Antonio Williams","WR",60.0],["Kalif Raymond","WR",60.0],["Kayshon Boutte","WR",60.0],["Rashid Shaheed","WR",60.0],["Ryan Flournoy","WR",60.0],["Tank Dell","WR",60.0],["Jalen McMillan","WR",59.5],["Mack Hollins","WR",59.5],["Tre Harris","WR",59.5],["Chris Bell","WR",58.5],["Cooper Kupp","WR",58.5],["DeMario Douglas","WR",58.5],["Jordyn Tyson","WR",58.5],["Darnell Mooney","WR",58.0],["Calvin Ridley","WR",57.0],["De'Zhaun Stribling","WR",57.0],["Pat Bryant","WR",57.0],["Travis Hunter","WR",57.0],["Jahan Dotson","WR",56.5],["Romeo Doubs","WR",56.0],["Chimere Dike","WR",55.0],["Ja'Kobi Lane","WR",55.0],["Jerry Jeudy","WR",55.0],["Keon Coleman","WR",55.0],["Rashod Bateman","WR",55.0],["Xavier Hutchinson","WR",54.5],["Roman Wilson","WR",54.0],["Adonai Mitchell","WR",53.5],["Elic Ayomanor","WR",53.5],["Omar Cooper Jr.","WR",53.5],["Tez Johnson","WR",53.5],["Xavier Legette","WR",52.5],["Malachi Fields","WR",52.0],["Isaac TeSlaa","WR",51.5],["Josh Cameron","WR",51.0],["Bryce Lance","WR",50.5],["Germie Bernard","WR",49.5],["Trey McBride","TE",92.0],["Brock Bowers","TE",86.8],["Dalton Kincaid","TE",82.5],["Colston Loveland","TE",81.5],["Tyler Warren","TE",79.5],["Isaiah Likely","TE",77.0],["Sam LaPorta","TE",75.0],["Dallas Goedert","TE",73.5],["Tucker Kraft","TE",73.0],["Harold Fannin Jr.","TE",70.5],["George Kittle","TE",68.0],["T.J. Hockenson","TE",68.0],["Mark Andrews","TE",66.5],["Juwan Johnson","TE",66.0],["Jake Ferguson","TE",64.5],["Kyle Pitts Sr.","TE",64.0],["Travis Kelce","TE",64.0],["Brenton Strange","TE",63.0],["Michael Mayer","TE",63.0],["David Njoku","TE",62.0],["Kenyon Sadiq","TE",61.0],["Pat Freiermuth","TE",61.0],["Cole Kmet","TE",60.0],["Dalton Schultz","TE",60.0],["Noah Fant","TE",60.0],["Hunter Henry","TE",59.5],["Evan Engram","TE",59.0],["Greg Dulcich","TE",59.0],["Mike Gesicki","TE",58.5],["Terrance Ferguson","TE",58.5],["AJ Barner","TE",58.0],["Chig Okonkwo","TE",58.0],["Darren Waller","TE",58.0],["Jonnu Smith","TE",57.5],["Cade Otton","TE",57.0],["Gunnar Helm","TE",56.5],["Theo Johnson","TE",55.5],["Elijah Arroyo","TE",55.0],["Dawson Knox","TE",54.0],["Oronde Gadsden II","TE",53.5],["Darnell Washington","TE",52.0],["Brevyn Spann-Ford","TE",50.5]];
+const ALIASES={"devanteadams":"Davante Adams","devontesmith":"DeVonta Smith","kcconception":"KC Concepcion","wandalerobinson":"Wan'Dale Robinson"};
+const BUILTIN={};
+const PENALTY=60;
+const DB=Object.fromEntries(PLAYERS.map(x=>[x[0],{name:x[0],pos:x[1],v:x[2]}]));
+let league={};
+let resultOffset=0;
+
+function norm(s){return String(s||"").toLowerCase().replace(/[^a-z0-9]/g,"")}
+const normMap={};
+for(const n of Object.keys(DB))normMap[norm(n)]=n;
+for(const [a,n] of Object.entries(ALIASES))normMap[norm(a)]=n;
+function canonical(name){return normMap[norm(name)]||null}
+function namesFromInput(v){return new Set(String(v||"").split(",").map(x=>canonical(x.trim())||x.trim()).filter(Boolean))}
+function combos(arr,max){
+  const out=[];
+  for(let i=0;i<arr.length;i++)out.push([arr[i]]);
+  if(max>=2)for(let i=0;i<arr.length;i++)for(let j=i+1;j<arr.length;j++)out.push([arr[i],arr[j]]);
+  if(max>=3){
+    // Keep 3-player packages tractable: only use the top 10 trade-value assets on a roster.
+    const top=[...arr].sort((a,b)=>DB[b].v-DB[a].v).slice(0,10);
+    for(let i=0;i<top.length;i++)for(let j=i+1;j<top.length;j++)for(let k=j+1;k<top.length;k++)out.push([top[i],top[j],top[k]]);
+  }
+  return out;
+}
+function sumv(pkg){return pkg.reduce((s,n)=>s+DB[n].v,0)}
+function effectivePackageValues(give,recv){
+  // Compare the two incoming packages after applying the replacement-level cost
+  // ONLY to the side receiving more players.
+  const focusExtra=Math.max(0,recv.length-give.length);
+  const partnerExtra=Math.max(0,give.length-recv.length);
+  const focusEffective=sumv(recv)-focusExtra*PENALTY;
+  const partnerEffective=sumv(give)-partnerExtra*PENALTY;
+  return {focusEffective,partnerEffective};
+}
+function packageNet(give,recv){
+  const x=effectivePackageValues(give,recv);
+  return x.focusEffective-x.partnerEffective;
+}
+function focusWinPct(give,recv){
+  const x=effectivePackageValues(give,recv);
+  if(x.partnerEffective<=0)return 0;
+  return ((x.focusEffective/x.partnerEffective)-1)*100;
+}
+function fairness(give,recv){
+  return Math.max(0,Math.round(100-Math.abs(focusWinPct(give,recv))));
+}
+function validRoster(r){
+  const c={QB:0,RB:0,WR:0,TE:0};r.forEach(n=>{if(DB[n])c[DB[n].pos]++});
+  return c.QB>=1&&c.RB>=2&&c.WR>=2&&c.TE>=1;
+}
+function afterTrade(roster,give,recv){
+  const g=new Set(give);return roster.filter(n=>!g.has(n)).concat(recv);
+}
+function rosterUtility(roster){
+  const pool=roster.filter(n=>DB[n]);
+  const used=new Set();
+  function take(pos,n){
+    const xs=pool.filter(x=>DB[x].pos===pos&&!used.has(x)).sort((a,b)=>DB[b].v-DB[a].v).slice(0,n);
+    xs.forEach(x=>used.add(x));return xs;
+  }
+  const starters=[...take("QB",1),...take("RB",2),...take("WR",2),...take("TE",1)];
+  const flex=pool.filter(x=>!used.has(x)&&["RB","WR","TE"].includes(DB[x].pos)).sort((a,b)=>DB[b].v-DB[a].v).slice(0,2);
+  flex.forEach(x=>used.add(x));starters.push(...flex);
+  const bench=pool.filter(x=>!used.has(x)).sort((a,b)=>DB[b].v-DB[a].v);
+  const starterScore=starters.reduce((s,n)=>s+Math.max(0,DB[n].v-PENALTY),0);
+  const benchScore=bench.reduce((s,n,i)=>s+Math.max(0,DB[n].v-PENALTY)*(i<3?.22:.08),0);
+  return starterScore+benchScore;
+}
+function topPos(roster,pos,n){
+  return roster.filter(x=>DB[x]&&DB[x].pos===pos).sort((a,b)=>DB[b].v-DB[a].v).slice(0,n).reduce((s,x)=>s+DB[x].v,0);
+}
+function goalBonus(goal,before,after,give,recv){
+  if(goal==="rb")return Math.max(-4,Math.min(8,(topPos(after,"RB",2)-topPos(before,"RB",2))*1.8));
+  if(goal==="wr")return Math.max(-4,Math.min(8,(topPos(after,"WR",3)-topPos(before,"WR",3))*1.2));
+  if(goal==="te")return Math.max(-4,Math.min(8,(topPos(after,"TE",1)-topPos(before,"TE",1))*2));
+  if(goal==="qb")return Math.max(-4,Math.min(8,(topPos(after,"QB",1)-topPos(before,"QB",1))*1.8));
+  if(goal==="consolidate")return recv.length<give.length?6:-2;
+  if(goal==="depth")return recv.length>give.length?6:-2;
+  return 0;
+}
+function fitWord(delta){
+  if(delta>1.4)return ["improves","plus"];
+  if(delta>-0.5)return ["neutral","neutral"];
+  return ["slightly worse","minus"];
+}
+
+function allowedShape(aLen,bLen,structure){
+  if(structure==="1x1")return aLen===1&&bLen===1;
+  if(structure==="2x1")return (aLen===2&&bLen===1)||(aLen===1&&bLen===2);
+  if(structure==="3x2")return (aLen===3&&bLen===2)||(aLen===2&&bLen===3);
+  if(structure==="3max")return aLen<=3&&bLen<=3;
+  return aLen<=3&&bLen<=3;
+}
+function winBand(mode){
+  if(mode==="slight")return {min:1,max:2,label:"Slight win"};
+  if(mode==="solid")return {min:2,max:3,label:"Solid win"};
+  if(mode==="strong")return {min:3,max:5,label:"Strong trade"};
+  if(mode==="fleece")return {min:5,max:10,label:"Fleece"};
+  return {min:-2,max:2,label:"Help both teams"};
+}
+function inWinBand(mode,pct){
+  const b=winBand(mode);
+  return pct>=b.min-0.001 && pct<=b.max+0.001;
+}
+function winBandScore(mode,pct,focusFit,partnerFit){
+  const b=winBand(mode);
+  if(mode==="mutual"){
+    return -Math.abs(pct)*2.5
+      + Math.min(8,Math.max(0,focusFit)*3)
+      + Math.min(8,Math.max(0,partnerFit)*3);
+  }
+  const midpoint=(b.min+b.max)/2;
+  return -Math.abs(pct-midpoint)*3
+    + Math.min(10,Math.max(-4,focusFit)*3.5)
+    + Math.min(4,Math.max(-2,partnerFit)*1.2);
+}
+function buildCandidates(focus,target,maxSize,minBalance,goal,protect,shop,structure,appeal){
+  const A=league[focus].filter(n=>DB[n]&&!protect.has(n));
+  const B=league[target].filter(n=>DB[n]);
+  const needed=(structure==="3x2"||structure==="3max"||structure==="any")?3:2;
+  const pa=combos(A,Math.max(maxSize,needed)),pb=combos(B,Math.max(maxSize,needed));
+
+  const ua=rosterUtility(league[focus]),ub=rosterUtility(league[target]);
+  const out=[];
+
+  for(const give of pa){
+    for(const recv of pb){
+      if(!allowedShape(give.length,recv.length,structure))continue;
+
+      const pct=focusWinPct(give,recv);
+      if(!inWinBand(appeal,pct))continue;
+
+      const fair=fairness(give,recv);
+      if(fair<minBalance)continue;
+
+      const newA=afterTrade(league[focus],give,recv),newB=afterTrade(league[target],recv,give);
+      if(!validRoster(newA)||!validRoster(newB))continue;
+
+      const da=rosterUtility(newA)-ua,db=rosterUtility(newB)-ub;
+
+      if(appeal==="mutual"){
+        // This is the only mode that explicitly optimizes for both teams.
+        if(da<0.15||db<0.15)continue;
+      }else{
+        // Win modes are biased toward the focus team. The other side still has to
+        // remain plausible rather than being obviously roster-damaging.
+        if(da<-1.0||db<-1.0)continue;
+      }
+
+      let score=fair
+        + winBandScore(appeal,pct,da,db)
+        + Math.min(8,Math.max(-4,da*3));
+
+      score+=goalBonus(goal,league[focus],newA,give,recv);
+      if(give.some(x=>shop.has(x)))score+=4;
+      if(db>0)score+=2; // plausibility, not a requirement to "help" them
+      if(give.length!==recv.length)score+=1;
+
+      out.push({focus,target,give,recv,fair,da,db,pct,score});
+    }
+  }
+  return out;
+}
+
+function reason(c,goal){
+  const mode=document.getElementById("appeal").value;
+  const band=winBand(mode);
+  const a=fitWord(c.da)[0],b=fitWord(c.db)[0];
+  let why="";
+
+  if(mode==="mutual"){
+    why=`Mutually beneficial: ${c.focus}'s roster fit ${a} and ${c.target}'s roster fit ${b}, with adjusted value kept near even.`;
+  }else{
+    why=`${band.label}: ${c.focus} wins the adjusted trade value by ${c.pct.toFixed(1)}%.`;
+    if(c.db>0.4)why+=` ${c.target} still has a roster-fit reason to consider it.`;
+    else if(c.db>-0.25)why+=` ${c.target}'s roster construction stays roughly neutral, so the offer is still plausible.`;
+    else why+=` ${c.target} loses some modeled roster efficiency, but the generator caps how bad that can get.`;
+  }
+
+  if(c.give.length!==c.recv.length){
+    const extra=Math.abs(c.give.length-c.recv.length);
+    const side=c.recv.length>c.give.length?c.focus:c.target;
+    why+=` Because this is ${c.give.length}-for-${c.recv.length}, the side receiving ${extra} extra player${extra===1?"":"s"} (${side}) is charged ${PENALTY} per extra roster spot before the percentage is calculated.`;
+  }
+
+  const shop=namesFromInput(document.getElementById("shop").value);
+  if(c.give.some(x=>shop.has(x)))why+=" It also moves a player you marked to shop.";
+  if(goal==="rb")why+=" The focus team improves its RB target profile.";
+  if(goal==="wr")why+=" The focus team improves its WR target profile.";
+  if(goal==="te")why+=" The focus team improves at TE.";
+  if(goal==="qb")why+=" The focus team improves at QB.";
+  if(goal==="consolidate")why+=" This is designed as a consolidation trade.";
+  if(goal==="depth")why+=" This is designed to add playable depth.";
+  return why;
+}
+
+function buildThreeTeamCandidates(focus,requiredTarget,minBalance,goal,protect,shop){
+  const mode=document.getElementById("appeal").value;
+  const others=Object.keys(league).filter(t=>t!==focus);
+  const out=[],baseFocus=rosterUtility(league[focus]);
+
+  for(let i=0;i<others.length;i++)for(let j=i+1;j<others.length;j++){
+    const B=others[i],C=others[j];
+    if(requiredTarget!=="ANY"&&B!==requiredTarget&&C!==requiredTarget)continue;
+
+    const baseB=rosterUtility(league[B]),baseC=rosterUtility(league[C]);
+    const sendA=league[focus].filter(n=>DB[n]&&!protect.has(n));
+    const sendB=league[B].filter(n=>DB[n]);
+    const sendC=league[C].filter(n=>DB[n]);
+
+    for(const a of sendA)for(const b of sendB)for(const c of sendC){
+      const pct=focusWinPct([a],[c]);
+      if(!inWinBand(mode,pct))continue;
+
+      const newA=afterTrade(league[focus],[a],[c]);
+      const newB=afterTrade(league[B],[b],[a]);
+      const newC=afterTrade(league[C],[c],[b]);
+      if(!validRoster(newA)||!validRoster(newB)||!validRoster(newC))continue;
+
+      const da=rosterUtility(newA)-baseFocus,db=rosterUtility(newB)-baseB,dc=rosterUtility(newC)-baseC;
+
+      if(mode==="mutual"){
+        if(da<0.1||db<0.1||dc<0.1)continue;
+      }else{
+        if(da<-1||db<-1||dc<-1)continue;
+      }
+
+      const fair=Math.max(0,Math.round(100-Math.abs(pct)));
+      if(fair<minBalance)continue;
+
+      let score=fair
+        + winBandScore(mode,pct,da,Math.min(db,dc))
+        + Math.min(8,Math.max(-4,da*3));
+
+      if(shop.has(a))score+=4;
+      if(db>0)score+=1;
+      if(dc>0)score+=1;
+
+      out.push({kind:"three",focus,B,C,a,b,c,fair,da,db,dc,pct,score});
+    }
+  }
+  return out;
+}
+function renderThree(results){
+  const box=document.getElementById("results");
+  if(!results.length){
+    box.innerHTML='<div class="empty">No 3-team cycles matched the selected win range and roster-fit filters. Try a different win level or lower the minimum balance.</div>';
+    return;
+  }
+  box.innerHTML=results.map((c,i)=>{
+    const fa=fitWord(c.da),fb=fitWord(c.db),fc=fitWord(c.dc);
+    const mode=document.getElementById("appeal").value;
+    return `<article class="trade"><div class="trade-head"><div><div class="trade-title">${escapeHtml(c.focus)} + ${escapeHtml(c.B)} + ${escapeHtml(c.C)}</div><div class="sub">3-team cycle ${i+1}</div></div><div class="score ${c.fair>=85?"good":"ok"}">${c.fair}% value balance</div></div>
+      <div class="sides" style="grid-template-columns:1fr"><div class="side">
+        <div class="side-label">Trade flow</div>
+        <div class="chips">
+          <span class="chip">${escapeHtml(c.focus)} sends ${escapeHtml(c.a)} → ${escapeHtml(c.B)}</span>
+          <span class="chip">${escapeHtml(c.B)} sends ${escapeHtml(c.b)} → ${escapeHtml(c.C)}</span>
+          <span class="chip">${escapeHtml(c.C)} sends ${escapeHtml(c.c)} → ${escapeHtml(c.focus)}</span>
+        </div>
+      </div></div>
+      <div class="fit">
+        <span class="pill ${fa[1]}">${escapeHtml(c.focus)} fit: ${fa[0]}</span>
+        <span class="pill ${fb[1]}">${escapeHtml(c.B)} fit: ${fb[0]}</span>
+        <span class="pill ${fc[1]}">${escapeHtml(c.C)} fit: ${fc[0]}</span>
+        <span class="pill ${mode==="mutual"?"neutral":"plus"}">${mode==="mutual"?"Adjusted difference":"Focus win"}: ${mode==="mutual"?Math.abs(c.pct).toFixed(1):c.pct.toFixed(1)}%</span>
+      </div>
+      <div class="why">All three teams send one and receive one, so no extra-player penalty is needed in this cycle. The focus team still has to land inside the selected win range.</div></article>`
+  }).join("");
+}
+
+function render(results){
+  const box=document.getElementById("results");
+  if(!results.length){box.innerHTML='<div class="empty">No trades passed the current fairness/roster-fit filters. Lower the minimum balance or change the target team.</div>';return}
+  box.innerHTML=results.map((c,i)=>{
+    const fa=fitWord(c.da),fb=fitWord(c.db);
+    return `<article class="trade"><div class="trade-head"><div><div class="trade-title">${escapeHtml(c.focus)} ↔ ${escapeHtml(c.target)}</div><div class="sub">Idea ${i+1}</div></div><div class="score ${c.fair>=85?"good":"ok"}">${c.fair}% value balance</div></div>
+      <div class="sides"><div class="side"><div class="side-label">${escapeHtml(c.focus)} sends</div><div class="chips">${c.give.map(x=>`<span class="chip">${escapeHtml(x)}</span>`).join("")}</div></div>
+      <div class="side"><div class="side-label">${escapeHtml(c.focus)} receives</div><div class="chips">${c.recv.map(x=>`<span class="chip">${escapeHtml(x)}</span>`).join("")}</div></div></div>
+      <div class="fit">
+        <span class="pill ${fa[1]}">${escapeHtml(c.focus)} fit: ${fa[0]}</span>
+        <span class="pill ${fb[1]}">${escapeHtml(c.target)} fit: ${fb[0]}</span>
+        <span class="pill ${document.getElementById("appeal").value==="mutual"?"neutral":"plus"}">${document.getElementById("appeal").value==="mutual"?"Adjusted difference":"Focus win"}: ${document.getElementById("appeal").value==="mutual"?Math.abs(c.pct).toFixed(1):c.pct.toFixed(1)}%</span>
+        <span class="pill neutral">${c.give.length}-for-${c.recv.length}</span>
+      </div>
+      <div class="why">${escapeHtml(reason(c,document.getElementById("goal").value))}</div></article>`
+  }).join("");
+}
+function generate(fresh=false){
+  const focus=document.getElementById("focus").value,target=document.getElementById("target").value;
+  if(!focus||!league[focus]){
+    document.getElementById("status").textContent="Load a league first using Sleeper or the manual roster paste.";
+    return;
+  }
+  const structure=document.getElementById("structure").value;
+  const maxSize=(structure==="1x1"?1:(structure==="2x1"?2:3));
+  const appeal=document.getElementById("appeal").value;
+  const minBalance=+document.getElementById("balance").value,goal=document.getElementById("goal").value;
+  const protect=namesFromInput(document.getElementById("protect").value),shop=namesFromInput(document.getElementById("shop").value);
+  const tradeType=document.getElementById("tradeType").value;
+  if(tradeType==="three"){
+    let all=buildThreeTeamCandidates(focus,target,minBalance,goal,protect,shop);
+    all.sort((a,b)=>b.score-a.score);
+    if(fresh)resultOffset=(resultOffset+8)%Math.max(8,all.length); else resultOffset=0;
+    renderThree(all.slice(resultOffset,resultOffset+12));
+    document.getElementById("status").textContent=`Scanned 3-team cycles and found ${all.length} ideas passing the current filters. Showing up to 12.`;
+    return;
+  }
+  let targets=target==="ANY"?Object.keys(league).filter(t=>t!==focus):[target];
+  let all=[];
+  for(const t of targets)all.push(...buildCandidates(focus,t,maxSize,minBalance,goal,protect,shop,structure,appeal));
+  all.sort((a,b)=>b.score-a.score);
+  const seen=new Set(),uniq=[];
+  for(const c of all){
+    const key=c.target+"|"+[...c.recv].sort().join("+")+"|"+[...c.give].sort().join("+");
+    if(!seen.has(key)){seen.add(key);uniq.push(c)}
+  }
+  if(fresh)resultOffset=(resultOffset+8)%Math.max(8,uniq.length);
+  else resultOffset=0;
+  render(uniq.slice(resultOffset,resultOffset+12));
+  document.getElementById("status").textContent=`Scanned ${targets.length} team${targets.length===1?"":"s"} and found ${uniq.length} trades passing the current filters. Showing up to 12.`;
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function refreshTeamMenus(){
+  const f=document.getElementById("focus"),t=document.getElementById("target");
+  const prev=f.value; f.innerHTML="";
+  const teams=Object.keys(league);
+  if(!teams.length){
+    const o=document.createElement("option");
+    o.value="";o.textContent="Load a league first";
+    f.appendChild(o);
+    f.disabled=true;
+    t.innerHTML='<option value="ANY">Load a league first</option>';
+    t.disabled=true;
+    return;
+  }
+  f.disabled=false;t.disabled=false;
+  for(const name of teams){const o=document.createElement("option");o.value=name;o.textContent=name;f.appendChild(o)}
+  if(league[prev])f.value=prev; else f.value=teams[0];
+  updateTargets();
+}
+function updateTargets(){
+  const focus=document.getElementById("focus").value,t=document.getElementById("target"),prev=t.value;
+  t.innerHTML='<option value="ANY">Any team</option>';
+  for(const name of Object.keys(league)){if(name===focus)continue;const o=document.createElement("option");o.value=name;o.textContent=name;t.appendChild(o)}
+  if([...t.options].some(o=>o.value===prev))t.value=prev;
+}
+function loadManual(){
+  const txt=document.getElementById("manual").value.trim(),out={};let unmatched=[];
+  for(const line of txt.split(/\n+/)){
+    const k=line.indexOf(":");if(k<1)continue;
+    const team=line.slice(0,k).trim(),raw=line.slice(k+1).split(",").map(x=>x.trim()).filter(Boolean);
+    const matched=[];for(const r of raw){const c=canonical(r);if(c)matched.push(c);else unmatched.push(r)}
+    if(matched.length)out[team]=[...new Set(matched)];
+  }
+  if(Object.keys(out).length<2){document.getElementById("status").textContent="Could not load at least two valid teams. Check the paste format.";return}
+  league=out;refreshTeamMenus();
+  document.getElementById("status").textContent=`Loaded ${Object.keys(out).length} teams manually.${unmatched.length?" Unmatched players: "+unmatched.slice(0,12).join(", ")+(unmatched.length>12?"…":""):""}`;
+}
+async function loadSleeper(){
+  const id=document.getElementById("sleeperId").value.trim();if(!id)return;
+  const status=document.getElementById("status");status.textContent="Importing Sleeper league…";
+  try{
+    const [usersR,rostersR,playersR]=await Promise.all([
+      fetch(`https://api.sleeper.app/v1/league/${id}/users`),
+      fetch(`https://api.sleeper.app/v1/league/${id}/rosters`),
+      fetch("https://api.sleeper.app/v1/players/nfl")
+    ]);
+    if(!usersR.ok||!rostersR.ok||!playersR.ok)throw new Error("Sleeper request failed");
+    const users=await usersR.json(),rosters=await rostersR.json(),sp=await playersR.json();
+    const userMap=Object.fromEntries(users.map(u=>[u.user_id,u.display_name||u.metadata?.team_name||u.user_id]));
+    const out={};let missed=0,total=0;
+    for(const r of rosters){
+      const team=userMap[r.owner_id]||`Roster ${r.roster_id}`, names=[];
+      for(const pid of (r.players||[])){
+        total++;const obj=sp[pid];const n=obj&&(obj.full_name||([obj.first_name,obj.last_name].filter(Boolean).join(" ")));
+        const c=n&&canonical(n);if(c)names.push(c);else missed++;
+      }
+      out[team]=[...new Set(names)];
+    }
+    if(Object.keys(out).length<2)throw new Error("No league rosters found");
+    league=out;refreshTeamMenus();
+    status.textContent=`Imported ${Object.keys(out).length} Sleeper teams. Matched ${total-missed}/${total} rostered players to this value database.`;
+  }catch(e){status.textContent="Sleeper import failed in this browser. Use the manual roster paste below instead."}
+}
+
+function extractEspnLeagueId(raw){
+  raw=String(raw||"").trim();
+  if(/^\d+$/.test(raw))return raw;
+  try{
+    const u=new URL(raw);
+    return u.searchParams.get("leagueId") || (u.pathname.match(/leagues\/(\d+)/)||[])[1] || "";
+  }catch(e){
+    return (raw.match(/leagueId[=\/](\d+)/i)||[])[1] || "";
+  }
+}
+
+function showImportModal(title,body){
+  document.getElementById("importModalTitle").textContent=title;
+  document.getElementById("importModalBody").textContent=body;
+  document.getElementById("importModal").classList.remove("hidden");
+}
+function closeImportModal(){
+  document.getElementById("importModal").classList.add("hidden");
+}
+function jumpToManualImport(){
+  closeImportModal();
+  const manual=document.getElementById("manual");
+  if(manual){
+    manual.scrollIntoView({behavior:"smooth",block:"center"});
+    setTimeout(()=>manual.focus(),350);
+  }
+}
+
+async function loadEspn(){
+  const raw=document.getElementById("espnId").value.trim();
+  const id=extractEspnLeagueId(raw);
+  const season=+document.getElementById("espnSeason").value || 2026;
+  const status=document.getElementById("status");
+  if(!id){status.textContent="Enter a valid ESPN league ID or ESPN league URL.";return}
+  status.textContent="Importing ESPN league…";
+  try{
+    const url=`https://fantasy.espn.com/apis/v3/games/ffl/seasons/${season}/segments/0/leagues/${id}?view=mTeam&view=mRoster`;
+    const r=await fetch(url,{method:"GET",credentials:"omit"});
+    if(r.status===401||r.status===403)throw new Error("PRIVATE_ESPN");
+    if(!r.ok)throw new Error("ESPN request failed");
+    const data=await r.json();
+    const out={};let matched=0,total=0;const unmatched=[];
+    for(const t of (data.teams||[])){
+      const teamName=(t.name||[t.location,t.nickname].filter(Boolean).join(" ")||`Team ${t.id}`).trim();
+      const names=[];
+      for(const e of (((t.roster||{}).entries)||[])){
+        const p=(e.playerPoolEntry||{}).player||{};
+        const n=p.fullName||p.displayName||p.name;
+        if(!n)continue;
+        total++;
+        const c=canonical(n);
+        if(c){names.push(c);matched++}else unmatched.push(n);
+      }
+      if(names.length)out[teamName]=[...new Set(names)];
+    }
+    if(Object.keys(out).length<2)throw new Error("NO_ESPN_ROSTERS");
+    league=out;refreshTeamMenus();
+    status.textContent=`Imported ${Object.keys(out).length} ESPN teams. Matched ${matched}/${total} rostered players.${unmatched.length?" Unmatched: "+unmatched.slice(0,10).join(", ")+(unmatched.length>10?"…":""):""}`;
+  }catch(e){
+    if(e.message==="PRIVATE_ESPN"){
+      status.textContent="This ESPN league appears to be private.";
+      showImportModal(
+        "This ESPN league is private",
+        "ESPN is blocking the roster import because the league is not publicly readable. Make the league public temporarily and try again, or use the manual roster import instead."
+      );
+    }else if(e.message==="NO_ESPN_ROSTERS"){
+      status.textContent="Could not read ESPN rosters.";
+      showImportModal(
+        "ESPN rosters could not be read",
+        "The league may be private, restricted, or using a setup ESPN is not exposing to this browser. Make the league public temporarily or use the manual roster import."
+      );
+    }else{
+      status.textContent="ESPN import failed in this browser.";
+      showImportModal(
+        "ESPN import failed",
+        "The league may be private or ESPN may be blocking the browser request. If the league is private, make it public temporarily. Otherwise, use the manual roster import."
+      );
+    }
+  }
+}
+
+function yahooLeagueKey(raw){
+  raw=String(raw||"").trim();
+  if(/^\d+$/.test(raw))return `nfl.l.${raw}`;
+  const m=raw.match(/(?:^|\/)(?:nfl\.l\.)?(\d+)(?:\/|$|\?)/i);
+  if(raw.includes(".l."))return raw;
+  return m?`nfl.l.${m[1]}`:raw;
+}
+function firstTagText(node,tag){
+  const x=node&&node.getElementsByTagName(tag)[0];
+  return x?String(x.textContent||"").trim():"";
+}
+async function yahooFetchXml(url,token){
+  const r=await fetch(url,{headers:{Authorization:`Bearer ${token}`,Accept:"application/xml"}});
+  if(r.status===401||r.status===403)throw new Error("YAHOO_AUTH");
+  if(!r.ok)throw new Error("Yahoo request failed");
+  const text=await r.text();
+  const doc=new DOMParser().parseFromString(text,"application/xml");
+  if(doc.getElementsByTagName("parsererror").length)throw new Error("Yahoo XML parse failed");
+  return doc;
+}
+async function loadYahoo(){
+  const key=yahooLeagueKey(document.getElementById("yahooKey").value);
+  const token=document.getElementById("yahooToken").value.trim();
+  const status=document.getElementById("status");
+  if(!key){status.textContent="Enter a Yahoo league key or league ID.";return}
+  if(!token){
+    status.textContent="Yahoo requires authorization before this league can be imported.";
+    showImportModal(
+      "Yahoo requires authorization",
+      "Yahoo does not allow a public league ID by itself to expose rosters through the Fantasy API. Use a valid Yahoo OAuth token, or use the manual roster import."
+    );
+    return;
+  }
+  status.textContent="Importing Yahoo league…";
+  try{
+    const teamsDoc=await yahooFetchXml(`https://fantasysports.yahooapis.com/fantasy/v2/league/${encodeURIComponent(key)}/teams`,token);
+    const teamNodes=[...teamsDoc.getElementsByTagName("team")];
+    const teams=[];
+    for(const t of teamNodes){
+      const teamKey=firstTagText(t,"team_key");
+      const teamName=firstTagText(t,"name")||teamKey;
+      if(teamKey&&!teams.some(x=>x.key===teamKey))teams.push({key:teamKey,name:teamName});
+    }
+    if(teams.length<2)throw new Error("NO_YAHOO_TEAMS");
+    const out={};let matched=0,total=0;const unmatched=[];
+    for(const t of teams){
+      const doc=await yahooFetchXml(`https://fantasysports.yahooapis.com/fantasy/v2/team/${encodeURIComponent(t.key)}/roster/players`,token);
+      const names=[];
+      for(const p of [...doc.getElementsByTagName("player")]){
+        let n="";
+        const nameNodes=p.getElementsByTagName("name");
+        if(nameNodes.length){
+          n=firstTagText(nameNodes[0],"full")||String(nameNodes[0].textContent||"").trim();
+        }
+        if(!n)continue;
+        total++;
+        const c=canonical(n);
+        if(c){names.push(c);matched++}else unmatched.push(n);
+      }
+      if(names.length)out[t.name]=[...new Set(names)];
+    }
+    if(Object.keys(out).length<2)throw new Error("NO_YAHOO_ROSTERS");
+    league=out;refreshTeamMenus();
+    document.getElementById("yahooToken").value="";
+    status.textContent=`Imported ${Object.keys(out).length} Yahoo teams. Matched ${matched}/${total} rostered players.${unmatched.length?" Unmatched: "+unmatched.slice(0,10).join(", ")+(unmatched.length>10?"…":""):""}`;
+  }catch(e){
+    document.getElementById("yahooToken").value="";
+    if(e.message==="YAHOO_AUTH"){
+      status.textContent="Yahoo rejected the authorization.";
+      showImportModal(
+        "Yahoo authorization required",
+        "Yahoo rejected or could not use that access token. Re-authorize with Yahoo, or use the manual roster import."
+      );
+    }else{
+      status.textContent="Yahoo direct import failed.";
+      showImportModal(
+        "Yahoo league could not be imported",
+        "Yahoo may be blocking access to this league or the authorization may not allow roster access. Use the manual roster import if direct import is unavailable."
+      );
+    }
+  }
+}
+document.getElementById("leagueMode").onchange=e=>{
+  document.getElementById("customArea").classList.remove("hidden");
+};
+document.getElementById("focus").onchange=updateTargets;
+document.getElementById("tradeType").onchange=e=>{
+  document.getElementById("structure").disabled=e.target.value==="three";
+  document.getElementById("appeal").disabled=false;
+  document.getElementById("status").textContent=e.target.value==="three"
+    ?"3-team mode searches one-player cycles and still applies your selected focus-team win range."
+    :"2-team mode can search 1-for-1, 2-for-1, 3-for-2, or mixed packages using the −60 roster-slot adjustment.";
+};
+document.getElementById("generate").onclick=()=>generate(false);
+document.getElementById("randomize").onclick=()=>generate(true);
+document.getElementById("manualBtn").onclick=loadManual;
+document.getElementById("sleeperBtn").onclick=loadSleeper;
+document.getElementById("espnBtn").onclick=loadEspn;
+document.getElementById("yahooBtn").onclick=loadYahoo;
+document.getElementById("modalCloseBtn").onclick=closeImportModal;
+document.getElementById("modalManualBtn").onclick=jumpToManualImport;
+document.getElementById("importModal").onclick=function(e){
+  if(e.target===this)closeImportModal();
+};
+refreshTeamMenus();
+</script>
+
+<div id="importModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="importModalTitle">
+  <div class="modal-card">
+    <h3 id="importModalTitle">League import unavailable</h3>
+    <p id="importModalBody"></p>
+    <div class="modal-actions">
+      <button id="modalManualBtn" class="btn primary" type="button">Use manual import</button>
+      <button id="modalCloseBtn" class="btn" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+</body></html>
