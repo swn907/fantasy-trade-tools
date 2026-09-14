@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Fantasy Trade Analyzer — Native Player Picker</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2b;--panel2:#0f1829;--text:#f5f7fb;--muted:#98a2b3;--border:#2a3650;--accent:#6ea8fe;--good:#65d6a6;--warn:#f0b35a;--bad:#ff7a90}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#0b1020,#0f1728);color:var(--text)}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 44px}.hero{text-align:center;margin-bottom:18px}h1{font-size:clamp(28px,5vw,48px);margin:0 0 8px}.sub{color:var(--muted);font-size:13px;line-height:1.45}
+.mode{display:flex;justify-content:center;gap:8px;margin:16px 0 20px}.mode button,.action{border:1px solid var(--border);background:#141f34;color:var(--text);border-radius:11px;padding:10px 14px;cursor:pointer;font-weight:750}.mode button.active{border-color:var(--accent);background:#1b2c48;box-shadow:0 0 0 2px rgba(110,168,254,.12)}
+.trade-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.trade-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card,.result{background:rgba(18,26,43,.95);border:1px solid var(--border);border-radius:18px;padding:16px}.card{align-self:start}.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.card-head h2{font-size:18px;margin:0}.count{font-size:12px;color:var(--muted)}
+.search-wrap{position:relative}input,select{width:100%;border:1px solid var(--border);background:#0e1626;color:var(--text);border-radius:11px;padding:11px 12px;font-size:14px;outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(110,168,254,.12)}
+.suggestions{position:relative;margin-top:8px;z-index:20;background:#111a2d;border:1px solid var(--border);border-radius:12px;overflow-y:auto;max-height:285px;box-shadow:0 10px 25px rgba(0,0,0,.22);min-height:0}.suggestions:empty{display:none}
+.suggestion{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;border:0;border-bottom:1px solid rgba(42,54,80,.6);padding:12px;background:transparent;color:var(--text);cursor:pointer;text-align:left;font-size:14px;-webkit-tap-highlight-color:transparent}.suggestion:last-child{border-bottom:0}.suggestion:hover,.suggestion.active{background:#1c2942}.suggestion-name{font-weight:800}.suggestion-sub{display:block;font-size:11px;color:var(--muted);margin-top:2px}.no-results{padding:13px 12px;color:var(--muted);font-size:12px;text-align:center}.picker-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:8px}.picker-select{width:100%;border:1px solid var(--border);background:#0e1626;color:var(--text);border-radius:11px;padding:10px;font-size:13px}.picker-add{border:1px solid var(--accent);background:#1b2c48;color:var(--text);border-radius:11px;padding:10px 13px;font-weight:800;cursor:pointer}.script-warning{display:none;margin:10px 0 0;padding:10px 12px;border:1px solid #7a3341;background:#2a1720;color:#ffb0bd;border-radius:10px;font-size:12px}
+.pos{font-size:11px;color:var(--muted);border:1px solid var(--border);padding:3px 7px;border-radius:999px}.players{display:flex;flex-direction:column;gap:8px;margin-top:12px;min-height:62px}.empty{color:var(--muted);font-size:13px;border:1px dashed var(--border);border-radius:12px;padding:18px 12px;text-align:center}
+.player{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:10px}.player-main{min-width:0}.player-name{font-size:14px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.player-meta{font-size:11px;color:var(--muted);margin-top:3px}.from-select{width:auto;min-width:106px;font-size:12px;padding:7px 8px}.remove{border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:9px;padding:7px 9px;cursor:pointer}
+.result{margin-top:16px}.result h3{margin:0;text-align:center;font-size:24px}.result-sub{text-align:center;color:var(--muted);font-size:13px;margin-top:6px}.net-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.net-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.net{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}.net-name{font-weight:800}.net-delta{font-size:24px;font-weight:900;margin-top:4px}.net-note{font-size:11px;color:var(--muted);margin-top:4px}.positive{color:var(--good)}.negative{color:var(--bad)}.neutral{color:var(--text)}
+.fair{margin-top:15px;text-align:center;font-weight:800}.explain{margin-top:8px;text-align:center;color:var(--muted);font-size:12px;line-height:1.5}.actions{display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap}.foot{margin-top:15px;text-align:center;color:var(--muted);font-size:12px;line-height:1.5}.hidden{display:none!important}
+@media(max-width:900px){.trade-grid.three{grid-template-columns:1fr}.net-grid.three{grid-template-columns:1fr}}@media(max-width:720px){.trade-grid{grid-template-columns:1fr}.net-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>Fantasy Trade Analyzer</h1>
+    <div class="sub">Researched Week 1 values • clickable player search • individual scores hidden • −60 replacement-level roster spot</div>
+  </div>
+  <div class="mode">
+    <button id="mode2" class="active" type="button">2-team trade</button>
+    <button id="mode3" type="button">+ Add third team</button>
+  </div>
+  <div id="grid" class="trade-grid">
+    <section class="card" id="cardA"><div class="card-head"><h2>Team A receives</h2><span class="count" id="countA">0 players</span></div><div class="search-wrap"><input id="searchA" list="playerListA" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type a player name…">
+      <datalist id="playerListA">
+<option value="Josh Allen">QB</option>
+<option value="Lamar Jackson">QB</option>
+<option value="Caleb Williams">QB</option>
+<option value="Jalen Hurts">QB</option>
+<option value="Jayden Daniels">QB</option>
+<option value="Trevor Lawrence">QB</option>
+<option value="Joe Burrow">QB</option>
+<option value="Jaxson Dart">QB</option>
+<option value="Patrick Mahomes">QB</option>
+<option value="Tyler Shough">QB</option>
+<option value="Brock Purdy">QB</option>
+<option value="Drake Maye">QB</option>
+<option value="Justin Herbert">QB</option>
+<option value="Jordan Love">QB</option>
+<option value="Dak Prescott">QB</option>
+<option value="Bo Nix">QB</option>
+<option value="Jared Goff">QB</option>
+<option value="Matthew Stafford">QB</option>
+<option value="Baker Mayfield">QB</option>
+<option value="C.J. Stroud">QB</option>
+<option value="Bryce Young">QB</option>
+<option value="Kyler Murray">QB</option>
+<option value="Aaron Rodgers">QB</option>
+<option value="Jacoby Brissett">QB</option>
+<option value="Sam Darnold">QB</option>
+<option value="Geno Smith">QB</option>
+<option value="Cam Ward">QB</option>
+<option value="Kirk Cousins">QB</option>
+<option value="Daniel Jones">QB</option>
+<option value="Deshaun Watson">QB</option>
+<option value="Malik Willis">QB</option>
+<option value="Jahmyr Gibbs">RB</option>
+<option value="Bijan Robinson">RB</option>
+<option value="Derrick Henry">RB</option>
+<option value="Jonathan Taylor">RB</option>
+<option value="Ashton Jeanty">RB</option>
+<option value="Christian McCaffrey">RB</option>
+<option value="James Cook III">RB</option>
+<option value="De&#x27;Von Achane">RB</option>
+<option value="Saquon Barkley">RB</option>
+<option value="Chase Brown">RB</option>
+<option value="Kenneth Walker III">RB</option>
+<option value="D&#x27;Andre Swift">RB</option>
+<option value="Javonte Williams">RB</option>
+<option value="Breece Hall">RB</option>
+<option value="Omarion Hampton">RB</option>
+<option value="Kyren Williams">RB</option>
+<option value="Jeremiyah Love">RB</option>
+<option value="David Montgomery">RB</option>
+<option value="Bucky Irving">RB</option>
+<option value="Cam Skattebo">RB</option>
+<option value="Travis Etienne Jr.">RB</option>
+<option value="Rhamondre Stevenson">RB</option>
+<option value="Bhayshul Tuten">RB</option>
+<option value="Chuba Hubbard">RB</option>
+<option value="Jadarian Price">RB</option>
+<option value="Quinshon Judkins">RB</option>
+<option value="MarShawn Lloyd">RB</option>
+<option value="Jaylen Warren">RB</option>
+<option value="Kyle Monangai">RB</option>
+<option value="Rico Dowdle">RB</option>
+<option value="Jacory Croskey-Merritt">RB</option>
+<option value="Jordan Mason">RB</option>
+<option value="J.K. Dobbins">RB</option>
+<option value="TreVeyon Henderson">RB</option>
+<option value="RJ Harvey">RB</option>
+<option value="Tony Pollard">RB</option>
+<option value="Jonathon Brooks">RB</option>
+<option value="Kenneth Gainwell">RB</option>
+<option value="Woody Marks">RB</option>
+<option value="Kaelon Black">RB</option>
+<option value="Aaron Jones Sr.">RB</option>
+<option value="Zach Charbonnet">RB</option>
+<option value="Josh Jacobs">RB</option>
+<option value="Blake Corum">RB</option>
+<option value="Rachaad White">RB</option>
+<option value="Tyjae Spears">RB</option>
+<option value="Tyler Allgeier">RB</option>
+<option value="Kendre Miller">RB</option>
+<option value="Alvin Kamara">RB</option>
+<option value="Brian Robinson Jr.">RB</option>
+<option value="Chris Rodriguez Jr.">RB</option>
+<option value="Isiah Pacheco">RB</option>
+<option value="Keaton Mitchell">RB</option>
+<option value="Ray Davis">RB</option>
+<option value="Jaylen Wright">RB</option>
+<option value="Justice Hill">RB</option>
+<option value="Samaje Perine">RB</option>
+<option value="Jonah Coleman">RB</option>
+<option value="Mike Washington Jr.">RB</option>
+<option value="Devin Singletary">RB</option>
+<option value="Will Shipley">RB</option>
+<option value="Ameer Abdullah">RB</option>
+<option value="Chris Brooks">RB</option>
+<option value="Tyrone Tracy Jr.">RB</option>
+<option value="Tank Bigsby">RB</option>
+<option value="Raheim Sanders">RB</option>
+<option value="Sione Vaki">RB</option>
+<option value="Puka Nacua">WR</option>
+<option value="Jaxon Smith-Njigba">WR</option>
+<option value="Amon-Ra St. Brown">WR</option>
+<option value="Ja&#x27;Marr Chase">WR</option>
+<option value="Justin Jefferson">WR</option>
+<option value="CeeDee Lamb">WR</option>
+<option value="Chris Olave">WR</option>
+<option value="Nico Collins">WR</option>
+<option value="Drake London">WR</option>
+<option value="Malik Nabers">WR</option>
+<option value="George Pickens">WR</option>
+<option value="Zay Flowers">WR</option>
+<option value="DeVonta Smith">WR</option>
+<option value="Garrett Wilson">WR</option>
+<option value="Rashee Rice">WR</option>
+<option value="Ladd McConkey">WR</option>
+<option value="Christian Watson">WR</option>
+<option value="DJ Moore">WR</option>
+<option value="Emeka Egbuka">WR</option>
+<option value="Tetairoa McMillan">WR</option>
+<option value="A.J. Brown">WR</option>
+<option value="Jaylen Waddle">WR</option>
+<option value="Tee Higgins">WR</option>
+<option value="Jameson Williams">WR</option>
+<option value="Parker Washington">WR</option>
+<option value="Davante Adams">WR</option>
+<option value="Luther Burden III">WR</option>
+<option value="Mike Evans">WR</option>
+<option value="Brian Thomas Jr.">WR</option>
+<option value="Rome Odunze">WR</option>
+<option value="Jalen Coker">WR</option>
+<option value="Matthew Golden">WR</option>
+<option value="Terry McLaurin">WR</option>
+<option value="DK Metcalf">WR</option>
+<option value="Marvin Harrison Jr.">WR</option>
+<option value="Chris Godwin Jr.">WR</option>
+<option value="Jayden Reed">WR</option>
+<option value="Jordan Addison">WR</option>
+<option value="Alec Pierce">WR</option>
+<option value="Courtland Sutton">WR</option>
+<option value="Quentin Johnston">WR</option>
+<option value="Michael Pittman Jr.">WR</option>
+<option value="Xavier Worthy">WR</option>
+<option value="Josh Downs">WR</option>
+<option value="Stefon Diggs">WR</option>
+<option value="Jakobi Meyers">WR</option>
+<option value="Michael Wilson">WR</option>
+<option value="Denzel Boston">WR</option>
+<option value="Khalil Shakir">WR</option>
+<option value="Deebo Samuel">WR</option>
+<option value="KC Concepcion">WR</option>
+<option value="Carnell Tate">WR</option>
+<option value="Dontayvion Wicks">WR</option>
+<option value="Keenan Allen">WR</option>
+<option value="Caleb Douglas">WR</option>
+<option value="Jauan Jennings">WR</option>
+<option value="Malik Washington">WR</option>
+<option value="Devaughn Vele">WR</option>
+<option value="Joshua Palmer">WR</option>
+<option value="Tre Tucker">WR</option>
+<option value="Wan&#x27;Dale Robinson">WR</option>
+<option value="Makai Lemon">WR</option>
+<option value="Jack Bech">WR</option>
+<option value="Jalen Nailor">WR</option>
+<option value="Jaylin Noel">WR</option>
+<option value="Antonio Williams">WR</option>
+<option value="Kalif Raymond">WR</option>
+<option value="Kayshon Boutte">WR</option>
+<option value="Rashid Shaheed">WR</option>
+<option value="Ryan Flournoy">WR</option>
+<option value="Tank Dell">WR</option>
+<option value="Jalen McMillan">WR</option>
+<option value="Mack Hollins">WR</option>
+<option value="Tre Harris">WR</option>
+<option value="Chris Bell">WR</option>
+<option value="Cooper Kupp">WR</option>
+<option value="DeMario Douglas">WR</option>
+<option value="Jordyn Tyson">WR</option>
+<option value="Darnell Mooney">WR</option>
+<option value="Calvin Ridley">WR</option>
+<option value="De&#x27;Zhaun Stribling">WR</option>
+<option value="Pat Bryant">WR</option>
+<option value="Travis Hunter">WR</option>
+<option value="Jahan Dotson">WR</option>
+<option value="Romeo Doubs">WR</option>
+<option value="Chimere Dike">WR</option>
+<option value="Ja&#x27;Kobi Lane">WR</option>
+<option value="Jerry Jeudy">WR</option>
+<option value="Keon Coleman">WR</option>
+<option value="Rashod Bateman">WR</option>
+<option value="Xavier Hutchinson">WR</option>
+<option value="Roman Wilson">WR</option>
+<option value="Adonai Mitchell">WR</option>
+<option value="Elic Ayomanor">WR</option>
+<option value="Omar Cooper Jr.">WR</option>
+<option value="Tez Johnson">WR</option>
+<option value="Xavier Legette">WR</option>
+<option value="Malachi Fields">WR</option>
+<option value="Isaac TeSlaa">WR</option>
+<option value="Josh Cameron">WR</option>
+<option value="Bryce Lance">WR</option>
+<option value="Germie Bernard">WR</option>
+<option value="Trey McBride">TE</option>
+<option value="Brock Bowers">TE</option>
+<option value="Dalton Kincaid">TE</option>
+<option value="Colston Loveland">TE</option>
+<option value="Tyler Warren">TE</option>
+<option value="Isaiah Likely">TE</option>
+<option value="Sam LaPorta">TE</option>
+<option value="Dallas Goedert">TE</option>
+<option value="Tucker Kraft">TE</option>
+<option value="Harold Fannin Jr.">TE</option>
+<option value="George Kittle">TE</option>
+<option value="T.J. Hockenson">TE</option>
+<option value="Mark Andrews">TE</option>
+<option value="Juwan Johnson">TE</option>
+<option value="Jake Ferguson">TE</option>
+<option value="Kyle Pitts Sr.">TE</option>
+<option value="Travis Kelce">TE</option>
+<option value="Brenton Strange">TE</option>
+<option value="Michael Mayer">TE</option>
+<option value="David Njoku">TE</option>
+<option value="Kenyon Sadiq">TE</option>
+<option value="Pat Freiermuth">TE</option>
+<option value="Cole Kmet">TE</option>
+<option value="Dalton Schultz">TE</option>
+<option value="Noah Fant">TE</option>
+<option value="Hunter Henry">TE</option>
+<option value="Evan Engram">TE</option>
+<option value="Greg Dulcich">TE</option>
+<option value="Mike Gesicki">TE</option>
+<option value="Terrance Ferguson">TE</option>
+<option value="AJ Barner">TE</option>
+<option value="Chig Okonkwo">TE</option>
+<option value="Darren Waller">TE</option>
+<option value="Jonnu Smith">TE</option>
+<option value="Cade Otton">TE</option>
+<option value="Gunnar Helm">TE</option>
+<option value="Theo Johnson">TE</option>
+<option value="Elijah Arroyo">TE</option>
+<option value="Dawson Knox">TE</option>
+<option value="Oronde Gadsden II">TE</option>
+<option value="Darnell Washington">TE</option>
+<option value="Brevyn Spann-Ford">TE</option>
+      </datalist>
+      <div class="sub" style="margin-top:5px">Type a name and tap a suggestion, or use the dropdown below.</div>
+      <div id="suggestA" class="suggestions"></div>
+      <div class="picker-row">
+        <select id="pickerA" class="picker-select">
+          <option value="">Browse all players…</option>
+<option value="Josh Allen">Josh Allen — QB</option>
+<option value="Lamar Jackson">Lamar Jackson — QB</option>
+<option value="Caleb Williams">Caleb Williams — QB</option>
+<option value="Jalen Hurts">Jalen Hurts — QB</option>
+<option value="Jayden Daniels">Jayden Daniels — QB</option>
+<option value="Trevor Lawrence">Trevor Lawrence — QB</option>
+<option value="Joe Burrow">Joe Burrow — QB</option>
+<option value="Jaxson Dart">Jaxson Dart — QB</option>
+<option value="Patrick Mahomes">Patrick Mahomes — QB</option>
+<option value="Tyler Shough">Tyler Shough — QB</option>
+<option value="Brock Purdy">Brock Purdy — QB</option>
+<option value="Drake Maye">Drake Maye — QB</option>
+<option value="Justin Herbert">Justin Herbert — QB</option>
+<option value="Jordan Love">Jordan Love — QB</option>
+<option value="Dak Prescott">Dak Prescott — QB</option>
+<option value="Bo Nix">Bo Nix — QB</option>
+<option value="Jared Goff">Jared Goff — QB</option>
+<option value="Matthew Stafford">Matthew Stafford — QB</option>
+<option value="Baker Mayfield">Baker Mayfield — QB</option>
+<option value="C.J. Stroud">C.J. Stroud — QB</option>
+<option value="Bryce Young">Bryce Young — QB</option>
+<option value="Kyler Murray">Kyler Murray — QB</option>
+<option value="Aaron Rodgers">Aaron Rodgers — QB</option>
+<option value="Jacoby Brissett">Jacoby Brissett — QB</option>
+<option value="Sam Darnold">Sam Darnold — QB</option>
+<option value="Geno Smith">Geno Smith — QB</option>
+<option value="Cam Ward">Cam Ward — QB</option>
+<option value="Kirk Cousins">Kirk Cousins — QB</option>
+<option value="Daniel Jones">Daniel Jones — QB</option>
+<option value="Deshaun Watson">Deshaun Watson — QB</option>
+<option value="Malik Willis">Malik Willis — QB</option>
+<option value="Jahmyr Gibbs">Jahmyr Gibbs — RB</option>
+<option value="Bijan Robinson">Bijan Robinson — RB</option>
+<option value="Derrick Henry">Derrick Henry — RB</option>
+<option value="Jonathan Taylor">Jonathan Taylor — RB</option>
+<option value="Ashton Jeanty">Ashton Jeanty — RB</option>
+<option value="Christian McCaffrey">Christian McCaffrey — RB</option>
+<option value="James Cook III">James Cook III — RB</option>
+<option value="De&#x27;Von Achane">De&#x27;Von Achane — RB</option>
+<option value="Saquon Barkley">Saquon Barkley — RB</option>
+<option value="Chase Brown">Chase Brown — RB</option>
+<option value="Kenneth Walker III">Kenneth Walker III — RB</option>
+<option value="D&#x27;Andre Swift">D&#x27;Andre Swift — RB</option>
+<option value="Javonte Williams">Javonte Williams — RB</option>
+<option value="Breece Hall">Breece Hall — RB</option>
+<option value="Omarion Hampton">Omarion Hampton — RB</option>
+<option value="Kyren Williams">Kyren Williams — RB</option>
+<option value="Jeremiyah Love">Jeremiyah Love — RB</option>
+<option value="David Montgomery">David Montgomery — RB</option>
+<option value="Bucky Irving">Bucky Irving — RB</option>
+<option value="Cam Skattebo">Cam Skattebo — RB</option>
+<option value="Travis Etienne Jr.">Travis Etienne Jr. — RB</option>
+<option value="Rhamondre Stevenson">Rhamondre Stevenson — RB</option>
+<option value="Bhayshul Tuten">Bhayshul Tuten — RB</option>
+<option value="Chuba Hubbard">Chuba Hubbard — RB</option>
+<option value="Jadarian Price">Jadarian Price — RB</option>
+<option value="Quinshon Judkins">Quinshon Judkins — RB</option>
+<option value="MarShawn Lloyd">MarShawn Lloyd — RB</option>
+<option value="Jaylen Warren">Jaylen Warren — RB</option>
+<option value="Kyle Monangai">Kyle Monangai — RB</option>
+<option value="Rico Dowdle">Rico Dowdle — RB</option>
+<option value="Jacory Croskey-Merritt">Jacory Croskey-Merritt — RB</option>
+<option value="Jordan Mason">Jordan Mason — RB</option>
+<option value="J.K. Dobbins">J.K. Dobbins — RB</option>
+<option value="TreVeyon Henderson">TreVeyon Henderson — RB</option>
+<option value="RJ Harvey">RJ Harvey — RB</option>
+<option value="Tony Pollard">Tony Pollard — RB</option>
+<option value="Jonathon Brooks">Jonathon Brooks — RB</option>
+<option value="Kenneth Gainwell">Kenneth Gainwell — RB</option>
+<option value="Woody Marks">Woody Marks — RB</option>
+<option value="Kaelon Black">Kaelon Black — RB</option>
+<option value="Aaron Jones Sr.">Aaron Jones Sr. — RB</option>
+<option value="Zach Charbonnet">Zach Charbonnet — RB</option>
+<option value="Josh Jacobs">Josh Jacobs — RB</option>
+<option value="Blake Corum">Blake Corum — RB</option>
+<option value="Rachaad White">Rachaad White — RB</option>
+<option value="Tyjae Spears">Tyjae Spears — RB</option>
+<option value="Tyler Allgeier">Tyler Allgeier — RB</option>
+<option value="Kendre Miller">Kendre Miller — RB</option>
+<option value="Alvin Kamara">Alvin Kamara — RB</option>
+<option value="Brian Robinson Jr.">Brian Robinson Jr. — RB</option>
+<option value="Chris Rodriguez Jr.">Chris Rodriguez Jr. — RB</option>
+<option value="Isiah Pacheco">Isiah Pacheco — RB</option>
+<option value="Keaton Mitchell">Keaton Mitchell — RB</option>
+<option value="Ray Davis">Ray Davis — RB</option>
+<option value="Jaylen Wright">Jaylen Wright — RB</option>
+<option value="Justice Hill">Justice Hill — RB</option>
+<option value="Samaje Perine">Samaje Perine — RB</option>
+<option value="Jonah Coleman">Jonah Coleman — RB</option>
+<option value="Mike Washington Jr.">Mike Washington Jr. — RB</option>
+<option value="Devin Singletary">Devin Singletary — RB</option>
+<option value="Will Shipley">Will Shipley — RB</option>
+<option value="Ameer Abdullah">Ameer Abdullah — RB</option>
+<option value="Chris Brooks">Chris Brooks — RB</option>
+<option value="Tyrone Tracy Jr.">Tyrone Tracy Jr. — RB</option>
+<option value="Tank Bigsby">Tank Bigsby — RB</option>
+<option value="Raheim Sanders">Raheim Sanders — RB</option>
+<option value="Sione Vaki">Sione Vaki — RB</option>
+<option value="Puka Nacua">Puka Nacua — WR</option>
+<option value="Jaxon Smith-Njigba">Jaxon Smith-Njigba — WR</option>
+<option value="Amon-Ra St. Brown">Amon-Ra St. Brown — WR</option>
+<option value="Ja&#x27;Marr Chase">Ja&#x27;Marr Chase — WR</option>
+<option value="Justin Jefferson">Justin Jefferson — WR</option>
+<option value="CeeDee Lamb">CeeDee Lamb — WR</option>
+<option value="Chris Olave">Chris Olave — WR</option>
+<option value="Nico Collins">Nico Collins — WR</option>
+<option value="Drake London">Drake London — WR</option>
+<option value="Malik Nabers">Malik Nabers — WR</option>
+<option value="George Pickens">George Pickens — WR</option>
+<option value="Zay Flowers">Zay Flowers — WR</option>
+<option value="DeVonta Smith">DeVonta Smith — WR</option>
+<option value="Garrett Wilson">Garrett Wilson — WR</option>
+<option value="Rashee Rice">Rashee Rice — WR</option>
+<option value="Ladd McConkey">Ladd McConkey — WR</option>
+<option value="Christian Watson">Christian Watson — WR</option>
+<option value="DJ Moore">DJ Moore — WR</option>
+<option value="Emeka Egbuka">Emeka Egbuka — WR</option>
+<option value="Tetairoa McMillan">Tetairoa McMillan — WR</option>
+<option value="A.J. Brown">A.J. Brown — WR</option>
+<option value="Jaylen Waddle">Jaylen Waddle — WR</option>
+<option value="Tee Higgins">Tee Higgins — WR</option>
+<option value="Jameson Williams">Jameson Williams — WR</option>
+<option value="Parker Washington">Parker Washington — WR</option>
+<option value="Davante Adams">Davante Adams — WR</option>
+<option value="Luther Burden III">Luther Burden III — WR</option>
+<option value="Mike Evans">Mike Evans — WR</option>
+<option value="Brian Thomas Jr.">Brian Thomas Jr. — WR</option>
+<option value="Rome Odunze">Rome Odunze — WR</option>
+<option value="Jalen Coker">Jalen Coker — WR</option>
+<option value="Matthew Golden">Matthew Golden — WR</option>
+<option value="Terry McLaurin">Terry McLaurin — WR</option>
+<option value="DK Metcalf">DK Metcalf — WR</option>
+<option value="Marvin Harrison Jr.">Marvin Harrison Jr. — WR</option>
+<option value="Chris Godwin Jr.">Chris Godwin Jr. — WR</option>
+<option value="Jayden Reed">Jayden Reed — WR</option>
+<option value="Jordan Addison">Jordan Addison — WR</option>
+<option value="Alec Pierce">Alec Pierce — WR</option>
+<option value="Courtland Sutton">Courtland Sutton — WR</option>
+<option value="Quentin Johnston">Quentin Johnston — WR</option>
+<option value="Michael Pittman Jr.">Michael Pittman Jr. — WR</option>
+<option value="Xavier Worthy">Xavier Worthy — WR</option>
+<option value="Josh Downs">Josh Downs — WR</option>
+<option value="Stefon Diggs">Stefon Diggs — WR</option>
+<option value="Jakobi Meyers">Jakobi Meyers — WR</option>
+<option value="Michael Wilson">Michael Wilson — WR</option>
+<option value="Denzel Boston">Denzel Boston — WR</option>
+<option value="Khalil Shakir">Khalil Shakir — WR</option>
+<option value="Deebo Samuel">Deebo Samuel — WR</option>
+<option value="KC Concepcion">KC Concepcion — WR</option>
+<option value="Carnell Tate">Carnell Tate — WR</option>
+<option value="Dontayvion Wicks">Dontayvion Wicks — WR</option>
+<option value="Keenan Allen">Keenan Allen — WR</option>
+<option value="Caleb Douglas">Caleb Douglas — WR</option>
+<option value="Jauan Jennings">Jauan Jennings — WR</option>
+<option value="Malik Washington">Malik Washington — WR</option>
+<option value="Devaughn Vele">Devaughn Vele — WR</option>
+<option value="Joshua Palmer">Joshua Palmer — WR</option>
+<option value="Tre Tucker">Tre Tucker — WR</option>
+<option value="Wan&#x27;Dale Robinson">Wan&#x27;Dale Robinson — WR</option>
+<option value="Makai Lemon">Makai Lemon — WR</option>
+<option value="Jack Bech">Jack Bech — WR</option>
+<option value="Jalen Nailor">Jalen Nailor — WR</option>
+<option value="Jaylin Noel">Jaylin Noel — WR</option>
+<option value="Antonio Williams">Antonio Williams — WR</option>
+<option value="Kalif Raymond">Kalif Raymond — WR</option>
+<option value="Kayshon Boutte">Kayshon Boutte — WR</option>
+<option value="Rashid Shaheed">Rashid Shaheed — WR</option>
+<option value="Ryan Flournoy">Ryan Flournoy — WR</option>
+<option value="Tank Dell">Tank Dell — WR</option>
+<option value="Jalen McMillan">Jalen McMillan — WR</option>
+<option value="Mack Hollins">Mack Hollins — WR</option>
+<option value="Tre Harris">Tre Harris — WR</option>
+<option value="Chris Bell">Chris Bell — WR</option>
+<option value="Cooper Kupp">Cooper Kupp — WR</option>
+<option value="DeMario Douglas">DeMario Douglas — WR</option>
+<option value="Jordyn Tyson">Jordyn Tyson — WR</option>
+<option value="Darnell Mooney">Darnell Mooney — WR</option>
+<option value="Calvin Ridley">Calvin Ridley — WR</option>
+<option value="De&#x27;Zhaun Stribling">De&#x27;Zhaun Stribling — WR</option>
+<option value="Pat Bryant">Pat Bryant — WR</option>
+<option value="Travis Hunter">Travis Hunter — WR</option>
+<option value="Jahan Dotson">Jahan Dotson — WR</option>
+<option value="Romeo Doubs">Romeo Doubs — WR</option>
+<option value="Chimere Dike">Chimere Dike — WR</option>
+<option value="Ja&#x27;Kobi Lane">Ja&#x27;Kobi Lane — WR</option>
+<option value="Jerry Jeudy">Jerry Jeudy — WR</option>
+<option value="Keon Coleman">Keon Coleman — WR</option>
+<option value="Rashod Bateman">Rashod Bateman — WR</option>
+<option value="Xavier Hutchinson">Xavier Hutchinson — WR</option>
+<option value="Roman Wilson">Roman Wilson — WR</option>
+<option value="Adonai Mitchell">Adonai Mitchell — WR</option>
+<option value="Elic Ayomanor">Elic Ayomanor — WR</option>
+<option value="Omar Cooper Jr.">Omar Cooper Jr. — WR</option>
+<option value="Tez Johnson">Tez Johnson — WR</option>
+<option value="Xavier Legette">Xavier Legette — WR</option>
+<option value="Malachi Fields">Malachi Fields — WR</option>
+<option value="Isaac TeSlaa">Isaac TeSlaa — WR</option>
+<option value="Josh Cameron">Josh Cameron — WR</option>
+<option value="Bryce Lance">Bryce Lance — WR</option>
+<option value="Germie Bernard">Germie Bernard — WR</option>
+<option value="Trey McBride">Trey McBride — TE</option>
+<option value="Brock Bowers">Brock Bowers — TE</option>
+<option value="Dalton Kincaid">Dalton Kincaid — TE</option>
+<option value="Colston Loveland">Colston Loveland — TE</option>
+<option value="Tyler Warren">Tyler Warren — TE</option>
+<option value="Isaiah Likely">Isaiah Likely — TE</option>
+<option value="Sam LaPorta">Sam LaPorta — TE</option>
+<option value="Dallas Goedert">Dallas Goedert — TE</option>
+<option value="Tucker Kraft">Tucker Kraft — TE</option>
+<option value="Harold Fannin Jr.">Harold Fannin Jr. — TE</option>
+<option value="George Kittle">George Kittle — TE</option>
+<option value="T.J. Hockenson">T.J. Hockenson — TE</option>
+<option value="Mark Andrews">Mark Andrews — TE</option>
+<option value="Juwan Johnson">Juwan Johnson — TE</option>
+<option value="Jake Ferguson">Jake Ferguson — TE</option>
+<option value="Kyle Pitts Sr.">Kyle Pitts Sr. — TE</option>
+<option value="Travis Kelce">Travis Kelce — TE</option>
+<option value="Brenton Strange">Brenton Strange — TE</option>
+<option value="Michael Mayer">Michael Mayer — TE</option>
+<option value="David Njoku">David Njoku — TE</option>
+<option value="Kenyon Sadiq">Kenyon Sadiq — TE</option>
+<option value="Pat Freiermuth">Pat Freiermuth — TE</option>
+<option value="Cole Kmet">Cole Kmet — TE</option>
+<option value="Dalton Schultz">Dalton Schultz — TE</option>
+<option value="Noah Fant">Noah Fant — TE</option>
+<option value="Hunter Henry">Hunter Henry — TE</option>
+<option value="Evan Engram">Evan Engram — TE</option>
+<option value="Greg Dulcich">Greg Dulcich — TE</option>
+<option value="Mike Gesicki">Mike Gesicki — TE</option>
+<option value="Terrance Ferguson">Terrance Ferguson — TE</option>
+<option value="AJ Barner">AJ Barner — TE</option>
+<option value="Chig Okonkwo">Chig Okonkwo — TE</option>
+<option value="Darren Waller">Darren Waller — TE</option>
+<option value="Jonnu Smith">Jonnu Smith — TE</option>
+<option value="Cade Otton">Cade Otton — TE</option>
+<option value="Gunnar Helm">Gunnar Helm — TE</option>
+<option value="Theo Johnson">Theo Johnson — TE</option>
+<option value="Elijah Arroyo">Elijah Arroyo — TE</option>
+<option value="Dawson Knox">Dawson Knox — TE</option>
+<option value="Oronde Gadsden II">Oronde Gadsden II — TE</option>
+<option value="Darnell Washington">Darnell Washington — TE</option>
+<option value="Brevyn Spann-Ford">Brevyn Spann-Ford — TE</option>
+        </select>
+        <button id="pickerAddA" class="picker-add" type="button">Add</button>
+      </div>
+      <div id="scriptWarningA" class="script-warning">Interactive search did not load. You can still use the player dropdown above.</div></div><div id="playersA" class="players"></div></section>
+    <section class="card" id="cardB"><div class="card-head"><h2>Team B receives</h2><span class="count" id="countB">0 players</span></div><div class="search-wrap"><input id="searchB" list="playerListB" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type a player name…">
+      <datalist id="playerListB">
+<option value="Josh Allen">QB</option>
+<option value="Lamar Jackson">QB</option>
+<option value="Caleb Williams">QB</option>
+<option value="Jalen Hurts">QB</option>
+<option value="Jayden Daniels">QB</option>
+<option value="Trevor Lawrence">QB</option>
+<option value="Joe Burrow">QB</option>
+<option value="Jaxson Dart">QB</option>
+<option value="Patrick Mahomes">QB</option>
+<option value="Tyler Shough">QB</option>
+<option value="Brock Purdy">QB</option>
+<option value="Drake Maye">QB</option>
+<option value="Justin Herbert">QB</option>
+<option value="Jordan Love">QB</option>
+<option value="Dak Prescott">QB</option>
+<option value="Bo Nix">QB</option>
+<option value="Jared Goff">QB</option>
+<option value="Matthew Stafford">QB</option>
+<option value="Baker Mayfield">QB</option>
+<option value="C.J. Stroud">QB</option>
+<option value="Bryce Young">QB</option>
+<option value="Kyler Murray">QB</option>
+<option value="Aaron Rodgers">QB</option>
+<option value="Jacoby Brissett">QB</option>
+<option value="Sam Darnold">QB</option>
+<option value="Geno Smith">QB</option>
+<option value="Cam Ward">QB</option>
+<option value="Kirk Cousins">QB</option>
+<option value="Daniel Jones">QB</option>
+<option value="Deshaun Watson">QB</option>
+<option value="Malik Willis">QB</option>
+<option value="Jahmyr Gibbs">RB</option>
+<option value="Bijan Robinson">RB</option>
+<option value="Derrick Henry">RB</option>
+<option value="Jonathan Taylor">RB</option>
+<option value="Ashton Jeanty">RB</option>
+<option value="Christian McCaffrey">RB</option>
+<option value="James Cook III">RB</option>
+<option value="De&#x27;Von Achane">RB</option>
+<option value="Saquon Barkley">RB</option>
+<option value="Chase Brown">RB</option>
+<option value="Kenneth Walker III">RB</option>
+<option value="D&#x27;Andre Swift">RB</option>
+<option value="Javonte Williams">RB</option>
+<option value="Breece Hall">RB</option>
+<option value="Omarion Hampton">RB</option>
+<option value="Kyren Williams">RB</option>
+<option value="Jeremiyah Love">RB</option>
+<option value="David Montgomery">RB</option>
+<option value="Bucky Irving">RB</option>
+<option value="Cam Skattebo">RB</option>
+<option value="Travis Etienne Jr.">RB</option>
+<option value="Rhamondre Stevenson">RB</option>
+<option value="Bhayshul Tuten">RB</option>
+<option value="Chuba Hubbard">RB</option>
+<option value="Jadarian Price">RB</option>
+<option value="Quinshon Judkins">RB</option>
+<option value="MarShawn Lloyd">RB</option>
+<option value="Jaylen Warren">RB</option>
+<option value="Kyle Monangai">RB</option>
+<option value="Rico Dowdle">RB</option>
+<option value="Jacory Croskey-Merritt">RB</option>
+<option value="Jordan Mason">RB</option>
+<option value="J.K. Dobbins">RB</option>
+<option value="TreVeyon Henderson">RB</option>
+<option value="RJ Harvey">RB</option>
+<option value="Tony Pollard">RB</option>
+<option value="Jonathon Brooks">RB</option>
+<option value="Kenneth Gainwell">RB</option>
+<option value="Woody Marks">RB</option>
+<option value="Kaelon Black">RB</option>
+<option value="Aaron Jones Sr.">RB</option>
+<option value="Zach Charbonnet">RB</option>
+<option value="Josh Jacobs">RB</option>
+<option value="Blake Corum">RB</option>
+<option value="Rachaad White">RB</option>
+<option value="Tyjae Spears">RB</option>
+<option value="Tyler Allgeier">RB</option>
+<option value="Kendre Miller">RB</option>
+<option value="Alvin Kamara">RB</option>
+<option value="Brian Robinson Jr.">RB</option>
+<option value="Chris Rodriguez Jr.">RB</option>
+<option value="Isiah Pacheco">RB</option>
+<option value="Keaton Mitchell">RB</option>
+<option value="Ray Davis">RB</option>
+<option value="Jaylen Wright">RB</option>
+<option value="Justice Hill">RB</option>
+<option value="Samaje Perine">RB</option>
+<option value="Jonah Coleman">RB</option>
+<option value="Mike Washington Jr.">RB</option>
+<option value="Devin Singletary">RB</option>
+<option value="Will Shipley">RB</option>
+<option value="Ameer Abdullah">RB</option>
+<option value="Chris Brooks">RB</option>
+<option value="Tyrone Tracy Jr.">RB</option>
+<option value="Tank Bigsby">RB</option>
+<option value="Raheim Sanders">RB</option>
+<option value="Sione Vaki">RB</option>
+<option value="Puka Nacua">WR</option>
+<option value="Jaxon Smith-Njigba">WR</option>
+<option value="Amon-Ra St. Brown">WR</option>
+<option value="Ja&#x27;Marr Chase">WR</option>
+<option value="Justin Jefferson">WR</option>
+<option value="CeeDee Lamb">WR</option>
+<option value="Chris Olave">WR</option>
+<option value="Nico Collins">WR</option>
+<option value="Drake London">WR</option>
+<option value="Malik Nabers">WR</option>
+<option value="George Pickens">WR</option>
+<option value="Zay Flowers">WR</option>
+<option value="DeVonta Smith">WR</option>
+<option value="Garrett Wilson">WR</option>
+<option value="Rashee Rice">WR</option>
+<option value="Ladd McConkey">WR</option>
+<option value="Christian Watson">WR</option>
+<option value="DJ Moore">WR</option>
+<option value="Emeka Egbuka">WR</option>
+<option value="Tetairoa McMillan">WR</option>
+<option value="A.J. Brown">WR</option>
+<option value="Jaylen Waddle">WR</option>
+<option value="Tee Higgins">WR</option>
+<option value="Jameson Williams">WR</option>
+<option value="Parker Washington">WR</option>
+<option value="Davante Adams">WR</option>
+<option value="Luther Burden III">WR</option>
+<option value="Mike Evans">WR</option>
+<option value="Brian Thomas Jr.">WR</option>
+<option value="Rome Odunze">WR</option>
+<option value="Jalen Coker">WR</option>
+<option value="Matthew Golden">WR</option>
+<option value="Terry McLaurin">WR</option>
+<option value="DK Metcalf">WR</option>
+<option value="Marvin Harrison Jr.">WR</option>
+<option value="Chris Godwin Jr.">WR</option>
+<option value="Jayden Reed">WR</option>
+<option value="Jordan Addison">WR</option>
+<option value="Alec Pierce">WR</option>
+<option value="Courtland Sutton">WR</option>
+<option value="Quentin Johnston">WR</option>
+<option value="Michael Pittman Jr.">WR</option>
+<option value="Xavier Worthy">WR</option>
+<option value="Josh Downs">WR</option>
+<option value="Stefon Diggs">WR</option>
+<option value="Jakobi Meyers">WR</option>
+<option value="Michael Wilson">WR</option>
+<option value="Denzel Boston">WR</option>
+<option value="Khalil Shakir">WR</option>
+<option value="Deebo Samuel">WR</option>
+<option value="KC Concepcion">WR</option>
+<option value="Carnell Tate">WR</option>
+<option value="Dontayvion Wicks">WR</option>
+<option value="Keenan Allen">WR</option>
+<option value="Caleb Douglas">WR</option>
+<option value="Jauan Jennings">WR</option>
+<option value="Malik Washington">WR</option>
+<option value="Devaughn Vele">WR</option>
+<option value="Joshua Palmer">WR</option>
+<option value="Tre Tucker">WR</option>
+<option value="Wan&#x27;Dale Robinson">WR</option>
+<option value="Makai Lemon">WR</option>
+<option value="Jack Bech">WR</option>
+<option value="Jalen Nailor">WR</option>
+<option value="Jaylin Noel">WR</option>
+<option value="Antonio Williams">WR</option>
+<option value="Kalif Raymond">WR</option>
+<option value="Kayshon Boutte">WR</option>
+<option value="Rashid Shaheed">WR</option>
+<option value="Ryan Flournoy">WR</option>
+<option value="Tank Dell">WR</option>
+<option value="Jalen McMillan">WR</option>
+<option value="Mack Hollins">WR</option>
+<option value="Tre Harris">WR</option>
+<option value="Chris Bell">WR</option>
+<option value="Cooper Kupp">WR</option>
+<option value="DeMario Douglas">WR</option>
+<option value="Jordyn Tyson">WR</option>
+<option value="Darnell Mooney">WR</option>
+<option value="Calvin Ridley">WR</option>
+<option value="De&#x27;Zhaun Stribling">WR</option>
+<option value="Pat Bryant">WR</option>
+<option value="Travis Hunter">WR</option>
+<option value="Jahan Dotson">WR</option>
+<option value="Romeo Doubs">WR</option>
+<option value="Chimere Dike">WR</option>
+<option value="Ja&#x27;Kobi Lane">WR</option>
+<option value="Jerry Jeudy">WR</option>
+<option value="Keon Coleman">WR</option>
+<option value="Rashod Bateman">WR</option>
+<option value="Xavier Hutchinson">WR</option>
+<option value="Roman Wilson">WR</option>
+<option value="Adonai Mitchell">WR</option>
+<option value="Elic Ayomanor">WR</option>
+<option value="Omar Cooper Jr.">WR</option>
+<option value="Tez Johnson">WR</option>
+<option value="Xavier Legette">WR</option>
+<option value="Malachi Fields">WR</option>
+<option value="Isaac TeSlaa">WR</option>
+<option value="Josh Cameron">WR</option>
+<option value="Bryce Lance">WR</option>
+<option value="Germie Bernard">WR</option>
+<option value="Trey McBride">TE</option>
+<option value="Brock Bowers">TE</option>
+<option value="Dalton Kincaid">TE</option>
+<option value="Colston Loveland">TE</option>
+<option value="Tyler Warren">TE</option>
+<option value="Isaiah Likely">TE</option>
+<option value="Sam LaPorta">TE</option>
+<option value="Dallas Goedert">TE</option>
+<option value="Tucker Kraft">TE</option>
+<option value="Harold Fannin Jr.">TE</option>
+<option value="George Kittle">TE</option>
+<option value="T.J. Hockenson">TE</option>
+<option value="Mark Andrews">TE</option>
+<option value="Juwan Johnson">TE</option>
+<option value="Jake Ferguson">TE</option>
+<option value="Kyle Pitts Sr.">TE</option>
+<option value="Travis Kelce">TE</option>
+<option value="Brenton Strange">TE</option>
+<option value="Michael Mayer">TE</option>
+<option value="David Njoku">TE</option>
+<option value="Kenyon Sadiq">TE</option>
+<option value="Pat Freiermuth">TE</option>
+<option value="Cole Kmet">TE</option>
+<option value="Dalton Schultz">TE</option>
+<option value="Noah Fant">TE</option>
+<option value="Hunter Henry">TE</option>
+<option value="Evan Engram">TE</option>
+<option value="Greg Dulcich">TE</option>
+<option value="Mike Gesicki">TE</option>
+<option value="Terrance Ferguson">TE</option>
+<option value="AJ Barner">TE</option>
+<option value="Chig Okonkwo">TE</option>
+<option value="Darren Waller">TE</option>
+<option value="Jonnu Smith">TE</option>
+<option value="Cade Otton">TE</option>
+<option value="Gunnar Helm">TE</option>
+<option value="Theo Johnson">TE</option>
+<option value="Elijah Arroyo">TE</option>
+<option value="Dawson Knox">TE</option>
+<option value="Oronde Gadsden II">TE</option>
+<option value="Darnell Washington">TE</option>
+<option value="Brevyn Spann-Ford">TE</option>
+      </datalist>
+      <div class="sub" style="margin-top:5px">Type a name and tap a suggestion, or use the dropdown below.</div>
+      <div id="suggestB" class="suggestions"></div>
+      <div class="picker-row">
+        <select id="pickerB" class="picker-select">
+          <option value="">Browse all players…</option>
+<option value="Josh Allen">Josh Allen — QB</option>
+<option value="Lamar Jackson">Lamar Jackson — QB</option>
+<option value="Caleb Williams">Caleb Williams — QB</option>
+<option value="Jalen Hurts">Jalen Hurts — QB</option>
+<option value="Jayden Daniels">Jayden Daniels — QB</option>
+<option value="Trevor Lawrence">Trevor Lawrence — QB</option>
+<option value="Joe Burrow">Joe Burrow — QB</option>
+<option value="Jaxson Dart">Jaxson Dart — QB</option>
+<option value="Patrick Mahomes">Patrick Mahomes — QB</option>
+<option value="Tyler Shough">Tyler Shough — QB</option>
+<option value="Brock Purdy">Brock Purdy — QB</option>
+<option value="Drake Maye">Drake Maye — QB</option>
+<option value="Justin Herbert">Justin Herbert — QB</option>
+<option value="Jordan Love">Jordan Love — QB</option>
+<option value="Dak Prescott">Dak Prescott — QB</option>
+<option value="Bo Nix">Bo Nix — QB</option>
+<option value="Jared Goff">Jared Goff — QB</option>
+<option value="Matthew Stafford">Matthew Stafford — QB</option>
+<option value="Baker Mayfield">Baker Mayfield — QB</option>
+<option value="C.J. Stroud">C.J. Stroud — QB</option>
+<option value="Bryce Young">Bryce Young — QB</option>
+<option value="Kyler Murray">Kyler Murray — QB</option>
+<option value="Aaron Rodgers">Aaron Rodgers — QB</option>
+<option value="Jacoby Brissett">Jacoby Brissett — QB</option>
+<option value="Sam Darnold">Sam Darnold — QB</option>
+<option value="Geno Smith">Geno Smith — QB</option>
+<option value="Cam Ward">Cam Ward — QB</option>
+<option value="Kirk Cousins">Kirk Cousins — QB</option>
+<option value="Daniel Jones">Daniel Jones — QB</option>
+<option value="Deshaun Watson">Deshaun Watson — QB</option>
+<option value="Malik Willis">Malik Willis — QB</option>
+<option value="Jahmyr Gibbs">Jahmyr Gibbs — RB</option>
+<option value="Bijan Robinson">Bijan Robinson — RB</option>
+<option value="Derrick Henry">Derrick Henry — RB</option>
+<option value="Jonathan Taylor">Jonathan Taylor — RB</option>
+<option value="Ashton Jeanty">Ashton Jeanty — RB</option>
+<option value="Christian McCaffrey">Christian McCaffrey — RB</option>
+<option value="James Cook III">James Cook III — RB</option>
+<option value="De&#x27;Von Achane">De&#x27;Von Achane — RB</option>
+<option value="Saquon Barkley">Saquon Barkley — RB</option>
+<option value="Chase Brown">Chase Brown — RB</option>
+<option value="Kenneth Walker III">Kenneth Walker III — RB</option>
+<option value="D&#x27;Andre Swift">D&#x27;Andre Swift — RB</option>
+<option value="Javonte Williams">Javonte Williams — RB</option>
+<option value="Breece Hall">Breece Hall — RB</option>
+<option value="Omarion Hampton">Omarion Hampton — RB</option>
+<option value="Kyren Williams">Kyren Williams — RB</option>
+<option value="Jeremiyah Love">Jeremiyah Love — RB</option>
+<option value="David Montgomery">David Montgomery — RB</option>
+<option value="Bucky Irving">Bucky Irving — RB</option>
+<option value="Cam Skattebo">Cam Skattebo — RB</option>
+<option value="Travis Etienne Jr.">Travis Etienne Jr. — RB</option>
+<option value="Rhamondre Stevenson">Rhamondre Stevenson — RB</option>
+<option value="Bhayshul Tuten">Bhayshul Tuten — RB</option>
+<option value="Chuba Hubbard">Chuba Hubbard — RB</option>
+<option value="Jadarian Price">Jadarian Price — RB</option>
+<option value="Quinshon Judkins">Quinshon Judkins — RB</option>
+<option value="MarShawn Lloyd">MarShawn Lloyd — RB</option>
+<option value="Jaylen Warren">Jaylen Warren — RB</option>
+<option value="Kyle Monangai">Kyle Monangai — RB</option>
+<option value="Rico Dowdle">Rico Dowdle — RB</option>
+<option value="Jacory Croskey-Merritt">Jacory Croskey-Merritt — RB</option>
+<option value="Jordan Mason">Jordan Mason — RB</option>
+<option value="J.K. Dobbins">J.K. Dobbins — RB</option>
+<option value="TreVeyon Henderson">TreVeyon Henderson — RB</option>
+<option value="RJ Harvey">RJ Harvey — RB</option>
+<option value="Tony Pollard">Tony Pollard — RB</option>
+<option value="Jonathon Brooks">Jonathon Brooks — RB</option>
+<option value="Kenneth Gainwell">Kenneth Gainwell — RB</option>
+<option value="Woody Marks">Woody Marks — RB</option>
+<option value="Kaelon Black">Kaelon Black — RB</option>
+<option value="Aaron Jones Sr.">Aaron Jones Sr. — RB</option>
+<option value="Zach Charbonnet">Zach Charbonnet — RB</option>
+<option value="Josh Jacobs">Josh Jacobs — RB</option>
+<option value="Blake Corum">Blake Corum — RB</option>
+<option value="Rachaad White">Rachaad White — RB</option>
+<option value="Tyjae Spears">Tyjae Spears — RB</option>
+<option value="Tyler Allgeier">Tyler Allgeier — RB</option>
+<option value="Kendre Miller">Kendre Miller — RB</option>
+<option value="Alvin Kamara">Alvin Kamara — RB</option>
+<option value="Brian Robinson Jr.">Brian Robinson Jr. — RB</option>
+<option value="Chris Rodriguez Jr.">Chris Rodriguez Jr. — RB</option>
+<option value="Isiah Pacheco">Isiah Pacheco — RB</option>
+<option value="Keaton Mitchell">Keaton Mitchell — RB</option>
+<option value="Ray Davis">Ray Davis — RB</option>
+<option value="Jaylen Wright">Jaylen Wright — RB</option>
+<option value="Justice Hill">Justice Hill — RB</option>
+<option value="Samaje Perine">Samaje Perine — RB</option>
+<option value="Jonah Coleman">Jonah Coleman — RB</option>
+<option value="Mike Washington Jr.">Mike Washington Jr. — RB</option>
+<option value="Devin Singletary">Devin Singletary — RB</option>
+<option value="Will Shipley">Will Shipley — RB</option>
+<option value="Ameer Abdullah">Ameer Abdullah — RB</option>
+<option value="Chris Brooks">Chris Brooks — RB</option>
+<option value="Tyrone Tracy Jr.">Tyrone Tracy Jr. — RB</option>
+<option value="Tank Bigsby">Tank Bigsby — RB</option>
+<option value="Raheim Sanders">Raheim Sanders — RB</option>
+<option value="Sione Vaki">Sione Vaki — RB</option>
+<option value="Puka Nacua">Puka Nacua — WR</option>
+<option value="Jaxon Smith-Njigba">Jaxon Smith-Njigba — WR</option>
+<option value="Amon-Ra St. Brown">Amon-Ra St. Brown — WR</option>
+<option value="Ja&#x27;Marr Chase">Ja&#x27;Marr Chase — WR</option>
+<option value="Justin Jefferson">Justin Jefferson — WR</option>
+<option value="CeeDee Lamb">CeeDee Lamb — WR</option>
+<option value="Chris Olave">Chris Olave — WR</option>
+<option value="Nico Collins">Nico Collins — WR</option>
+<option value="Drake London">Drake London — WR</option>
+<option value="Malik Nabers">Malik Nabers — WR</option>
+<option value="George Pickens">George Pickens — WR</option>
+<option value="Zay Flowers">Zay Flowers — WR</option>
+<option value="DeVonta Smith">DeVonta Smith — WR</option>
+<option value="Garrett Wilson">Garrett Wilson — WR</option>
+<option value="Rashee Rice">Rashee Rice — WR</option>
+<option value="Ladd McConkey">Ladd McConkey — WR</option>
+<option value="Christian Watson">Christian Watson — WR</option>
+<option value="DJ Moore">DJ Moore — WR</option>
+<option value="Emeka Egbuka">Emeka Egbuka — WR</option>
+<option value="Tetairoa McMillan">Tetairoa McMillan — WR</option>
+<option value="A.J. Brown">A.J. Brown — WR</option>
+<option value="Jaylen Waddle">Jaylen Waddle — WR</option>
+<option value="Tee Higgins">Tee Higgins — WR</option>
+<option value="Jameson Williams">Jameson Williams — WR</option>
+<option value="Parker Washington">Parker Washington — WR</option>
+<option value="Davante Adams">Davante Adams — WR</option>
+<option value="Luther Burden III">Luther Burden III — WR</option>
+<option value="Mike Evans">Mike Evans — WR</option>
+<option value="Brian Thomas Jr.">Brian Thomas Jr. — WR</option>
+<option value="Rome Odunze">Rome Odunze — WR</option>
+<option value="Jalen Coker">Jalen Coker — WR</option>
+<option value="Matthew Golden">Matthew Golden — WR</option>
+<option value="Terry McLaurin">Terry McLaurin — WR</option>
+<option value="DK Metcalf">DK Metcalf — WR</option>
+<option value="Marvin Harrison Jr.">Marvin Harrison Jr. — WR</option>
+<option value="Chris Godwin Jr.">Chris Godwin Jr. — WR</option>
+<option value="Jayden Reed">Jayden Reed — WR</option>
+<option value="Jordan Addison">Jordan Addison — WR</option>
+<option value="Alec Pierce">Alec Pierce — WR</option>
+<option value="Courtland Sutton">Courtland Sutton — WR</option>
+<option value="Quentin Johnston">Quentin Johnston — WR</option>
+<option value="Michael Pittman Jr.">Michael Pittman Jr. — WR</option>
+<option value="Xavier Worthy">Xavier Worthy — WR</option>
+<option value="Josh Downs">Josh Downs — WR</option>
+<option value="Stefon Diggs">Stefon Diggs — WR</option>
+<option value="Jakobi Meyers">Jakobi Meyers — WR</option>
+<option value="Michael Wilson">Michael Wilson — WR</option>
+<option value="Denzel Boston">Denzel Boston — WR</option>
+<option value="Khalil Shakir">Khalil Shakir — WR</option>
+<option value="Deebo Samuel">Deebo Samuel — WR</option>
+<option value="KC Concepcion">KC Concepcion — WR</option>
+<option value="Carnell Tate">Carnell Tate — WR</option>
+<option value="Dontayvion Wicks">Dontayvion Wicks — WR</option>
+<option value="Keenan Allen">Keenan Allen — WR</option>
+<option value="Caleb Douglas">Caleb Douglas — WR</option>
+<option value="Jauan Jennings">Jauan Jennings — WR</option>
+<option value="Malik Washington">Malik Washington — WR</option>
+<option value="Devaughn Vele">Devaughn Vele — WR</option>
+<option value="Joshua Palmer">Joshua Palmer — WR</option>
+<option value="Tre Tucker">Tre Tucker — WR</option>
+<option value="Wan&#x27;Dale Robinson">Wan&#x27;Dale Robinson — WR</option>
+<option value="Makai Lemon">Makai Lemon — WR</option>
+<option value="Jack Bech">Jack Bech — WR</option>
+<option value="Jalen Nailor">Jalen Nailor — WR</option>
+<option value="Jaylin Noel">Jaylin Noel — WR</option>
+<option value="Antonio Williams">Antonio Williams — WR</option>
+<option value="Kalif Raymond">Kalif Raymond — WR</option>
+<option value="Kayshon Boutte">Kayshon Boutte — WR</option>
+<option value="Rashid Shaheed">Rashid Shaheed — WR</option>
+<option value="Ryan Flournoy">Ryan Flournoy — WR</option>
+<option value="Tank Dell">Tank Dell — WR</option>
+<option value="Jalen McMillan">Jalen McMillan — WR</option>
+<option value="Mack Hollins">Mack Hollins — WR</option>
+<option value="Tre Harris">Tre Harris — WR</option>
+<option value="Chris Bell">Chris Bell — WR</option>
+<option value="Cooper Kupp">Cooper Kupp — WR</option>
+<option value="DeMario Douglas">DeMario Douglas — WR</option>
+<option value="Jordyn Tyson">Jordyn Tyson — WR</option>
+<option value="Darnell Mooney">Darnell Mooney — WR</option>
+<option value="Calvin Ridley">Calvin Ridley — WR</option>
+<option value="De&#x27;Zhaun Stribling">De&#x27;Zhaun Stribling — WR</option>
+<option value="Pat Bryant">Pat Bryant — WR</option>
+<option value="Travis Hunter">Travis Hunter — WR</option>
+<option value="Jahan Dotson">Jahan Dotson — WR</option>
+<option value="Romeo Doubs">Romeo Doubs — WR</option>
+<option value="Chimere Dike">Chimere Dike — WR</option>
+<option value="Ja&#x27;Kobi Lane">Ja&#x27;Kobi Lane — WR</option>
+<option value="Jerry Jeudy">Jerry Jeudy — WR</option>
+<option value="Keon Coleman">Keon Coleman — WR</option>
+<option value="Rashod Bateman">Rashod Bateman — WR</option>
+<option value="Xavier Hutchinson">Xavier Hutchinson — WR</option>
+<option value="Roman Wilson">Roman Wilson — WR</option>
+<option value="Adonai Mitchell">Adonai Mitchell — WR</option>
+<option value="Elic Ayomanor">Elic Ayomanor — WR</option>
+<option value="Omar Cooper Jr.">Omar Cooper Jr. — WR</option>
+<option value="Tez Johnson">Tez Johnson — WR</option>
+<option value="Xavier Legette">Xavier Legette — WR</option>
+<option value="Malachi Fields">Malachi Fields — WR</option>
+<option value="Isaac TeSlaa">Isaac TeSlaa — WR</option>
+<option value="Josh Cameron">Josh Cameron — WR</option>
+<option value="Bryce Lance">Bryce Lance — WR</option>
+<option value="Germie Bernard">Germie Bernard — WR</option>
+<option value="Trey McBride">Trey McBride — TE</option>
+<option value="Brock Bowers">Brock Bowers — TE</option>
+<option value="Dalton Kincaid">Dalton Kincaid — TE</option>
+<option value="Colston Loveland">Colston Loveland — TE</option>
+<option value="Tyler Warren">Tyler Warren — TE</option>
+<option value="Isaiah Likely">Isaiah Likely — TE</option>
+<option value="Sam LaPorta">Sam LaPorta — TE</option>
+<option value="Dallas Goedert">Dallas Goedert — TE</option>
+<option value="Tucker Kraft">Tucker Kraft — TE</option>
+<option value="Harold Fannin Jr.">Harold Fannin Jr. — TE</option>
+<option value="George Kittle">George Kittle — TE</option>
+<option value="T.J. Hockenson">T.J. Hockenson — TE</option>
+<option value="Mark Andrews">Mark Andrews — TE</option>
+<option value="Juwan Johnson">Juwan Johnson — TE</option>
+<option value="Jake Ferguson">Jake Ferguson — TE</option>
+<option value="Kyle Pitts Sr.">Kyle Pitts Sr. — TE</option>
+<option value="Travis Kelce">Travis Kelce — TE</option>
+<option value="Brenton Strange">Brenton Strange — TE</option>
+<option value="Michael Mayer">Michael Mayer — TE</option>
+<option value="David Njoku">David Njoku — TE</option>
+<option value="Kenyon Sadiq">Kenyon Sadiq — TE</option>
+<option value="Pat Freiermuth">Pat Freiermuth — TE</option>
+<option value="Cole Kmet">Cole Kmet — TE</option>
+<option value="Dalton Schultz">Dalton Schultz — TE</option>
+<option value="Noah Fant">Noah Fant — TE</option>
+<option value="Hunter Henry">Hunter Henry — TE</option>
+<option value="Evan Engram">Evan Engram — TE</option>
+<option value="Greg Dulcich">Greg Dulcich — TE</option>
+<option value="Mike Gesicki">Mike Gesicki — TE</option>
+<option value="Terrance Ferguson">Terrance Ferguson — TE</option>
+<option value="AJ Barner">AJ Barner — TE</option>
+<option value="Chig Okonkwo">Chig Okonkwo — TE</option>
+<option value="Darren Waller">Darren Waller — TE</option>
+<option value="Jonnu Smith">Jonnu Smith — TE</option>
+<option value="Cade Otton">Cade Otton — TE</option>
+<option value="Gunnar Helm">Gunnar Helm — TE</option>
+<option value="Theo Johnson">Theo Johnson — TE</option>
+<option value="Elijah Arroyo">Elijah Arroyo — TE</option>
+<option value="Dawson Knox">Dawson Knox — TE</option>
+<option value="Oronde Gadsden II">Oronde Gadsden II — TE</option>
+<option value="Darnell Washington">Darnell Washington — TE</option>
+<option value="Brevyn Spann-Ford">Brevyn Spann-Ford — TE</option>
+        </select>
+        <button id="pickerAddB" class="picker-add" type="button">Add</button>
+      </div>
+      <div id="scriptWarningB" class="script-warning">Interactive search did not load. You can still use the player dropdown above.</div></div><div id="playersB" class="players"></div></section>
+    <section class="card hidden" id="cardC"><div class="card-head"><h2>Team C receives</h2><span class="count" id="countC">0 players</span></div><div class="search-wrap"><input id="searchC" list="playerListC" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type a player name…">
+      <datalist id="playerListC">
+<option value="Josh Allen">QB</option>
+<option value="Lamar Jackson">QB</option>
+<option value="Caleb Williams">QB</option>
+<option value="Jalen Hurts">QB</option>
+<option value="Jayden Daniels">QB</option>
+<option value="Trevor Lawrence">QB</option>
+<option value="Joe Burrow">QB</option>
+<option value="Jaxson Dart">QB</option>
+<option value="Patrick Mahomes">QB</option>
+<option value="Tyler Shough">QB</option>
+<option value="Brock Purdy">QB</option>
+<option value="Drake Maye">QB</option>
+<option value="Justin Herbert">QB</option>
+<option value="Jordan Love">QB</option>
+<option value="Dak Prescott">QB</option>
+<option value="Bo Nix">QB</option>
+<option value="Jared Goff">QB</option>
+<option value="Matthew Stafford">QB</option>
+<option value="Baker Mayfield">QB</option>
+<option value="C.J. Stroud">QB</option>
+<option value="Bryce Young">QB</option>
+<option value="Kyler Murray">QB</option>
+<option value="Aaron Rodgers">QB</option>
+<option value="Jacoby Brissett">QB</option>
+<option value="Sam Darnold">QB</option>
+<option value="Geno Smith">QB</option>
+<option value="Cam Ward">QB</option>
+<option value="Kirk Cousins">QB</option>
+<option value="Daniel Jones">QB</option>
+<option value="Deshaun Watson">QB</option>
+<option value="Malik Willis">QB</option>
+<option value="Jahmyr Gibbs">RB</option>
+<option value="Bijan Robinson">RB</option>
+<option value="Derrick Henry">RB</option>
+<option value="Jonathan Taylor">RB</option>
+<option value="Ashton Jeanty">RB</option>
+<option value="Christian McCaffrey">RB</option>
+<option value="James Cook III">RB</option>
+<option value="De&#x27;Von Achane">RB</option>
+<option value="Saquon Barkley">RB</option>
+<option value="Chase Brown">RB</option>
+<option value="Kenneth Walker III">RB</option>
+<option value="D&#x27;Andre Swift">RB</option>
+<option value="Javonte Williams">RB</option>
+<option value="Breece Hall">RB</option>
+<option value="Omarion Hampton">RB</option>
+<option value="Kyren Williams">RB</option>
+<option value="Jeremiyah Love">RB</option>
+<option value="David Montgomery">RB</option>
+<option value="Bucky Irving">RB</option>
+<option value="Cam Skattebo">RB</option>
+<option value="Travis Etienne Jr.">RB</option>
+<option value="Rhamondre Stevenson">RB</option>
+<option value="Bhayshul Tuten">RB</option>
+<option value="Chuba Hubbard">RB</option>
+<option value="Jadarian Price">RB</option>
+<option value="Quinshon Judkins">RB</option>
+<option value="MarShawn Lloyd">RB</option>
+<option value="Jaylen Warren">RB</option>
+<option value="Kyle Monangai">RB</option>
+<option value="Rico Dowdle">RB</option>
+<option value="Jacory Croskey-Merritt">RB</option>
+<option value="Jordan Mason">RB</option>
+<option value="J.K. Dobbins">RB</option>
+<option value="TreVeyon Henderson">RB</option>
+<option value="RJ Harvey">RB</option>
+<option value="Tony Pollard">RB</option>
+<option value="Jonathon Brooks">RB</option>
+<option value="Kenneth Gainwell">RB</option>
+<option value="Woody Marks">RB</option>
+<option value="Kaelon Black">RB</option>
+<option value="Aaron Jones Sr.">RB</option>
+<option value="Zach Charbonnet">RB</option>
+<option value="Josh Jacobs">RB</option>
+<option value="Blake Corum">RB</option>
+<option value="Rachaad White">RB</option>
+<option value="Tyjae Spears">RB</option>
+<option value="Tyler Allgeier">RB</option>
+<option value="Kendre Miller">RB</option>
+<option value="Alvin Kamara">RB</option>
+<option value="Brian Robinson Jr.">RB</option>
+<option value="Chris Rodriguez Jr.">RB</option>
+<option value="Isiah Pacheco">RB</option>
+<option value="Keaton Mitchell">RB</option>
+<option value="Ray Davis">RB</option>
+<option value="Jaylen Wright">RB</option>
+<option value="Justice Hill">RB</option>
+<option value="Samaje Perine">RB</option>
+<option value="Jonah Coleman">RB</option>
+<option value="Mike Washington Jr.">RB</option>
+<option value="Devin Singletary">RB</option>
+<option value="Will Shipley">RB</option>
+<option value="Ameer Abdullah">RB</option>
+<option value="Chris Brooks">RB</option>
+<option value="Tyrone Tracy Jr.">RB</option>
+<option value="Tank Bigsby">RB</option>
+<option value="Raheim Sanders">RB</option>
+<option value="Sione Vaki">RB</option>
+<option value="Puka Nacua">WR</option>
+<option value="Jaxon Smith-Njigba">WR</option>
+<option value="Amon-Ra St. Brown">WR</option>
+<option value="Ja&#x27;Marr Chase">WR</option>
+<option value="Justin Jefferson">WR</option>
+<option value="CeeDee Lamb">WR</option>
+<option value="Chris Olave">WR</option>
+<option value="Nico Collins">WR</option>
+<option value="Drake London">WR</option>
+<option value="Malik Nabers">WR</option>
+<option value="George Pickens">WR</option>
+<option value="Zay Flowers">WR</option>
+<option value="DeVonta Smith">WR</option>
+<option value="Garrett Wilson">WR</option>
+<option value="Rashee Rice">WR</option>
+<option value="Ladd McConkey">WR</option>
+<option value="Christian Watson">WR</option>
+<option value="DJ Moore">WR</option>
+<option value="Emeka Egbuka">WR</option>
+<option value="Tetairoa McMillan">WR</option>
+<option value="A.J. Brown">WR</option>
+<option value="Jaylen Waddle">WR</option>
+<option value="Tee Higgins">WR</option>
+<option value="Jameson Williams">WR</option>
+<option value="Parker Washington">WR</option>
+<option value="Davante Adams">WR</option>
+<option value="Luther Burden III">WR</option>
+<option value="Mike Evans">WR</option>
+<option value="Brian Thomas Jr.">WR</option>
+<option value="Rome Odunze">WR</option>
+<option value="Jalen Coker">WR</option>
+<option value="Matthew Golden">WR</option>
+<option value="Terry McLaurin">WR</option>
+<option value="DK Metcalf">WR</option>
+<option value="Marvin Harrison Jr.">WR</option>
+<option value="Chris Godwin Jr.">WR</option>
+<option value="Jayden Reed">WR</option>
+<option value="Jordan Addison">WR</option>
+<option value="Alec Pierce">WR</option>
+<option value="Courtland Sutton">WR</option>
+<option value="Quentin Johnston">WR</option>
+<option value="Michael Pittman Jr.">WR</option>
+<option value="Xavier Worthy">WR</option>
+<option value="Josh Downs">WR</option>
+<option value="Stefon Diggs">WR</option>
+<option value="Jakobi Meyers">WR</option>
+<option value="Michael Wilson">WR</option>
+<option value="Denzel Boston">WR</option>
+<option value="Khalil Shakir">WR</option>
+<option value="Deebo Samuel">WR</option>
+<option value="KC Concepcion">WR</option>
+<option value="Carnell Tate">WR</option>
+<option value="Dontayvion Wicks">WR</option>
+<option value="Keenan Allen">WR</option>
+<option value="Caleb Douglas">WR</option>
+<option value="Jauan Jennings">WR</option>
+<option value="Malik Washington">WR</option>
+<option value="Devaughn Vele">WR</option>
+<option value="Joshua Palmer">WR</option>
+<option value="Tre Tucker">WR</option>
+<option value="Wan&#x27;Dale Robinson">WR</option>
+<option value="Makai Lemon">WR</option>
+<option value="Jack Bech">WR</option>
+<option value="Jalen Nailor">WR</option>
+<option value="Jaylin Noel">WR</option>
+<option value="Antonio Williams">WR</option>
+<option value="Kalif Raymond">WR</option>
+<option value="Kayshon Boutte">WR</option>
+<option value="Rashid Shaheed">WR</option>
+<option value="Ryan Flournoy">WR</option>
+<option value="Tank Dell">WR</option>
+<option value="Jalen McMillan">WR</option>
+<option value="Mack Hollins">WR</option>
+<option value="Tre Harris">WR</option>
+<option value="Chris Bell">WR</option>
+<option value="Cooper Kupp">WR</option>
+<option value="DeMario Douglas">WR</option>
+<option value="Jordyn Tyson">WR</option>
+<option value="Darnell Mooney">WR</option>
+<option value="Calvin Ridley">WR</option>
+<option value="De&#x27;Zhaun Stribling">WR</option>
+<option value="Pat Bryant">WR</option>
+<option value="Travis Hunter">WR</option>
+<option value="Jahan Dotson">WR</option>
+<option value="Romeo Doubs">WR</option>
+<option value="Chimere Dike">WR</option>
+<option value="Ja&#x27;Kobi Lane">WR</option>
+<option value="Jerry Jeudy">WR</option>
+<option value="Keon Coleman">WR</option>
+<option value="Rashod Bateman">WR</option>
+<option value="Xavier Hutchinson">WR</option>
+<option value="Roman Wilson">WR</option>
+<option value="Adonai Mitchell">WR</option>
+<option value="Elic Ayomanor">WR</option>
+<option value="Omar Cooper Jr.">WR</option>
+<option value="Tez Johnson">WR</option>
+<option value="Xavier Legette">WR</option>
+<option value="Malachi Fields">WR</option>
+<option value="Isaac TeSlaa">WR</option>
+<option value="Josh Cameron">WR</option>
+<option value="Bryce Lance">WR</option>
+<option value="Germie Bernard">WR</option>
+<option value="Trey McBride">TE</option>
+<option value="Brock Bowers">TE</option>
+<option value="Dalton Kincaid">TE</option>
+<option value="Colston Loveland">TE</option>
+<option value="Tyler Warren">TE</option>
+<option value="Isaiah Likely">TE</option>
+<option value="Sam LaPorta">TE</option>
+<option value="Dallas Goedert">TE</option>
+<option value="Tucker Kraft">TE</option>
+<option value="Harold Fannin Jr.">TE</option>
+<option value="George Kittle">TE</option>
+<option value="T.J. Hockenson">TE</option>
+<option value="Mark Andrews">TE</option>
+<option value="Juwan Johnson">TE</option>
+<option value="Jake Ferguson">TE</option>
+<option value="Kyle Pitts Sr.">TE</option>
+<option value="Travis Kelce">TE</option>
+<option value="Brenton Strange">TE</option>
+<option value="Michael Mayer">TE</option>
+<option value="David Njoku">TE</option>
+<option value="Kenyon Sadiq">TE</option>
+<option value="Pat Freiermuth">TE</option>
+<option value="Cole Kmet">TE</option>
+<option value="Dalton Schultz">TE</option>
+<option value="Noah Fant">TE</option>
+<option value="Hunter Henry">TE</option>
+<option value="Evan Engram">TE</option>
+<option value="Greg Dulcich">TE</option>
+<option value="Mike Gesicki">TE</option>
+<option value="Terrance Ferguson">TE</option>
+<option value="AJ Barner">TE</option>
+<option value="Chig Okonkwo">TE</option>
+<option value="Darren Waller">TE</option>
+<option value="Jonnu Smith">TE</option>
+<option value="Cade Otton">TE</option>
+<option value="Gunnar Helm">TE</option>
+<option value="Theo Johnson">TE</option>
+<option value="Elijah Arroyo">TE</option>
+<option value="Dawson Knox">TE</option>
+<option value="Oronde Gadsden II">TE</option>
+<option value="Darnell Washington">TE</option>
+<option value="Brevyn Spann-Ford">TE</option>
+      </datalist>
+      <div class="sub" style="margin-top:5px">Type a name and tap a suggestion, or use the dropdown below.</div>
+      <div id="suggestC" class="suggestions"></div>
+      <div class="picker-row">
+        <select id="pickerC" class="picker-select">
+          <option value="">Browse all players…</option>
+<option value="Josh Allen">Josh Allen — QB</option>
+<option value="Lamar Jackson">Lamar Jackson — QB</option>
+<option value="Caleb Williams">Caleb Williams — QB</option>
+<option value="Jalen Hurts">Jalen Hurts — QB</option>
+<option value="Jayden Daniels">Jayden Daniels — QB</option>
+<option value="Trevor Lawrence">Trevor Lawrence — QB</option>
+<option value="Joe Burrow">Joe Burrow — QB</option>
+<option value="Jaxson Dart">Jaxson Dart — QB</option>
+<option value="Patrick Mahomes">Patrick Mahomes — QB</option>
+<option value="Tyler Shough">Tyler Shough — QB</option>
+<option value="Brock Purdy">Brock Purdy — QB</option>
+<option value="Drake Maye">Drake Maye — QB</option>
+<option value="Justin Herbert">Justin Herbert — QB</option>
+<option value="Jordan Love">Jordan Love — QB</option>
+<option value="Dak Prescott">Dak Prescott — QB</option>
+<option value="Bo Nix">Bo Nix — QB</option>
+<option value="Jared Goff">Jared Goff — QB</option>
+<option value="Matthew Stafford">Matthew Stafford — QB</option>
+<option value="Baker Mayfield">Baker Mayfield — QB</option>
+<option value="C.J. Stroud">C.J. Stroud — QB</option>
+<option value="Bryce Young">Bryce Young — QB</option>
+<option value="Kyler Murray">Kyler Murray — QB</option>
+<option value="Aaron Rodgers">Aaron Rodgers — QB</option>
+<option value="Jacoby Brissett">Jacoby Brissett — QB</option>
+<option value="Sam Darnold">Sam Darnold — QB</option>
+<option value="Geno Smith">Geno Smith — QB</option>
+<option value="Cam Ward">Cam Ward — QB</option>
+<option value="Kirk Cousins">Kirk Cousins — QB</option>
+<option value="Daniel Jones">Daniel Jones — QB</option>
+<option value="Deshaun Watson">Deshaun Watson — QB</option>
+<option value="Malik Willis">Malik Willis — QB</option>
+<option value="Jahmyr Gibbs">Jahmyr Gibbs — RB</option>
+<option value="Bijan Robinson">Bijan Robinson — RB</option>
+<option value="Derrick Henry">Derrick Henry — RB</option>
+<option value="Jonathan Taylor">Jonathan Taylor — RB</option>
+<option value="Ashton Jeanty">Ashton Jeanty — RB</option>
+<option value="Christian McCaffrey">Christian McCaffrey — RB</option>
+<option value="James Cook III">James Cook III — RB</option>
+<option value="De&#x27;Von Achane">De&#x27;Von Achane — RB</option>
+<option value="Saquon Barkley">Saquon Barkley — RB</option>
+<option value="Chase Brown">Chase Brown — RB</option>
+<option value="Kenneth Walker III">Kenneth Walker III — RB</option>
+<option value="D&#x27;Andre Swift">D&#x27;Andre Swift — RB</option>
+<option value="Javonte Williams">Javonte Williams — RB</option>
+<option value="Breece Hall">Breece Hall — RB</option>
+<option value="Omarion Hampton">Omarion Hampton — RB</option>
+<option value="Kyren Williams">Kyren Williams — RB</option>
+<option value="Jeremiyah Love">Jeremiyah Love — RB</option>
+<option value="David Montgomery">David Montgomery — RB</option>
+<option value="Bucky Irving">Bucky Irving — RB</option>
+<option value="Cam Skattebo">Cam Skattebo — RB</option>
+<option value="Travis Etienne Jr.">Travis Etienne Jr. — RB</option>
+<option value="Rhamondre Stevenson">Rhamondre Stevenson — RB</option>
+<option value="Bhayshul Tuten">Bhayshul Tuten — RB</option>
+<option value="Chuba Hubbard">Chuba Hubbard — RB</option>
+<option value="Jadarian Price">Jadarian Price — RB</option>
+<option value="Quinshon Judkins">Quinshon Judkins — RB</option>
+<option value="MarShawn Lloyd">MarShawn Lloyd — RB</option>
+<option value="Jaylen Warren">Jaylen Warren — RB</option>
+<option value="Kyle Monangai">Kyle Monangai — RB</option>
+<option value="Rico Dowdle">Rico Dowdle — RB</option>
+<option value="Jacory Croskey-Merritt">Jacory Croskey-Merritt — RB</option>
+<option value="Jordan Mason">Jordan Mason — RB</option>
+<option value="J.K. Dobbins">J.K. Dobbins — RB</option>
+<option value="TreVeyon Henderson">TreVeyon Henderson — RB</option>
+<option value="RJ Harvey">RJ Harvey — RB</option>
+<option value="Tony Pollard">Tony Pollard — RB</option>
+<option value="Jonathon Brooks">Jonathon Brooks — RB</option>
+<option value="Kenneth Gainwell">Kenneth Gainwell — RB</option>
+<option value="Woody Marks">Woody Marks — RB</option>
+<option value="Kaelon Black">Kaelon Black — RB</option>
+<option value="Aaron Jones Sr.">Aaron Jones Sr. — RB</option>
+<option value="Zach Charbonnet">Zach Charbonnet — RB</option>
+<option value="Josh Jacobs">Josh Jacobs — RB</option>
+<option value="Blake Corum">Blake Corum — RB</option>
+<option value="Rachaad White">Rachaad White — RB</option>
+<option value="Tyjae Spears">Tyjae Spears — RB</option>
+<option value="Tyler Allgeier">Tyler Allgeier — RB</option>
+<option value="Kendre Miller">Kendre Miller — RB</option>
+<option value="Alvin Kamara">Alvin Kamara — RB</option>
+<option value="Brian Robinson Jr.">Brian Robinson Jr. — RB</option>
+<option value="Chris Rodriguez Jr.">Chris Rodriguez Jr. — RB</option>
+<option value="Isiah Pacheco">Isiah Pacheco — RB</option>
+<option value="Keaton Mitchell">Keaton Mitchell — RB</option>
+<option value="Ray Davis">Ray Davis — RB</option>
+<option value="Jaylen Wright">Jaylen Wright — RB</option>
+<option value="Justice Hill">Justice Hill — RB</option>
+<option value="Samaje Perine">Samaje Perine — RB</option>
+<option value="Jonah Coleman">Jonah Coleman — RB</option>
+<option value="Mike Washington Jr.">Mike Washington Jr. — RB</option>
+<option value="Devin Singletary">Devin Singletary — RB</option>
+<option value="Will Shipley">Will Shipley — RB</option>
+<option value="Ameer Abdullah">Ameer Abdullah — RB</option>
+<option value="Chris Brooks">Chris Brooks — RB</option>
+<option value="Tyrone Tracy Jr.">Tyrone Tracy Jr. — RB</option>
+<option value="Tank Bigsby">Tank Bigsby — RB</option>
+<option value="Raheim Sanders">Raheim Sanders — RB</option>
+<option value="Sione Vaki">Sione Vaki — RB</option>
+<option value="Puka Nacua">Puka Nacua — WR</option>
+<option value="Jaxon Smith-Njigba">Jaxon Smith-Njigba — WR</option>
+<option value="Amon-Ra St. Brown">Amon-Ra St. Brown — WR</option>
+<option value="Ja&#x27;Marr Chase">Ja&#x27;Marr Chase — WR</option>
+<option value="Justin Jefferson">Justin Jefferson — WR</option>
+<option value="CeeDee Lamb">CeeDee Lamb — WR</option>
+<option value="Chris Olave">Chris Olave — WR</option>
+<option value="Nico Collins">Nico Collins — WR</option>
+<option value="Drake London">Drake London — WR</option>
+<option value="Malik Nabers">Malik Nabers — WR</option>
+<option value="George Pickens">George Pickens — WR</option>
+<option value="Zay Flowers">Zay Flowers — WR</option>
+<option value="DeVonta Smith">DeVonta Smith — WR</option>
+<option value="Garrett Wilson">Garrett Wilson — WR</option>
+<option value="Rashee Rice">Rashee Rice — WR</option>
+<option value="Ladd McConkey">Ladd McConkey — WR</option>
+<option value="Christian Watson">Christian Watson — WR</option>
+<option value="DJ Moore">DJ Moore — WR</option>
+<option value="Emeka Egbuka">Emeka Egbuka — WR</option>
+<option value="Tetairoa McMillan">Tetairoa McMillan — WR</option>
+<option value="A.J. Brown">A.J. Brown — WR</option>
+<option value="Jaylen Waddle">Jaylen Waddle — WR</option>
+<option value="Tee Higgins">Tee Higgins — WR</option>
+<option value="Jameson Williams">Jameson Williams — WR</option>
+<option value="Parker Washington">Parker Washington — WR</option>
+<option value="Davante Adams">Davante Adams — WR</option>
+<option value="Luther Burden III">Luther Burden III — WR</option>
+<option value="Mike Evans">Mike Evans — WR</option>
+<option value="Brian Thomas Jr.">Brian Thomas Jr. — WR</option>
+<option value="Rome Odunze">Rome Odunze — WR</option>
+<option value="Jalen Coker">Jalen Coker — WR</option>
+<option value="Matthew Golden">Matthew Golden — WR</option>
+<option value="Terry McLaurin">Terry McLaurin — WR</option>
+<option value="DK Metcalf">DK Metcalf — WR</option>
+<option value="Marvin Harrison Jr.">Marvin Harrison Jr. — WR</option>
+<option value="Chris Godwin Jr.">Chris Godwin Jr. — WR</option>
+<option value="Jayden Reed">Jayden Reed — WR</option>
+<option value="Jordan Addison">Jordan Addison — WR</option>
+<option value="Alec Pierce">Alec Pierce — WR</option>
+<option value="Courtland Sutton">Courtland Sutton — WR</option>
+<option value="Quentin Johnston">Quentin Johnston — WR</option>
+<option value="Michael Pittman Jr.">Michael Pittman Jr. — WR</option>
+<option value="Xavier Worthy">Xavier Worthy — WR</option>
+<option value="Josh Downs">Josh Downs — WR</option>
+<option value="Stefon Diggs">Stefon Diggs — WR</option>
+<option value="Jakobi Meyers">Jakobi Meyers — WR</option>
+<option value="Michael Wilson">Michael Wilson — WR</option>
+<option value="Denzel Boston">Denzel Boston — WR</option>
+<option value="Khalil Shakir">Khalil Shakir — WR</option>
+<option value="Deebo Samuel">Deebo Samuel — WR</option>
+<option value="KC Concepcion">KC Concepcion — WR</option>
+<option value="Carnell Tate">Carnell Tate — WR</option>
+<option value="Dontayvion Wicks">Dontayvion Wicks — WR</option>
+<option value="Keenan Allen">Keenan Allen — WR</option>
+<option value="Caleb Douglas">Caleb Douglas — WR</option>
+<option value="Jauan Jennings">Jauan Jennings — WR</option>
+<option value="Malik Washington">Malik Washington — WR</option>
+<option value="Devaughn Vele">Devaughn Vele — WR</option>
+<option value="Joshua Palmer">Joshua Palmer — WR</option>
+<option value="Tre Tucker">Tre Tucker — WR</option>
+<option value="Wan&#x27;Dale Robinson">Wan&#x27;Dale Robinson — WR</option>
+<option value="Makai Lemon">Makai Lemon — WR</option>
+<option value="Jack Bech">Jack Bech — WR</option>
+<option value="Jalen Nailor">Jalen Nailor — WR</option>
+<option value="Jaylin Noel">Jaylin Noel — WR</option>
+<option value="Antonio Williams">Antonio Williams — WR</option>
+<option value="Kalif Raymond">Kalif Raymond — WR</option>
+<option value="Kayshon Boutte">Kayshon Boutte — WR</option>
+<option value="Rashid Shaheed">Rashid Shaheed — WR</option>
+<option value="Ryan Flournoy">Ryan Flournoy — WR</option>
+<option value="Tank Dell">Tank Dell — WR</option>
+<option value="Jalen McMillan">Jalen McMillan — WR</option>
+<option value="Mack Hollins">Mack Hollins — WR</option>
+<option value="Tre Harris">Tre Harris — WR</option>
+<option value="Chris Bell">Chris Bell — WR</option>
+<option value="Cooper Kupp">Cooper Kupp — WR</option>
+<option value="DeMario Douglas">DeMario Douglas — WR</option>
+<option value="Jordyn Tyson">Jordyn Tyson — WR</option>
+<option value="Darnell Mooney">Darnell Mooney — WR</option>
+<option value="Calvin Ridley">Calvin Ridley — WR</option>
+<option value="De&#x27;Zhaun Stribling">De&#x27;Zhaun Stribling — WR</option>
+<option value="Pat Bryant">Pat Bryant — WR</option>
+<option value="Travis Hunter">Travis Hunter — WR</option>
+<option value="Jahan Dotson">Jahan Dotson — WR</option>
+<option value="Romeo Doubs">Romeo Doubs — WR</option>
+<option value="Chimere Dike">Chimere Dike — WR</option>
+<option value="Ja&#x27;Kobi Lane">Ja&#x27;Kobi Lane — WR</option>
+<option value="Jerry Jeudy">Jerry Jeudy — WR</option>
+<option value="Keon Coleman">Keon Coleman — WR</option>
+<option value="Rashod Bateman">Rashod Bateman — WR</option>
+<option value="Xavier Hutchinson">Xavier Hutchinson — WR</option>
+<option value="Roman Wilson">Roman Wilson — WR</option>
+<option value="Adonai Mitchell">Adonai Mitchell — WR</option>
+<option value="Elic Ayomanor">Elic Ayomanor — WR</option>
+<option value="Omar Cooper Jr.">Omar Cooper Jr. — WR</option>
+<option value="Tez Johnson">Tez Johnson — WR</option>
+<option value="Xavier Legette">Xavier Legette — WR</option>
+<option value="Malachi Fields">Malachi Fields — WR</option>
+<option value="Isaac TeSlaa">Isaac TeSlaa — WR</option>
+<option value="Josh Cameron">Josh Cameron — WR</option>
+<option value="Bryce Lance">Bryce Lance — WR</option>
+<option value="Germie Bernard">Germie Bernard — WR</option>
+<option value="Trey McBride">Trey McBride — TE</option>
+<option value="Brock Bowers">Brock Bowers — TE</option>
+<option value="Dalton Kincaid">Dalton Kincaid — TE</option>
+<option value="Colston Loveland">Colston Loveland — TE</option>
+<option value="Tyler Warren">Tyler Warren — TE</option>
+<option value="Isaiah Likely">Isaiah Likely — TE</option>
+<option value="Sam LaPorta">Sam LaPorta — TE</option>
+<option value="Dallas Goedert">Dallas Goedert — TE</option>
+<option value="Tucker Kraft">Tucker Kraft — TE</option>
+<option value="Harold Fannin Jr.">Harold Fannin Jr. — TE</option>
+<option value="George Kittle">George Kittle — TE</option>
+<option value="T.J. Hockenson">T.J. Hockenson — TE</option>
+<option value="Mark Andrews">Mark Andrews — TE</option>
+<option value="Juwan Johnson">Juwan Johnson — TE</option>
+<option value="Jake Ferguson">Jake Ferguson — TE</option>
+<option value="Kyle Pitts Sr.">Kyle Pitts Sr. — TE</option>
+<option value="Travis Kelce">Travis Kelce — TE</option>
+<option value="Brenton Strange">Brenton Strange — TE</option>
+<option value="Michael Mayer">Michael Mayer — TE</option>
+<option value="David Njoku">David Njoku — TE</option>
+<option value="Kenyon Sadiq">Kenyon Sadiq — TE</option>
+<option value="Pat Freiermuth">Pat Freiermuth — TE</option>
+<option value="Cole Kmet">Cole Kmet — TE</option>
+<option value="Dalton Schultz">Dalton Schultz — TE</option>
+<option value="Noah Fant">Noah Fant — TE</option>
+<option value="Hunter Henry">Hunter Henry — TE</option>
+<option value="Evan Engram">Evan Engram — TE</option>
+<option value="Greg Dulcich">Greg Dulcich — TE</option>
+<option value="Mike Gesicki">Mike Gesicki — TE</option>
+<option value="Terrance Ferguson">Terrance Ferguson — TE</option>
+<option value="AJ Barner">AJ Barner — TE</option>
+<option value="Chig Okonkwo">Chig Okonkwo — TE</option>
+<option value="Darren Waller">Darren Waller — TE</option>
+<option value="Jonnu Smith">Jonnu Smith — TE</option>
+<option value="Cade Otton">Cade Otton — TE</option>
+<option value="Gunnar Helm">Gunnar Helm — TE</option>
+<option value="Theo Johnson">Theo Johnson — TE</option>
+<option value="Elijah Arroyo">Elijah Arroyo — TE</option>
+<option value="Dawson Knox">Dawson Knox — TE</option>
+<option value="Oronde Gadsden II">Oronde Gadsden II — TE</option>
+<option value="Darnell Washington">Darnell Washington — TE</option>
+<option value="Brevyn Spann-Ford">Brevyn Spann-Ford — TE</option>
+        </select>
+        <button id="pickerAddC" class="picker-add" type="button">Add</button>
+      </div>
+      <div id="scriptWarningC" class="script-warning">Interactive search did not load. You can still use the player dropdown above.</div></div><div id="playersC" class="players"></div></section>
+  </div>
+
+  <section class="result" aria-live="polite">
+    <h3 id="resultTitle">Build a trade</h3>
+    <div id="resultSub" class="result-sub">Add at least one player to both teams.</div>
+    <div id="netGrid" class="net-grid hidden"></div>
+    <div id="fair" class="fair"></div>
+    <div id="explain" class="explain"></div>
+    <div class="actions">
+      <button id="swapBtn" class="action" type="button">Swap A / B</button>
+      <button id="clearBtn" class="action" type="button">Clear trade</button>
+    </div>
+  </section>
+  <div class="foot">In 3-team mode, choose which team each incoming player is coming from. The analyzer values each team's incoming package, outgoing package, and net roster-spot change. Opening a roster spot adds replacement-level value; consuming one costs 60.</div>
+</div>
+<script>
+var PLAYERS=[["Josh Allen","QB",91.0],["Lamar Jackson","QB",89.5],["Caleb Williams","QB",88.5],["Jalen Hurts","QB",87.0],["Jayden Daniels","QB",84.5],["Trevor Lawrence","QB",83.0],["Joe Burrow","QB",82.0],["Jaxson Dart","QB",81.0],["Patrick Mahomes","QB",80.0],["Tyler Shough","QB",79.5],["Brock Purdy","QB",77.0],["Drake Maye","QB",76.5],["Justin Herbert","QB",76.5],["Jordan Love","QB",74.5],["Dak Prescott","QB",72.0],["Bo Nix","QB",70.0],["Jared Goff","QB",69.5],["Matthew Stafford","QB",69.5],["Baker Mayfield","QB",67.5],["C.J. Stroud","QB",66.5],["Bryce Young","QB",66.0],["Kyler Murray","QB",65.5],["Aaron Rodgers","QB",59.0],["Jacoby Brissett","QB",58.5],["Sam Darnold","QB",57.5],["Geno Smith","QB",57.0],["Cam Ward","QB",56.5],["Kirk Cousins","QB",52.0],["Daniel Jones","QB",50.0],["Deshaun Watson","QB",50.0],["Malik Willis","QB",50.0],["Jahmyr Gibbs","RB",99.5],["Bijan Robinson","RB",99.0],["Derrick Henry","RB",95.0],["Jonathan Taylor","RB",94.8],["Ashton Jeanty","RB",94.5],["Christian McCaffrey","RB",94.0],["James Cook III","RB",92.3],["De'Von Achane","RB",92.0],["Saquon Barkley","RB",92.0],["Chase Brown","RB",91.0],["Kenneth Walker III","RB",91.0],["D'Andre Swift","RB",86.8],["Javonte Williams","RB",86.0],["Breece Hall","RB",85.5],["Omarion Hampton","RB",85.0],["Kyren Williams","RB",84.5],["Jeremiyah Love","RB",82.8],["David Montgomery","RB",82.0],["Bucky Irving","RB",80.5],["Cam Skattebo","RB",80.0],["Travis Etienne Jr.","RB",80.0],["Rhamondre Stevenson","RB",75.5],["Bhayshul Tuten","RB",74.5],["Chuba Hubbard","RB",74.0],["Jadarian Price","RB",73.5],["Quinshon Judkins","RB",73.0],["MarShawn Lloyd","RB",71.0],["Jaylen Warren","RB",70.5],["Kyle Monangai","RB",70.0],["Rico Dowdle","RB",70.0],["Jacory Croskey-Merritt","RB",69.5],["Jordan Mason","RB",69.0],["J.K. Dobbins","RB",68.5],["TreVeyon Henderson","RB",68.5],["RJ Harvey","RB",68.0],["Tony Pollard","RB",67.5],["Jonathon Brooks","RB",66.0],["Kenneth Gainwell","RB",66.0],["Woody Marks","RB",65.0],["Kaelon Black","RB",64.5],["Aaron Jones Sr.","RB",64.0],["Zach Charbonnet","RB",63.0],["Josh Jacobs","RB",62.5],["Blake Corum","RB",62.0],["Rachaad White","RB",62.0],["Tyjae Spears","RB",62.0],["Tyler Allgeier","RB",61.5],["Kendre Miller","RB",61.0],["Alvin Kamara","RB",60.5],["Brian Robinson Jr.","RB",59.5],["Chris Rodriguez Jr.","RB",58.5],["Isiah Pacheco","RB",58.5],["Keaton Mitchell","RB",58.5],["Ray Davis","RB",58.5],["Jaylen Wright","RB",56.5],["Justice Hill","RB",56.5],["Samaje Perine","RB",55.5],["Jonah Coleman","RB",55.0],["Mike Washington Jr.","RB",55.0],["Devin Singletary","RB",54.5],["Will Shipley","RB",54.5],["Ameer Abdullah","RB",54.0],["Chris Brooks","RB",54.0],["Tyrone Tracy Jr.","RB",53.5],["Tank Bigsby","RB",52.0],["Raheim Sanders","RB",51.5],["Sione Vaki","RB",49.0],["Puka Nacua","WR",98.0],["Jaxon Smith-Njigba","WR",97.5],["Amon-Ra St. Brown","WR",97.0],["Ja'Marr Chase","WR",96.8],["Justin Jefferson","WR",96.5],["CeeDee Lamb","WR",93.0],["Chris Olave","WR",92.5],["Nico Collins","WR",88.8],["Drake London","WR",87.0],["Malik Nabers","WR",86.8],["George Pickens","WR",85.5],["Zay Flowers","WR",84.8],["DeVonta Smith","WR",84.5],["Garrett Wilson","WR",84.5],["Rashee Rice","WR",84.5],["Ladd McConkey","WR",83.8],["Christian Watson","WR",83.0],["DJ Moore","WR",83.0],["Emeka Egbuka","WR",83.0],["Tetairoa McMillan","WR",83.0],["A.J. Brown","WR",82.5],["Jaylen Waddle","WR",81.5],["Tee Higgins","WR",81.5],["Jameson Williams","WR",80.5],["Parker Washington","WR",80.0],["Davante Adams","WR",79.5],["Luther Burden III","WR",79.5],["Mike Evans","WR",79.0],["Brian Thomas Jr.","WR",77.5],["Rome Odunze","WR",76.5],["Jalen Coker","WR",76.0],["Matthew Golden","WR",74.0],["Terry McLaurin","WR",73.5],["DK Metcalf","WR",72.5],["Marvin Harrison Jr.","WR",72.5],["Chris Godwin Jr.","WR",71.0],["Jayden Reed","WR",71.0],["Jordan Addison","WR",70.5],["Alec Pierce","WR",70.0],["Courtland Sutton","WR",69.5],["Quentin Johnston","WR",69.5],["Michael Pittman Jr.","WR",69.0],["Xavier Worthy","WR",69.0],["Josh Downs","WR",68.0],["Stefon Diggs","WR",68.0],["Jakobi Meyers","WR",67.0],["Michael Wilson","WR",67.0],["Denzel Boston","WR",66.0],["Khalil Shakir","WR",66.0],["Deebo Samuel","WR",65.5],["KC Concepcion","WR",65.5],["Carnell Tate","WR",65.0],["Dontayvion Wicks","WR",64.5],["Keenan Allen","WR",63.5],["Caleb Douglas","WR",62.5],["Jauan Jennings","WR",62.5],["Malik Washington","WR",62.5],["Devaughn Vele","WR",61.5],["Joshua Palmer","WR",61.5],["Tre Tucker","WR",61.5],["Wan'Dale Robinson","WR",61.5],["Makai Lemon","WR",61.0],["Jack Bech","WR",60.5],["Jalen Nailor","WR",60.5],["Jaylin Noel","WR",60.5],["Antonio Williams","WR",60.0],["Kalif Raymond","WR",60.0],["Kayshon Boutte","WR",60.0],["Rashid Shaheed","WR",60.0],["Ryan Flournoy","WR",60.0],["Tank Dell","WR",60.0],["Jalen McMillan","WR",59.5],["Mack Hollins","WR",59.5],["Tre Harris","WR",59.5],["Chris Bell","WR",58.5],["Cooper Kupp","WR",58.5],["DeMario Douglas","WR",58.5],["Jordyn Tyson","WR",58.5],["Darnell Mooney","WR",58.0],["Calvin Ridley","WR",57.0],["De'Zhaun Stribling","WR",57.0],["Pat Bryant","WR",57.0],["Travis Hunter","WR",57.0],["Jahan Dotson","WR",56.5],["Romeo Doubs","WR",56.0],["Chimere Dike","WR",55.0],["Ja'Kobi Lane","WR",55.0],["Jerry Jeudy","WR",55.0],["Keon Coleman","WR",55.0],["Rashod Bateman","WR",55.0],["Xavier Hutchinson","WR",54.5],["Roman Wilson","WR",54.0],["Adonai Mitchell","WR",53.5],["Elic Ayomanor","WR",53.5],["Omar Cooper Jr.","WR",53.5],["Tez Johnson","WR",53.5],["Xavier Legette","WR",52.5],["Malachi Fields","WR",52.0],["Isaac TeSlaa","WR",51.5],["Josh Cameron","WR",51.0],["Bryce Lance","WR",50.5],["Germie Bernard","WR",49.5],["Trey McBride","TE",92.0],["Brock Bowers","TE",86.8],["Dalton Kincaid","TE",82.5],["Colston Loveland","TE",81.5],["Tyler Warren","TE",79.5],["Isaiah Likely","TE",77.0],["Sam LaPorta","TE",75.0],["Dallas Goedert","TE",73.5],["Tucker Kraft","TE",73.0],["Harold Fannin Jr.","TE",70.5],["George Kittle","TE",68.0],["T.J. Hockenson","TE",68.0],["Mark Andrews","TE",66.5],["Juwan Johnson","TE",66.0],["Jake Ferguson","TE",64.5],["Kyle Pitts Sr.","TE",64.0],["Travis Kelce","TE",64.0],["Brenton Strange","TE",63.0],["Michael Mayer","TE",63.0],["David Njoku","TE",62.0],["Kenyon Sadiq","TE",61.0],["Pat Freiermuth","TE",61.0],["Cole Kmet","TE",60.0],["Dalton Schultz","TE",60.0],["Noah Fant","TE",60.0],["Hunter Henry","TE",59.5],["Evan Engram","TE",59.0],["Greg Dulcich","TE",59.0],["Mike Gesicki","TE",58.5],["Terrance Ferguson","TE",58.5],["AJ Barner","TE",58.0],["Chig Okonkwo","TE",58.0],["Darren Waller","TE",58.0],["Jonnu Smith","TE",57.5],["Cade Otton","TE",57.0],["Gunnar Helm","TE",56.5],["Theo Johnson","TE",55.5],["Elijah Arroyo","TE",55.0],["Dawson Knox","TE",54.0],["Oronde Gadsden II","TE",53.5],["Darnell Washington","TE",52.0],["Brevyn Spann-Ford","TE",50.5]];
+var ALIASES={"devanteadams":"Davante Adams","devontesmith":"DeVonta Smith","kcconception":"KC Concepcion","wandalerobinson":"Wan'Dale Robinson"};
+var PENALTY=60;
+var mode=2;
+var sides={A:[],B:[],C:[]};
+
+var P=[];
+var byName={};
+for(var i=0;i<PLAYERS.length;i++){
+  var p={i:i,name:PLAYERS[i][0],pos:PLAYERS[i][1],v:PLAYERS[i][2]};
+  P.push(p);
+  byName[p.name.toLowerCase()]=p;
+}
+
+function norm(s){
+  return String(s||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+}
+function esc(s){
+  return String(s).replace(/[&<>"']/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c];
+  });
+}
+function otherTeams(team){
+  if(mode===2) return team==="A"?["B"]:["A"];
+  var a=["A","B","C"], out=[];
+  for(var i=0;i<a.length;i++) if(a[i]!==team) out.push(a[i]);
+  return out;
+}
+function isUsed(id){
+  var teams=["A","B","C"];
+  for(var t=0;t<teams.length;t++){
+    for(var j=0;j<sides[teams[t]].length;j++){
+      if(sides[teams[t]][j].id===id) return true;
+    }
+  }
+  return false;
+}
+function findPlayerByName(name){
+  var n=norm(name);
+  for(var i=0;i<P.length;i++) if(norm(P[i].name)===n) return P[i];
+  for(var alias in ALIASES){
+    if(norm(alias)===n){
+      var target=ALIASES[alias];
+      for(var j=0;j<P.length;j++) if(P[j].name===target) return P[j];
+    }
+  }
+  return null;
+}
+function addPlayer(team,id){
+  if(id===null||id===undefined||isUsed(id)) return;
+  var from=otherTeams(team)[0];
+  sides[team].push({id:id,from:from});
+  renderAll();
+  refreshSearch(team);
+}
+function addByPicker(team){
+  var sel=document.getElementById("picker"+team);
+  var name=sel.value;
+  if(!name) return;
+  var p=findPlayerByName(name);
+  if(p) addPlayer(team,p.i);
+  sel.value="";
+}
+function removePlayer(team,id){
+  var out=[];
+  for(var i=0;i<sides[team].length;i++) if(sides[team][i].id!==id) out.push(sides[team][i]);
+  sides[team]=out;
+  renderAll();
+}
+function setFrom(team,id,from){
+  for(var i=0;i<sides[team].length;i++) if(sides[team][i].id===id) sides[team][i].from=from;
+  calc();
+}
+function playerById(id){
+  return P[id];
+}
+function renderTeam(team){
+  var box=document.getElementById("players"+team);
+  var count=document.getElementById("count"+team);
+  count.textContent=sides[team].length+" player"+(sides[team].length===1?"":"s");
+  if(!sides[team].length){
+    box.innerHTML='<div class="empty">No players added yet.</div>';
+    return;
+  }
+  var h="";
+  for(var i=0;i<sides[team].length;i++){
+    var item=sides[team][i], p=playerById(item.id), from="";
+    if(mode===3){
+      var opts=otherTeams(team), optionHtml="";
+      for(var j=0;j<opts.length;j++){
+        optionHtml+='<option value="'+opts[j]+'"'+(item.from===opts[j]?' selected':'')+'>from Team '+opts[j]+'</option>';
+      }
+      from='<select class="from-select" onchange="setFrom(\''+team+'\','+item.id+',this.value)">'+optionHtml+'</select>';
+    }
+    h+='<div class="player"><div class="player-main"><div class="player-name">'+esc(p.name)+'</div><div class="player-meta">'+p.pos+'</div></div><div style="display:flex;gap:6px;align-items:center">'+from+'<button class="remove" type="button" onclick="removePlayer(\''+team+'\','+item.id+')">✕</button></div></div>';
+  }
+  box.innerHTML=h;
+}
+function setMode(n){
+  mode=n;
+  document.getElementById("mode2").className=n===2?"active":"";
+  document.getElementById("mode3").className=n===3?"active":"";
+  document.getElementById("cardC").className=n===3?"card":"card hidden";
+  document.getElementById("grid").className=n===3?"trade-grid three":"trade-grid";
+  if(n===2){
+    sides.C=[];
+    for(var a=0;a<sides.A.length;a++) sides.A[a].from="B";
+    for(var b=0;b<sides.B.length;b++) sides.B[b].from="A";
+  }
+  renderAll();
+}
+function matchesFor(query){
+  var q=norm(query), hits=[];
+  if(!q) return hits;
+  for(var i=0;i<P.length;i++){
+    if(isUsed(P[i].i)) continue;
+    var pn=norm(P[i].name);
+    if(pn.indexOf(q)!==-1) hits.push(P[i]);
+  }
+  hits.sort(function(a,b){
+    var as=norm(a.name).indexOf(q)===0?1:0;
+    var bs=norm(b.name).indexOf(q)===0?1:0;
+    if(as!==bs) return bs-as;
+    if(a.v!==b.v) return b.v-a.v;
+    return a.name.localeCompare(b.name);
+  });
+  return hits.slice(0,14);
+}
+function refreshSearch(team){
+  var input=document.getElementById("search"+team);
+  var sug=document.getElementById("suggest"+team);
+  if(!input||!sug) return;
+  var hits=matchesFor(input.value);
+  if(!input.value){
+    sug.innerHTML="";
+    return;
+  }
+  if(!hits.length){
+    sug.innerHTML='<div class="no-results">No matching available players.</div>';
+    return;
+  }
+  var h="";
+  for(var i=0;i<hits.length;i++){
+    h+='<button class="suggestion" type="button" data-team="'+team+'" data-id="'+hits[i].i+'"><span><span class="suggestion-name">'+esc(hits[i].name)+'</span><span class="suggestion-sub">Tap to add</span></span><span class="pos">'+hits[i].pos+'</span></button>';
+  }
+  sug.innerHTML=h;
+  var buttons=sug.getElementsByTagName("button");
+  for(var j=0;j<buttons.length;j++){
+    buttons[j].onclick=function(){
+      var id=parseInt(this.getAttribute("data-id"),10);
+      addPlayer(team,id);
+      input.value="";
+      sug.innerHTML="";
+      input.focus();
+    };
+  }
+}
+function setupTeam(team){
+  var input=document.getElementById("search"+team);
+  var pickerButton=document.getElementById("pickerAdd"+team);
+  var picker=document.getElementById("picker"+team);
+
+  input.oninput=function(){ refreshSearch(team); };
+  input.onchange=function(){
+    var p=findPlayerByName(input.value);
+    if(p&&!isUsed(p.i)){
+      addPlayer(team,p.i);
+      input.value="";
+      document.getElementById("suggest"+team).innerHTML="";
+    }
+  };
+  pickerButton.onclick=function(){ addByPicker(team); };
+  picker.onchange=function(){
+    // On mobile, selecting a name immediately adds it.
+    if(picker.value) addByPicker(team);
+  };
+}
+function stats(){
+  var teams=mode===2?["A","B"]:["A","B","C"];
+  var s={};
+  for(var i=0;i<teams.length;i++) s[teams[i]]={incoming:0,outgoing:0,inCount:0,outCount:0,net:0,slotAdj:0};
+
+  for(var ti=0;ti<teams.length;ti++){
+    var to=teams[ti];
+    for(var j=0;j<sides[to].length;j++){
+      var item=sides[to][j], p=playerById(item.id);
+      var from=mode===2?(to==="A"?"B":"A"):item.from;
+      if(!s[from]||from===to) continue;
+      s[to].incoming+=p.v; s[to].inCount++;
+      s[from].outgoing+=p.v; s[from].outCount++;
+    }
+  }
+  for(var k=0;k<teams.length;k++){
+    var t=teams[k];
+    s[t].slotAdj=(s[t].outCount-s[t].inCount)*PENALTY;
+    s[t].net=s[t].incoming-s[t].outgoing+s[t].slotAdj;
+  }
+  return s;
+}
+function calc(){
+  var teams=mode===2?["A","B"]:["A","B","C"];
+  var valid=true;
+  for(var i=0;i<teams.length;i++) if(sides[teams[i]].length===0) valid=false;
+
+  var title=document.getElementById("resultTitle");
+  var sub=document.getElementById("resultSub");
+  var grid=document.getElementById("netGrid");
+  var fair=document.getElementById("fair");
+  var exp=document.getElementById("explain");
+
+  if(!valid){
+    title.textContent="Build a trade";
+    sub.textContent=mode===2?"Add at least one player to both teams.":"Add at least one incoming player to all three teams.";
+    grid.className="net-grid hidden"; grid.innerHTML=""; fair.textContent=""; exp.textContent="";
+    return;
+  }
+
+  var s=stats(), min=9999, max=-9999;
+  for(var j=0;j<teams.length;j++){
+    var n=s[teams[j]].net;
+    if(n<min) min=n; if(n>max) max=n;
+  }
+  var spread=max-min;
+  var score=Math.max(0,Math.round(100-spread*5));
+  title.textContent=spread<=2.5?"Very balanced trade":spread<=6?"Close trade":spread<=10?"Some imbalance":"Uneven trade";
+  sub.textContent="Overall fairness: "+score+"/100";
+  grid.className=mode===3?"net-grid three":"net-grid";
+
+  var h="";
+  for(var x=0;x<teams.length;x++){
+    var team=teams[x], net=s[team].net, cls=net>0.5?"positive":net<-0.5?"negative":"neutral";
+    var sign=net>0?"+":"";
+    var slots=s[team].outCount-s[team].inCount;
+    var slotText=slots>0?"opens "+slots+" roster spot"+(slots===1?"":"s"):slots<0?"uses "+(-slots)+" extra roster spot"+(slots===-1?"":"s"):"same roster count";
+    h+='<div class="net"><div class="net-name">Team '+team+'</div><div class="net-delta '+cls+'">'+sign+net.toFixed(1)+'</div><div class="net-note">'+slotText+'</div></div>';
+  }
+  grid.innerHTML=h;
+  fair.textContent=spread<=2.5?"Nobody is giving up a meaningful value edge.":"The trade has a measurable value edge.";
+  exp.textContent="Displayed numbers are aggregate trade impact only. Individual player values remain hidden.";
+}
+function renderAll(){
+  renderTeam("A"); renderTeam("B"); renderTeam("C"); calc();
+}
+
+window.onerror=function(){
+  var teams=["A","B","C"];
+  for(var i=0;i<teams.length;i++){
+    var w=document.getElementById("scriptWarning"+teams[i]);
+    if(w) w.style.display="block";
+  }
+};
+
+document.getElementById("mode2").onclick=function(){setMode(2);};
+document.getElementById("mode3").onclick=function(){setMode(3);};
+document.getElementById("swapBtn").onclick=function(){
+  var x=sides.A; sides.A=sides.B; sides.B=x;
+  if(mode===2){
+    for(var i=0;i<sides.A.length;i++) sides.A[i].from="B";
+    for(var j=0;j<sides.B.length;j++) sides.B[j].from="A";
+  }
+  renderAll();
+};
+document.getElementById("clearBtn").onclick=function(){
+  sides={A:[],B:[],C:[]};
+  renderAll();
+  refreshSearch("A"); refreshSearch("B"); refreshSearch("C");
+};
+
+setupTeam("A"); setupTeam("B"); setupTeam("C");
+renderAll();
+</script>
+</body></html>
