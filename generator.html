@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Fantasy Trade Generator — Shareable</title>
+<script>
+const UPDATED_VALUES={"Josh Allen":95,"Lamar Jackson":93,"Caleb Williams":87,"Jalen Hurts":86,"Jayden Daniels":84,"Joe Burrow":82,"Drake Maye":79,"Justin Herbert":79,"Patrick Mahomes":78,"Trevor Lawrence":77,"Jaxson Dart":75,"Tyler Shough":73,"Brock Purdy":70,"Jordan Love":60,"Dak Prescott":60,"Bo Nix":60,"Jared Goff":60,"Matthew Stafford":60,"Baker Mayfield":59,"C.J. Stroud":59,"Bryce Young":58,"Kyler Murray":58,"Aaron Rodgers":55,"Jacoby Brissett":55,"Sam Darnold":55,"Geno Smith":55,"Cam Ward":55,"Kirk Cousins":52,"Daniel Jones":50,"Deshaun Watson":50,"Malik Willis":50,"Trey McBride":94,"Brock Bowers":91,"Colston Loveland":86,"Tyler Warren":84,"Dalton Kincaid":81,"Isaiah Likely":76,"Sam LaPorta":74,"Dallas Goedert":72,"Tucker Kraft":71};for(const [n,v] of Object.entries(UPDATED_VALUES))if(DB[n])DB[n].v=v;effectivePackageValues=function(give,recv){const extraQb=p=>Math.max(0,p.filter(n=>DB[n]?.pos==='QB').length-1)*12;return{focusEffective:sumv(recv)-Math.max(0,recv.length-give.length)*PENALTY-extraQb(recv),partnerEffective:sumv(give)-Math.max(0,give.length-recv.length)*PENALTY-extraQb(give)}};
+</script>
 <style>
 :root{--bg:#0b1020;--panel:#121a2b;--panel2:#0f1829;--text:#f5f7fb;--muted:#98a2b3;--border:#2a3650;--accent:#6ea8fe;--good:#65d6a6;--warn:#f0b35a;--bad:#ff7a90}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#0b1020,#0f1728);color:var(--text)}

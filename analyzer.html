@@ -32,6 +32,7 @@
   <div class="mode">
     <button id="mode2" class="active" type="button">2-team trade</button>
     <button id="mode3" type="button">+ Add third team</button>
+    <select id="qbFormat" aria-label="Quarterback format" style="width:auto;min-width:150px"><option value="one" selected>1-QB league</option><option value="superflex">Superflex / 2-QB</option></select>
   </div>
   <div id="grid" class="trade-grid">
     <section class="card" id="cardA"><div class="card-head"><h2>Team A receives</h2><span class="count" id="countA">0 players</span></div><div class="search-wrap"><input id="searchA" list="playerListA" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type a player name…">
@@ -1552,6 +1553,8 @@ for(var i=0;i<PLAYERS.length;i++){
   P.push(p);
   byName[p.name.toLowerCase()]=p;
 }
+var UPDATED_VALUES={"Josh Allen":95,"Lamar Jackson":93,"Caleb Williams":87,"Jalen Hurts":86,"Jayden Daniels":84,"Joe Burrow":82,"Drake Maye":79,"Justin Herbert":79,"Patrick Mahomes":78,"Trevor Lawrence":77,"Jaxson Dart":75,"Tyler Shough":73,"Brock Purdy":70,"Jordan Love":60,"Dak Prescott":60,"Bo Nix":60,"Jared Goff":60,"Matthew Stafford":60,"Baker Mayfield":59,"C.J. Stroud":59,"Bryce Young":58,"Kyler Murray":58,"Aaron Rodgers":55,"Jacoby Brissett":55,"Sam Darnold":55,"Geno Smith":55,"Cam Ward":55,"Kirk Cousins":52,"Daniel Jones":50,"Deshaun Watson":50,"Malik Willis":50,"Trey McBride":94,"Brock Bowers":91,"Colston Loveland":86,"Tyler Warren":84,"Dalton Kincaid":81,"Isaiah Likely":76,"Sam LaPorta":74,"Dallas Goedert":72,"Tucker Kraft":71};
+for(var uv in UPDATED_VALUES)if(byName[uv.toLowerCase()])byName[uv.toLowerCase()].v=UPDATED_VALUES[uv];
 
 function norm(s){
   return String(s||"").toLowerCase().replace(/[^a-z0-9]/g,"");
@@ -1719,7 +1722,7 @@ function setupTeam(team){
 function stats(){
   var teams=mode===2?["A","B"]:["A","B","C"];
   var s={};
-  for(var i=0;i<teams.length;i++) s[teams[i]]={incoming:0,outgoing:0,inCount:0,outCount:0,net:0,slotAdj:0};
+  for(var i=0;i<teams.length;i++) s[teams[i]]={incoming:0,outgoing:0,inCount:0,outCount:0,net:0,slotAdj:0,inQbs:0};
 
   for(var ti=0;ti<teams.length;ti++){
     var to=teams[ti];
@@ -1727,13 +1730,14 @@ function stats(){
       var item=sides[to][j], p=playerById(item.id);
       var from=mode===2?(to==="A"?"B":"A"):item.from;
       if(!s[from]||from===to) continue;
-      s[to].incoming+=p.v; s[to].inCount++;
+      s[to].incoming+=p.v; s[to].inCount++; if(p.pos==="QB")s[to].inQbs++;
       s[from].outgoing+=p.v; s[from].outCount++;
     }
   }
   for(var k=0;k<teams.length;k++){
     var t=teams[k];
     s[t].slotAdj=(s[t].outCount-s[t].inCount)*PENALTY;
+    if(document.getElementById("qbFormat").value==="one"&&s[t].inQbs>1)s[t].slotAdj-=12*(s[t].inQbs-1);
     s[t].net=s[t].incoming-s[t].outgoing+s[t].slotAdj;
   }
   return s;
@@ -1800,6 +1804,7 @@ window.onerror=function(){
 
 document.getElementById("mode2").onclick=function(){setMode(2);};
 document.getElementById("mode3").onclick=function(){setMode(3);};
+document.getElementById("qbFormat").onchange=calc;
 document.getElementById("swapBtn").onclick=function(){
   var x=sides.A; sides.A=sides.B; sides.B=x;
   if(mode===2){
