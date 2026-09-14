@@ -19,6 +19,7 @@
 .result{margin-top:16px}.result h3{margin:0;text-align:center;font-size:24px}.result-sub{text-align:center;color:var(--muted);font-size:13px;margin-top:6px}.net-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.net-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .net{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}.net-name{font-weight:800}.net-delta{font-size:24px;font-weight:900;margin-top:4px}.net-note{font-size:11px;color:var(--muted);margin-top:4px}.positive{color:var(--good)}.negative{color:var(--bad)}.neutral{color:var(--text)}
 .fair{margin-top:15px;text-align:center;font-weight:800}.explain{margin-top:8px;text-align:center;color:var(--muted);font-size:12px;line-height:1.5}.actions{display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap}.foot{margin-top:15px;text-align:center;color:var(--muted);font-size:12px;line-height:1.5}.hidden{display:none!important}
+.lean-wrap{max-width:760px;margin:16px auto 2px}.lean-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;font-weight:800}.lean-bar{height:18px;margin-top:7px;border-radius:999px;position:relative;background:linear-gradient(90deg,var(--bad),#e5a956 37%,var(--good) 50%,#e5a956 63%,var(--bad));border:1px solid var(--border)}.lean-mid{position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;background:#fff8;transform:translateX(-1px)}.lean-marker{position:absolute;top:50%;width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid #17243b;box-shadow:0 3px 12px #0009;transform:translate(-50%,-50%);transition:left .25s ease}.verdict-green{color:var(--good)}.verdict-yellow{color:#f4cf68}.verdict-orange{color:var(--warn)}.verdict-red{color:var(--bad)}
 @media(max-width:900px){.trade-grid.three{grid-template-columns:1fr}.net-grid.three{grid-template-columns:1fr}}@media(max-width:720px){.trade-grid{grid-template-columns:1fr}.net-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -1526,6 +1527,7 @@
   <section class="result" aria-live="polite">
     <h3 id="resultTitle">Build a trade</h3>
     <div id="resultSub" class="result-sub">Add at least one player to both teams.</div>
+    <div id="leanWrap" class="lean-wrap hidden"><div class="lean-labels"><span>Team A edge</span><span>Even</span><span>Team B edge</span></div><div class="lean-bar"><span class="lean-mid"></span><span id="leanMarker" class="lean-marker" style="left:50%"></span></div></div>
     <div id="netGrid" class="net-grid hidden"></div>
     <div id="fair" class="fair"></div>
     <div id="explain" class="explain"></div>
@@ -1749,7 +1751,9 @@ function calc(){
 
   if(!valid){
     title.textContent="Build a trade";
+    title.className="";
     sub.textContent=mode===2?"Add at least one player to both teams.":"Add at least one incoming player to all three teams.";
+    document.getElementById("leanWrap").className="lean-wrap hidden";
     grid.className="net-grid hidden"; grid.innerHTML=""; fair.textContent=""; exp.textContent="";
     return;
   }
@@ -1760,9 +1764,14 @@ function calc(){
     if(n<min) min=n; if(n>max) max=n;
   }
   var spread=max-min;
-  var score=Math.max(0,Math.round(100-spread*5));
-  title.textContent=spread<=2.5?"Very balanced trade":spread<=6?"Close trade":spread<=10?"Some imbalance":"Uneven trade";
-  sub.textContent="Overall fairness: "+score+"/100";
+  var leaderTeam=teams[0];for(var li=1;li<teams.length;li++)if(s[teams[li]].net>s[leaderTeam].net)leaderTeam=teams[li];var leader="Team "+leaderTeam;
+  var otherSide=mode===2?(leaderTeam==="A"?"Team B":"Team A"):"the other teams";
+  var verdict=spread<=2.5?"This is a solid offer":spread<=6?leader+" has a slight edge":spread<=10?leader+" clearly wins":leader+" fleeces "+otherSide;
+  var verdictClass=spread<=2.5?"verdict-green":spread<=6?"verdict-yellow":spread<=10?"verdict-orange":"verdict-red";
+  title.textContent=verdict;title.className=verdictClass;
+  sub.textContent=spread<=2.5?"Close enough that team preference can reasonably decide it.":"The bar shows which side receives more adjusted trade value.";
+  var leanWrap=document.getElementById("leanWrap"),leanMarker=document.getElementById("leanMarker");
+  if(mode===2){leanWrap.className="lean-wrap";var lean=Math.max(-1,Math.min(1,(s.B.net-s.A.net)/15));leanMarker.style.left=(50+lean*47)+"%";}else{leanWrap.className="lean-wrap hidden";}
   grid.className=mode===3?"net-grid three":"net-grid";
 
   var h="";
@@ -1774,7 +1783,7 @@ function calc(){
     h+='<div class="net"><div class="net-name">Team '+team+'</div><div class="net-delta '+cls+'">'+sign+net.toFixed(1)+'</div><div class="net-note">'+slotText+'</div></div>';
   }
   grid.innerHTML=h;
-  fair.textContent=spread<=2.5?"Nobody is giving up a meaningful value edge.":"The trade has a measurable value edge.";
+  fair.textContent=spread<=2.5?"No meaningful value edge.":leader+" receives the stronger adjusted package.";
   exp.textContent="Displayed numbers are aggregate trade impact only. Individual player values remain hidden.";
 }
 function renderAll(){
