@@ -116,7 +116,7 @@ let resultOffset=0;
 
 function norm(s){return String(s||"").toLowerCase().replace(/[^a-z0-9]/g,"")}
 const normMap={};
-for(const n of Object.keys(DB))normMap[norm(n)]=n;
+for(const n of Object.keys(DB)){normMap[norm(n)]=n;const base=norm(n.replace(/\s+(?:Jr\.?|Sr\.?|II|III|IV|V)$/i,""));if(base&&!normMap[base])normMap[base]=n}
 for(const [a,n] of Object.entries(ALIASES))normMap[norm(a)]=n;
 function canonical(name){return normMap[norm(name)]||null}
 function namesFromInput(v){return new Set(String(v||"").split(",").map(x=>canonical(x.trim())||x.trim()).filter(Boolean))}
