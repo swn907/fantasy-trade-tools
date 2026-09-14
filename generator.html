@@ -689,4 +689,15 @@ refreshTeamMenus();
   </div>
 </div>
 
+<style>
+.tool-switcher{position:fixed;top:12px;right:12px;z-index:10000;width:auto;max-width:205px;border:1px solid var(--border);background:#0e1626;color:var(--text);border-radius:10px;padding:8px 10px;font-size:12px;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+@media(max-width:620px){.tool-switcher{position:relative;display:block;margin:10px 12px 0 auto;top:auto;right:auto}}
+</style>
+<select id="toolSwitcher" class="tool-switcher" aria-label="Switch fantasy trade tool">
+  <option value="generator.html" selected>🔁 Trade Generator</option>
+  <option value="index.html">🏠 Home</option>
+  <option value="analyzer.html">⚖️ Trade Analyzer</option>
+  <option value="target.html">🎯 Target Finder</option>
+</select>
+<script>document.getElementById('toolSwitcher').onchange=function(){location.href=this.value};</script>
 </body></html>
