@@ -1719,10 +1719,11 @@ function setupTeam(team){
     if(picker.value) addByPicker(team);
   };
 }
+function bestPlayerBonus(v){return Math.max(0,v-60)*(v>=95?.25:v>=90?.18:v>=80?.10:0)}
 function stats(){
   var teams=mode===2?["A","B"]:["A","B","C"];
   var s={};
-  for(var i=0;i<teams.length;i++) s[teams[i]]={incoming:0,outgoing:0,inCount:0,outCount:0,net:0,slotAdj:0,inQbs:0};
+  for(var i=0;i<teams.length;i++) s[teams[i]]={incoming:0,outgoing:0,inCount:0,outCount:0,net:0,slotAdj:0,inQbs:0,inBest:0,outBest:0};
 
   for(var ti=0;ti<teams.length;ti++){
     var to=teams[ti];
@@ -1730,12 +1731,14 @@ function stats(){
       var item=sides[to][j], p=playerById(item.id);
       var from=mode===2?(to==="A"?"B":"A"):item.from;
       if(!s[from]||from===to) continue;
-      s[to].incoming+=p.v; s[to].inCount++; if(p.pos==="QB")s[to].inQbs++;
-      s[from].outgoing+=p.v; s[from].outCount++;
+      s[to].incoming+=p.v; s[to].inBest=Math.max(s[to].inBest,p.v); s[to].inCount++; if(p.pos==="QB")s[to].inQbs++;
+      s[from].outgoing+=p.v; s[from].outBest=Math.max(s[from].outBest,p.v); s[from].outCount++;
     }
   }
   for(var k=0;k<teams.length;k++){
     var t=teams[k];
+    s[t].incoming+=bestPlayerBonus(s[t].inBest);
+    s[t].outgoing+=bestPlayerBonus(s[t].outBest);
     s[t].slotAdj=(s[t].outCount-s[t].inCount)*PENALTY;
     if(document.getElementById("qbFormat").value==="one"&&s[t].inQbs>1)s[t].slotAdj-=12*(s[t].inQbs-1);
     s[t].net=s[t].incoming-s[t].outgoing+s[t].slotAdj;
@@ -1841,5 +1844,5 @@ renderAll();
 </select>
 <script>document.getElementById('toolSwitcher').onchange=function(){location.href=this.value};</script>
 <script>var FINAL_VALUE_UPDATES={"Josh Allen":87,"Lamar Jackson":85,"Caleb Williams":79,"Jalen Hurts":78,"Jayden Daniels":76,"Joe Burrow":74,"Drake Maye":71,"Justin Herbert":71,"Patrick Mahomes":70,"Trevor Lawrence":69,"Jaxson Dart":67,"Tyler Shough":65,"Brock Purdy":62,"Ja'Marr Chase":98.8,"Christian McCaffrey":96,"Chase Brown":93,"Kenneth Walker III":93,"De'Von Achane":94,"James Cook III":94.3,"D'Andre Swift":82.8,"Omarion Hampton":89,"Jeremiyah Love":86.8,"A.J. Brown":86.5,"Christian Watson":82,"Jalen Coker":72.5};for(var fn in FINAL_VALUE_UPDATES)if(byName[fn.toLowerCase()])byName[fn.toLowerCase()].v=FINAL_VALUE_UPDATES[fn];calc();</script>
-<script>/* Hidden best-player bonus; visible rankings remain unchanged. */for(var bn in byName){var bp=byName[bn],raw=bp.v,m=raw>=95?1.35:raw>=90?1.25:raw>=80?1.15:1;bp.v=60+Math.max(0,raw-60)*m+Math.min(0,raw-60)}calc();</script>
+<script>calc();</script>
 </body></html>
