@@ -74,6 +74,7 @@ function blockRender(list){allOffers=list;if(!list.length){$('results').innerHTM
 $('generate').onclick=()=>{offset=0;blockRender(blockBuild())};$('fresh').onclick=()=>{if(offset+15<allOffers.length){offset+=15;blockRender(allOffers)}};$('previous').onclick=()=>{if(offset>0){offset=Math.max(0,offset-15);blockRender(allOffers)}};renderTradeChecks();
 })();
 for(const p of PLAYERS){const base=norm(p[0].replace(/\s+(?:Jr\.?|Sr\.?|II|III|IV|V)$/i,''));if(base&&!nm[base])nm[base]=p[0]} // Accept platform names with omitted suffixes.
+const blockPackageField=[...document.querySelectorAll('.field')].find(f=>f.querySelector('label')?.textContent==='Package search');if(blockPackageField)blockPackageField.style.display='none';
 setTimeout(()=>{const bonus=v=>Math.max(0,v-60)*(v>=95?.25:v>=90?.18:v>=80?.10:0);sum=a=>a.reduce((s,n)=>s+DB[n].v,0)+bonus(Math.max(...a.map(n=>DB[n].v)))},0); // Hidden best-player bonus: top asset only.
 </script><script>
 (function(){
