@@ -1,0 +1,31 @@
+name: Update sportsbook projections
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 13 * * *"
+    - cron: "17 19 * * 0,1,4"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sportsbook-projection-update
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch NFL prop lines and build cache
+        env:
+          SPORTSGAMEODDS_API_KEY: ${{ secrets.SPORTSGAMEODDS_API_KEY }}
+        run: python3 scripts/update-projections.py
+      - name: Publish changed projection cache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add weekly-projections.json
+          git diff --cached --quiet || git commit -m "Update sportsbook projections"
+          git push
