@@ -27,4 +27,17 @@ New tools included:
 2. Start/Sit Assistant (startsit.html)
    - Compare players using role, matchup, injuries, weather, recent usage, and a consensus projection.
    - Enter lines from five or more sportsbooks; it uses the median for each prop before matchup and role adjustments.
-   - Automatic live lines still require a licensed odds feed and a protected server-side API key. The static version never claims manually entered data is live.
+   - Automatically fills available NFL lines from the generated weekly-projections.json cache.
+   - Manual entry remains available whenever a player or market is not posted.
+
+SPORTSGAMEODDS AUTOMATIC UPDATE SETUP
+
+The included .github/workflows/update-projections.yml keeps the API key inside GitHub Actions and publishes only non-secret consensus lines. It runs daily, with an extra refresh on Thursday, Sunday, and Monday, and can also be run manually.
+
+After uploading every file (including the hidden .github folder):
+1. Open the repository's Actions tab.
+2. Select "Update sportsbook projections."
+3. Click "Run workflow" and run it from main.
+4. Wait for the green check. The workflow will update weekly-projections.json and GitHub Pages will redeploy automatically.
+
+The secret must be named SPORTSGAMEODDS_API_KEY. Repository workflow permissions must allow read and write access. Never put the actual key in an HTML or JavaScript file.
