@@ -1,18 +1,12 @@
-FANTASY TRADE TOOLS — MONDAY NIGHT UPDATE
+FANTASY TRADE TOOLS — 2026 WEEK 3 SUNDAY UPDATE
 
 Upload every file in this folder to the root of the GitHub repository. When GitHub asks about duplicate filenames, replacing the existing versions is expected.
 
-Updated values used consistently by all five tools:
+This package starts with the complete 242-player Week 2 research update, then adjusts players from the 13 games that were officially final when the Sunday update was built. The active Denver–Los Angeles game and later games were excluded rather than using partial statistics.
 
-Kenneth Walker III  94.8
-Rashee Rice         85.0
-Travis Kelce        67.5
-Evan Engram         60.5
-Jaylen Waddle       80.5
-Courtland Sutton    69.0
-J.K. Dobbins        67.0
-RJ Harvey           67.5
-Bo Nix              60.0 (unchanged at the one-QB replacement floor)
+The same-day adjustment compares PPR production and position-appropriate opportunities against each player's established tier. Movement is capped at 3.0 points because finalized snap and route participation data was not yet available.
+
+The public tools continue to hide individual player values. The separate private files week2_player_value_research.html and week3_sunday_completed_games_audit.html are for the site owner's review only.
 
 The ZIP contains the complete website, not merely the changed pages. Upload all eight HTML files plus new-tools-nav.js so every tool uses the same values and navigation remains consistent.
 
@@ -29,6 +23,15 @@ New tools included:
    - Enter lines from five or more sportsbooks; it uses the median for each prop before matchup and role adjustments.
    - Automatically fills available NFL lines from the generated weekly-projections.json cache.
    - Manual entry remains available whenever a player or market is not posted.
+
+LATEST INTERFACE AND SCORING UPDATE
+
+- League Analyzer scores now use 82% optimal-starter strength and 18% weighted usable bench depth. Scores span 55–100 instead of clustering in the 90s.
+- Position-room rankings weight elite starters most heavily (RB/WR: 50%, 30%, 14%, 6%; QB/TE: 80%, 20%).
+- FLEX slots are restricted to RB/WR/TE.
+- Trade Analyzer can import a Sleeper league ID and uses roster checkboxes for both sides of a trade.
+- Target Finder provides an exact rostered-player dropdown and a multi-select protected-player list.
+- Trade Block Finder provides a multi-select protected-player list; checked trade-block players remain mandatory in every generated offer.
 
 SPORTSGAMEODDS AUTOMATIC UPDATE SETUP
 
