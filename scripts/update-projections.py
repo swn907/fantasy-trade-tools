@@ -18,6 +18,22 @@ STATS = {
     "receptions", "receiving_receptions", "receiving_touchdowns", "touchdowns",
 }
 
+TOUCHDOWN_STATS = {"touchdowns", "rushing_touchdowns", "receiving_touchdowns"}
+
+# Broad sanity limits. These do not choose the projection; they only prevent a
+# different derivative market (longest reception, first-quarter yards, etc.)
+# from being mistaken for a full-game player total when a provider labels it
+# with the same stat ID.
+LINE_RANGES = {
+    "passing_yards": (75, 450),
+    "passing_touchdowns": (0.5, 4.5),
+    "passing_interceptions": (0.5, 3.5),
+    "rushing_yards": (5, 250),
+    "receiving_yards": (5, 250),
+    "receptions": (0.5, 20),
+    "receiving_receptions": (0.5, 20),
+}
+
 def player_name(player_id):
     parts = str(player_id).split("_")
     if len(parts) > 2 and parts[-2].isdigit():
@@ -37,6 +53,30 @@ def american_probability(value):
     except (TypeError, ValueError):
         return None
     return 100 / (value + 100) if value > 0 else abs(value) / (abs(value) + 100)
+
+def valid_line(stat, line):
+    if stat in TOUCHDOWN_STATS:
+        # Only 0.5 represents an anytime-TD market. Lines of 1.5/2.5 are
+        # multi-touchdown long shots and cannot be used as anytime probability.
+        return abs(line - 0.5) < 0.001
+    low, high = LINE_RANGES.get(stat, (-float("inf"), float("inf")))
+    return low <= line <= high
+
+def price_score(value):
+    """Prefer the standard/main line, whose price is normally nearest -110."""
+    try:
+        price = float(value)
+    except (TypeError, ValueError):
+        return float("inf")
+    return abs(price + 110)
+
+def parse_time(value):
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
 
 def request_page(key, cursor=None):
     params = {
@@ -64,26 +104,44 @@ def main():
     key = (os.environ.get("SPORTSGAMEODDS_API_KEY") or "").strip()
     if not key:
         raise SystemExit("SPORTSGAMEODDS_API_KEY is missing")
-    events, cursor = [], None
+    events_by_id, cursor, seen_cursors = {}, None, set()
     for _ in range(5):
         payload = request_page(key, cursor)
-        events.extend(payload.get("data") or [])
-        cursor = ((payload.get("meta") or {}).get("nextCursor") or payload.get("nextCursor"))
-        if not cursor:
+        page = payload.get("data") or []
+        for event in page:
+            event_id = event.get("eventID")
+            if event_id:
+                events_by_id[event_id] = event
+        next_cursor = ((payload.get("meta") or {}).get("nextCursor") or payload.get("nextCursor"))
+        if not next_cursor or next_cursor == cursor or next_cursor in seen_cursors:
             break
+        seen_cursors.add(next_cursor)
+        cursor = next_cursor
+    events = list(events_by_id.values())
     players = {}
+    eligible_event_count = 0
+    now = datetime.now(timezone.utc)
     for event in events:
+        status = event.get("status") or {}
+        starts = status.get("startsAt")
+        start_time = parse_time(starts)
+        if status.get("started") or status.get("ended") or status.get("finalized"):
+            continue
+        if start_time and start_time <= now:
+            continue
+        eligible_event_count += 1
         teams = event.get("teams") or {}
         away = ((teams.get("away") or {}).get("names") or {}).get("short") or ((teams.get("away") or {}).get("names") or {}).get("long")
         home = ((teams.get("home") or {}).get("names") or {}).get("short") or ((teams.get("home") or {}).get("names") or {}).get("long")
-        starts = (event.get("status") or {}).get("startsAt")
         event_players = event.get("players") or {}
         for odd in (event.get("odds") or {}).values():
             entity = odd.get("statEntityID")
             stat = odd.get("statID")
             if not entity or entity in {"all", "home", "away"} or stat not in STATS:
                 continue
-            if odd.get("betTypeID") not in {None, "ou"} or odd.get("sideID") not in {None, "over"}:
+            if odd.get("periodID") not in {None, "game"}:
+                continue
+            if odd.get("betTypeID") != "ou" or odd.get("sideID") != "over":
                 continue
             player = event_players.get(entity) or {}
             names = player.get("names") or {}
@@ -99,8 +157,15 @@ def main():
                 if not book_data.get("available", True):
                     continue
                 line = number(book_data.get("overUnder"))
-                if line is not None:
-                    market[book] = {"line": line, "odds": book_data.get("odds")}
+                if line is None or not valid_line(stat, line):
+                    continue
+                candidate = {"line": line, "odds": book_data.get("odds")}
+                # A provider can expose several same-stat derivatives. Retain
+                # the conventional market closest to -110 instead of allowing
+                # the final alternate in the response to overwrite it.
+                current = market.get(book)
+                if current is None or price_score(candidate["odds"]) < price_score(current.get("odds")):
+                    market[book] = candidate
     clean_players = []
     for record in players.values():
         markets = {}
@@ -112,7 +177,7 @@ def main():
                     "min": min(lines), "max": max(lines), "bookCount": len(lines),
                     "books": [{"id": book, **item} for book, item in sorted(by_book.items())],
                 }
-                if stat in {"touchdowns", "rushing_touchdowns", "receiving_touchdowns"}:
+                if stat in TOUCHDOWN_STATS:
                     probabilities = [american_probability(item.get("odds")) for item in by_book.values()]
                     probabilities = [value for value in probabilities if value is not None]
                     if probabilities:
@@ -123,7 +188,7 @@ def main():
     clean_players.sort(key=lambda item: item["name"])
     output = {
         "generatedAt": datetime.now(timezone.utc).isoformat(), "source": "SportsGameOdds",
-        "league": "NFL", "eventCount": len(events), "playerCount": len(clean_players),
+        "league": "NFL", "eventCount": eligible_event_count, "playerCount": len(clean_players),
         "players": clean_players,
     }
     OUTPUT.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")

@@ -25,6 +25,8 @@ New tools included:
    - Manual entry remains available whenever a player or market is not posted.
    - The full player database is selectable even when the automatic feed is unavailable.
    - The updater now uses the provider's documented query-parameter authentication, paginates in Amateur-tier-sized batches, supports the current `receptions` market name, and converts available anytime-TD prices into a consensus probability.
+   - Projection cleanup rejects games that have already started, de-duplicates paginated events, keeps only full-game over/under props, selects each book's main line instead of an alternate, and uses only 0.5 anytime-touchdown markets.
+   - Player matching ignores punctuation and capitalization differences such as D'Andre/Dandre, J.K./Jk, and DeVonta/Devonta.
 
 LATEST INTERFACE AND SCORING UPDATE
 
