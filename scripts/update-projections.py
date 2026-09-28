@@ -166,6 +166,16 @@ def main():
                 current = market.get(book)
                 if current is None or price_score(candidate["odds"]) < price_score(current.get("odds")):
                     market[book] = candidate
+    previous_players = {}
+    if OUTPUT.exists():
+        try:
+            previous_players = {
+                player.get("name"): player for player in json.loads(OUTPUT.read_text(encoding="utf-8")).get("players", [])
+                if player.get("name")
+            }
+        except (OSError, ValueError, TypeError):
+            previous_players = {}
+    generated_at = datetime.now(timezone.utc).isoformat()
     clean_players = []
     for record in players.values():
         markets = {}
@@ -184,10 +194,20 @@ def main():
                         markets[stat]["overProbability"] = round(statistics.median(probabilities) * 100, 1)
         if markets:
             record["markets"] = markets
+            snapshot = {
+                "generatedAt": generated_at,
+                "matchup": record.get("matchup"),
+                "markets": {
+                    stat: {key: value for key, value in market.items() if key in {"median", "bookCount", "overProbability"}}
+                    for stat, market in markets.items()
+                },
+            }
+            old_history = (previous_players.get(record["name"]) or {}).get("history") or []
+            record["history"] = (old_history + [snapshot])[-8:]
             clean_players.append(record)
     clean_players.sort(key=lambda item: item["name"])
     output = {
-        "generatedAt": datetime.now(timezone.utc).isoformat(), "source": "SportsGameOdds",
+        "generatedAt": generated_at, "source": "SportsGameOdds",
         "league": "NFL", "eventCount": eligible_event_count, "playerCount": len(clean_players),
         "players": clean_players,
     }

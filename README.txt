@@ -19,11 +19,11 @@ New tools included:
    - Explain strengths, weaknesses, surplus positions, and trade needs without exposing hidden player values.
 
 2. Start/Sit Assistant (startsit.html)
-   - Compare players using role, matchup, injuries, weather, recent usage, and a consensus projection.
-   - Enter lines from five or more sportsbooks; it uses the median for each prop before matchup and role adjustments.
+   - Select both players from complete dropdown lists; manual line entry has been removed.
+   - Compare players using role, matchup, and an automatic consensus projection.
    - Automatically fills available NFL lines from the generated weekly-projections.json cache.
-   - Manual entry remains available whenever a player or market is not posted.
-   - The full player database is selectable even when the automatic feed is unavailable.
+   - The full player database remains automatically comparable when a sportsbook market is unavailable by using a clearly labeled internal position/tier estimate.
+   - Each successful workflow run retains up to eight prior projection snapshots per player so the page can display projection history.
    - The updater now uses the provider's documented query-parameter authentication, paginates in Amateur-tier-sized batches, supports the current `receptions` market name, and converts available anytime-TD prices into a consensus probability.
    - Projection cleanup rejects games that have already started, de-duplicates paginated events, keeps only full-game over/under props, selects each book's main line instead of an alternate, and uses only 0.5 anytime-touchdown markets.
    - Player matching ignores punctuation and capitalization differences such as D'Andre/Dandre, J.K./Jk, and DeVonta/Devonta.
