@@ -23,6 +23,8 @@ New tools included:
    - Enter lines from five or more sportsbooks; it uses the median for each prop before matchup and role adjustments.
    - Automatically fills available NFL lines from the generated weekly-projections.json cache.
    - Manual entry remains available whenever a player or market is not posted.
+   - The full player database is selectable even when the automatic feed is unavailable.
+   - The updater now uses the provider's documented query-parameter authentication, paginates in Amateur-tier-sized batches, supports the current `receptions` market name, and converts available anytime-TD prices into a consensus probability.
 
 LATEST INTERFACE AND SCORING UPDATE
 
@@ -44,3 +46,5 @@ After uploading every file (including the hidden .github folder):
 4. Wait for the green check. The workflow will update weekly-projections.json and GitHub Pages will redeploy automatically.
 
 The secret must be named SPORTSGAMEODDS_API_KEY. Repository workflow permissions must allow read and write access. Never put the actual key in an HTML or JavaScript file.
+
+If the workflow reports a 403 error, SportsGameOdds says that means the key does not have permission for the requested data. Confirm that the repository secret contains the API key emailed for the active Amateur subscription—not a billing link, account password, or Stripe identifier. The updated workflow prints the provider's safe error message without exposing the key.
