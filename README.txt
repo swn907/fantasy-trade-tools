@@ -19,7 +19,7 @@ New tools included:
    - Explain strengths, weaknesses, surplus positions, and trade needs without exposing hidden player values.
 
 2. Start/Sit Assistant (startsit.html)
-   - Select both players from complete dropdown lists; manual line entry has been removed.
+   - Type either player's name and choose from the matching results shown directly underneath; manual line entry has been removed.
    - Compare players using role, matchup, and an automatic consensus projection.
    - Automatically fills available NFL lines from the generated weekly-projections.json cache.
    - The full player database remains automatically comparable when a sportsbook market is unavailable by using a clearly labeled internal position/tier estimate.
@@ -36,6 +36,7 @@ LATEST INTERFACE AND SCORING UPDATE
 - Trade Analyzer can import a Sleeper league ID and uses roster checkboxes for both sides of a trade.
 - Target Finder provides an exact rostered-player dropdown and a multi-select protected-player list.
 - Trade Block Finder provides a multi-select protected-player list; checked trade-block players remain mandatory in every generated offer.
+- Site-wide cleanup updates the stale homepage release label, makes Start/Sit wording match its real calculation, and gives Trade Block/Waiver pages accurate browser titles before their interfaces finish loading.
 
 SPORTSGAMEODDS AUTOMATIC UPDATE SETUP
 
