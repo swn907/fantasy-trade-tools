@@ -153,3 +153,58 @@
   }
   if(typeof calc==='function')calc();
 })();
+
+// Week 6 top-of-board health/market audit. This corrects stale elite values
+// that survived earlier overlays, including season-ending and active injuries.
+(function(){
+  const updates=window.WEEK6_TOP_BOARD_AUDIT={
+    "De'Von Achane":0.0,
+    "Caleb Williams":68.2,
+    "Jalen Hurts":72.8,
+    "Saquon Barkley":77.6,
+    "Ashton Jeanty":88.7,
+    "Kenneth Walker III":95.6,
+    "Jahmyr Gibbs":100.0,
+    "Bijan Robinson":96.4,
+    "Derrick Henry":93.1,
+    "Christian McCaffrey":93.6,
+    "Jonathan Taylor":91.6,
+    "James Cook III":92.4,
+    "Kyren Williams":91.1,
+    "Puka Nacua":94.0,
+    "Jaxon Smith-Njigba":95.2,
+    "Amon-Ra St. Brown":94.8,
+    "Ja'Marr Chase":95.1,
+    "Justin Jefferson":94.2,
+    "CeeDee Lamb":94.4,
+    "Chris Olave":91.4,
+    "Drake London":92.1,
+    "Nico Collins":88.1,
+    "Zay Flowers":85.8,
+    "Tetairoa McMillan":86.9,
+    "Christian Watson":85.2,
+    "Matthew Golden":78.4
+  };
+  for(const [name,value] of Object.entries(updates)){
+    if(typeof DB!=='undefined'&&DB[name])DB[name].v=value;
+    if(typeof byName!=='undefined'&&byName[name.toLowerCase()])byName[name.toLowerCase()].v=value;
+  }
+
+  // Preserve the researched ordering while separating exact ties. For singleton
+  // round-number grades, add only one tenth of precision; this never manufactures
+  // a large value move merely to make the list look different.
+  if(typeof DB!=='undefined'){
+    const pool=Object.values(DB).sort((a,b)=>b.v-a.v||a.name.localeCompare(b.name));
+    let previous=Infinity;
+    for(let i=0;i<pool.length;i++){
+      let desired=pool[i].v;
+      if(desired>1&&Math.abs((desired*10)%5)<0.0001)desired+=(i%2===0?0.1:-0.1);
+      let precise=+desired.toFixed(1);
+      if(precise>=previous)precise=+(previous-0.1).toFixed(1);
+      pool[i].v=Math.min(100,Math.max(0,precise));
+      previous=pool[i].v;
+    }
+    if(typeof byName!=='undefined')for(const p of Object.values(DB))if(byName[p.name.toLowerCase()])byName[p.name.toLowerCase()].v=p.v;
+  }
+  if(typeof calc==='function')calc();
+})();
