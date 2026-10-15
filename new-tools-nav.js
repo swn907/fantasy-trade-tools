@@ -93,3 +93,63 @@
   }
   if(typeof calc==='function')calc();
 })();
+
+// Week 5 complete-slate rest-of-season audit.
+// Changes emphasize repeatable opportunity (snaps, routes, carries and targets),
+// then efficiency, injury/trade context and remaining playable weeks. Carolina
+// and Kansas City players receive a deliberately small +0.8 completed-bye bump.
+(function(){
+  const updates=window.WEEK5_ROS_VALUE_UPDATES={
+    "Josh Allen":93.0,
+    "Drake Maye":74.0,
+    "Jordan Love":76.5,
+    "Jared Goff":71.5,
+    "Matthew Stafford":72.5,
+    "Patrick Mahomes":80.8,
+    "Bryce Young":72.1,
+    "Jonathan Taylor":91.5,
+    "Chase Brown":85.0,
+    "Jaylen Warren":83.0,
+    "Tyjae Spears":64.0,
+    "Woody Marks":72.0,
+    "David Montgomery":69.0,
+    "Quinshon Judkins":72.0,
+    "Omarion Hampton":76.0,
+    "RJ Harvey":67.5,
+    "Alvin Kamara":55.0,
+    "James Cook III":92.5,
+    "Jeremiyah Love":84.0,
+    "Isiah Pacheco":59.3,
+    "Chuba Hubbard":79.6,
+    "Jonathon Brooks":66.8,
+    "Puka Nacua":100.0,
+    "Malik Nabers":92.0,
+    "Mike Evans":83.0,
+    "Drake London":92.0,
+    "Zay Flowers":86.0,
+    "Emeka Egbuka":82.0,
+    "Jaylen Waddle":76.0,
+    "Jameson Williams":72.0,
+    "Michael Wilson":71.5,
+    "Marvin Harrison Jr.":67.5,
+    "Deebo Samuel":60.0,
+    "Jauan Jennings":50.0,
+    "Nico Collins":88.0,
+    "Rashee Rice":78.6,
+    "Xavier Worthy":69.8,
+    "Tetairoa McMillan":86.8,
+    "Jalen Coker":71.8,
+    "Xavier Legette":53.3,
+    "Brock Bowers":91.0,
+    "Isaiah Likely":77.5,
+    "Dalton Kincaid":80.0,
+    "Harold Fannin Jr.":74.0,
+    "Kenyon Sadiq":60.0,
+    "Travis Kelce":64.8
+  };
+  for(const [name,value] of Object.entries(updates)){
+    if(typeof DB!=='undefined'&&DB[name])DB[name].v=value;
+    if(typeof byName!=='undefined'&&byName[name.toLowerCase()])byName[name.toLowerCase()].v=value;
+  }
+  if(typeof calc==='function')calc();
+})();
