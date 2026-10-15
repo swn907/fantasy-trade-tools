@@ -83,9 +83,10 @@ def request_page(key, cursor=None):
         "apiKey": key,
         "leagueID": "NFL",
         "oddsAvailable": "true",
-        # The Amateur tier permits 10 requests/minute. A page size of 10 avoids
-        # oversized responses while two pages cover a normal NFL slate.
-        "limit": 10,
+        # Fetch enough events to reach the current slate even when the provider
+        # returns older NFL events first. Eight pages remain below the Amateur
+        # tier's ten-request-per-minute ceiling.
+        "limit": 25,
     }
     if cursor:
         params["cursor"] = cursor
@@ -105,7 +106,7 @@ def main():
     if not key:
         raise SystemExit("SPORTSGAMEODDS_API_KEY is missing")
     events_by_id, cursor, seen_cursors = {}, None, set()
-    for _ in range(5):
+    for _ in range(8):
         payload = request_page(key, cursor)
         page = payload.get("data") or []
         for event in page:
@@ -211,10 +212,13 @@ def main():
         "league": "NFL", "eventCount": eligible_event_count, "playerCount": len(clean_players),
         "players": clean_players,
     }
+    if not clean_players:
+        raise RuntimeError(
+            f"SportsGameOdds returned {len(events)} NFL events but no usable upcoming player props. "
+            "The existing projection cache was preserved; retry the workflow after the provider refreshes."
+        )
     OUTPUT.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(clean_players)} players from {len(events)} NFL events to {OUTPUT}")
-    if not events:
-        print("No upcoming NFL events currently have odds; an empty valid cache was written.")
 
 if __name__ == "__main__":
     try:
