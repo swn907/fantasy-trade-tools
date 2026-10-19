@@ -51,3 +51,8 @@ After uploading every file (including the hidden .github folder):
 The secret must be named SPORTSGAMEODDS_API_KEY. Repository workflow permissions must allow read and write access. Never put the actual key in an HTML or JavaScript file.
 
 If the workflow reports a 403 error, SportsGameOdds says that means the key does not have permission for the requested data. Confirm that the repository secret contains the API key emailed for the active Amateur subscription—not a billing link, account password, or Stripe identifier. The updated workflow prints the provider's safe error message without exposing the key.
+NEW: Streams of the Week (streams.html)
+- Researches 480 offensive depth-chart players across all 32 teams.
+- Covers each team's top 2 QBs, 4 RBs, 6 WRs, and 3 TEs.
+- Uses completed Thursday/Sunday box-score opportunity plus the automatic sportsbook feed.
+- Estimates 10- and 12-team availability or imports a Sleeper league for exact free agents.
