@@ -1,0 +1,1876 @@
+{
+  "generatedAt": "2026-10-18",
+  "week": 7,
+  "method": "Standard D/ST scoring from Weeks 1-6, blended with opponent D/ST points allowed and last-three form.",
+  "defenses": [
+    {
+      "name": "MIN D/ST",
+      "team": "MIN",
+      "position": "DST",
+      "opponent": "IND",
+      "seasonAverage": 11.8,
+      "opponentAverageAllowed": 7.2,
+      "recentAverage": 12,
+      "projection": 10.3,
+      "history": [
+        {
+          "opponent": "GB",
+          "pointsAllowed": 22,
+          "sacks": 4,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "CHI",
+          "pointsAllowed": 3,
+          "sacks": 4,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 15
+        },
+        {
+          "opponent": "TB",
+          "pointsAllowed": 16,
+          "sacks": 6,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 1,
+          "fantasyPoints": 17
+        },
+        {
+          "opponent": "MIA",
+          "pointsAllowed": 10,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "NO",
+          "pointsAllowed": 13,
+          "sacks": 1,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 11
+        }
+      ],
+      "likely10": false,
+      "likely12": false,
+      "reason": "Week 7 vs IND; 11.8 D/ST points per game, while IND has allowed 7.2 per game to opposing defenses."
+    },
+    {
+      "name": "KC D/ST",
+      "team": "KC",
+      "position": "DST",
+      "opponent": "SEA",
+      "seasonAverage": 8,
+      "opponentAverageAllowed": 8.8,
+      "recentAverage": 9,
+      "projection": 8.5,
+      "history": [
+        {
+          "opponent": "DEN",
+          "pointsAllowed": 10,
+          "sacks": 4,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 12
+        },
+        {
+          "opponent": "IND",
+          "pointsAllowed": 30,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "MIA",
+          "pointsAllowed": 10,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "LV",
+          "pointsAllowed": 27,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "LAC",
+          "pointsAllowed": 6,
+          "sacks": 4,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 15
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs SEA; 8.0 D/ST points per game, while SEA has allowed 8.8 per game to opposing defenses."
+    },
+    {
+      "name": "SF D/ST",
+      "team": "SF",
+      "position": "DST",
+      "opponent": "ATL",
+      "seasonAverage": 7.6,
+      "opponentAverageAllowed": 9.2,
+      "recentAverage": 7.3,
+      "projection": 8.1,
+      "history": [
+        {
+          "opponent": "LAR",
+          "pointsAllowed": 7,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "MIA",
+          "pointsAllowed": 13,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "ARI",
+          "pointsAllowed": 30,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "DEN",
+          "pointsAllowed": 14,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        },
+        {
+          "opponent": "SEA",
+          "pointsAllowed": 29,
+          "sacks": 5,
+          "interceptions": 2,
+          "fumbleRecoveries": 2,
+          "touchdowns": 1,
+          "fantasyPoints": 18
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs ATL; 7.6 D/ST points per game, while ATL has allowed 9.2 per game to opposing defenses."
+    },
+    {
+      "name": "NYJ D/ST",
+      "team": "NYJ",
+      "position": "DST",
+      "opponent": "MIA",
+      "seasonAverage": 6.8,
+      "opponentAverageAllowed": 9.2,
+      "recentAverage": 8.3,
+      "projection": 8.0,
+      "history": [
+        {
+          "opponent": "TEN",
+          "pointsAllowed": 10,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 9
+        },
+        {
+          "opponent": "GB",
+          "pointsAllowed": 20,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "DET",
+          "pointsAllowed": 31,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "CHI",
+          "pointsAllowed": 23,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "CLE",
+          "pointsAllowed": 12,
+          "sacks": 8,
+          "interceptions": 0,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 16
+        },
+        {
+          "opponent": "NE",
+          "pointsAllowed": 26,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs MIA; 6.8 D/ST points per game, while MIA has allowed 9.2 per game to opposing defenses."
+    },
+    {
+      "name": "CLE D/ST",
+      "team": "CLE",
+      "position": "DST",
+      "opponent": "TEN",
+      "seasonAverage": 6.5,
+      "opponentAverageAllowed": 7.2,
+      "recentAverage": 9,
+      "projection": 7.3,
+      "history": [
+        {
+          "opponent": "JAX",
+          "pointsAllowed": 34,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 0
+        },
+        {
+          "opponent": "TB",
+          "pointsAllowed": 19,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "CAR",
+          "pointsAllowed": 18,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "PIT",
+          "pointsAllowed": 24,
+          "sacks": 5,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 9
+        },
+        {
+          "opponent": "NYJ",
+          "pointsAllowed": 17,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 9
+        },
+        {
+          "opponent": "BAL",
+          "pointsAllowed": 10,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 9
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs TEN; 6.5 D/ST points per game, while TEN has allowed 7.2 per game to opposing defenses."
+    },
+    {
+      "name": "DEN D/ST",
+      "team": "DEN",
+      "position": "DST",
+      "opponent": "ARI",
+      "seasonAverage": 8.2,
+      "opponentAverageAllowed": 5.7,
+      "recentAverage": 8,
+      "projection": 7.3,
+      "history": [
+        {
+          "opponent": "KC",
+          "pointsAllowed": 31,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        },
+        {
+          "opponent": "JAX",
+          "pointsAllowed": 13,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "LAR",
+          "pointsAllowed": 26,
+          "sacks": 4,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 1,
+          "fantasyPoints": 14
+        },
+        {
+          "opponent": "SF",
+          "pointsAllowed": 24,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 0
+        },
+        {
+          "opponent": "LAC",
+          "pointsAllowed": 17,
+          "sacks": 5,
+          "interceptions": 1,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 12
+        },
+        {
+          "opponent": "SEA",
+          "pointsAllowed": 14,
+          "sacks": 5,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 12
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs ARI; 8.2 D/ST points per game, while ARI has allowed 5.7 per game to opposing defenses."
+    },
+    {
+      "name": "TEN D/ST",
+      "team": "TEN",
+      "position": "DST",
+      "opponent": "CLE",
+      "seasonAverage": 6.2,
+      "opponentAverageAllowed": 8.3,
+      "recentAverage": 7.7,
+      "projection": 7.3,
+      "history": [
+        {
+          "opponent": "NYJ",
+          "pointsAllowed": 23,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 0
+        },
+        {
+          "opponent": "PHI",
+          "pointsAllowed": 24,
+          "sacks": 3,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 7
+        },
+        {
+          "opponent": "NYG",
+          "pointsAllowed": 12,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 7
+        },
+        {
+          "opponent": "BAL",
+          "pointsAllowed": 24,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "HOU",
+          "pointsAllowed": 26,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "IND",
+          "pointsAllowed": 20,
+          "sacks": 6,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 1,
+          "fantasyPoints": 19
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs CLE; 6.2 D/ST points per game, while CLE has allowed 8.3 per game to opposing defenses."
+    },
+    {
+      "name": "CAR D/ST",
+      "team": "CAR",
+      "position": "DST",
+      "opponent": "TB",
+      "seasonAverage": 7,
+      "opponentAverageAllowed": 10,
+      "recentAverage": 3,
+      "projection": 7.0,
+      "history": [
+        {
+          "opponent": "CHI",
+          "pointsAllowed": 59,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 0
+        },
+        {
+          "opponent": "ATL",
+          "pointsAllowed": 3,
+          "sacks": 3,
+          "interceptions": 3,
+          "fumbleRecoveries": 2,
+          "touchdowns": 1,
+          "fantasyPoints": 26
+        },
+        {
+          "opponent": "CLE",
+          "pointsAllowed": 21,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "DET",
+          "pointsAllowed": 26,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "PHI",
+          "pointsAllowed": 14,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs TB; 7.0 D/ST points per game, while TB has allowed 10.0 per game to opposing defenses."
+    },
+    {
+      "name": "CHI D/ST",
+      "team": "CHI",
+      "position": "DST",
+      "opponent": "NE",
+      "seasonAverage": 7,
+      "opponentAverageAllowed": 7.3,
+      "recentAverage": 6.3,
+      "projection": 6.9,
+      "history": [
+        {
+          "opponent": "CAR",
+          "pointsAllowed": 37,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "MIN",
+          "pointsAllowed": 9,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 7
+        },
+        {
+          "opponent": "PHI",
+          "pointsAllowed": 7,
+          "sacks": 2,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 12
+        },
+        {
+          "opponent": "NYJ",
+          "pointsAllowed": 12,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 7
+        },
+        {
+          "opponent": "GB",
+          "pointsAllowed": 31,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "ATL",
+          "pointsAllowed": 23,
+          "sacks": 5,
+          "interceptions": 0,
+          "fumbleRecoveries": 3,
+          "touchdowns": 0,
+          "fantasyPoints": 11
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs NE; 7.0 D/ST points per game, while NE has allowed 7.3 per game to opposing defenses."
+    },
+    {
+      "name": "PIT D/ST",
+      "team": "PIT",
+      "position": "DST",
+      "opponent": "NO",
+      "seasonAverage": 8,
+      "opponentAverageAllowed": 6.5,
+      "recentAverage": 5.7,
+      "projection": 6.9,
+      "history": [
+        {
+          "opponent": "ATL",
+          "pointsAllowed": 13,
+          "sacks": 4,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 1,
+          "fantasyPoints": 18
+        },
+        {
+          "opponent": "NE",
+          "pointsAllowed": 20,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "CIN",
+          "pointsAllowed": 27,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "CLE",
+          "pointsAllowed": 27,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "IND",
+          "pointsAllowed": 22,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "TB",
+          "pointsAllowed": 19,
+          "sacks": 5,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 10
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs NO; 8.0 D/ST points per game, while NO has allowed 6.5 per game to opposing defenses."
+    },
+    {
+      "name": "NE D/ST",
+      "team": "NE",
+      "position": "DST",
+      "opponent": "CHI",
+      "seasonAverage": 7.2,
+      "opponentAverageAllowed": 7.2,
+      "recentAverage": 5.7,
+      "projection": 6.8,
+      "history": [
+        {
+          "opponent": "SEA",
+          "pointsAllowed": 13,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "PIT",
+          "pointsAllowed": 3,
+          "sacks": 4,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 1,
+          "fantasyPoints": 21
+        },
+        {
+          "opponent": "JAX",
+          "pointsAllowed": 35,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": -1
+        },
+        {
+          "opponent": "BUF",
+          "pointsAllowed": 26,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "LV",
+          "pointsAllowed": 17,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "NYJ",
+          "pointsAllowed": 19,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs CHI; 7.2 D/ST points per game, while CHI has allowed 7.2 per game to opposing defenses."
+    },
+    {
+      "name": "CIN D/ST",
+      "team": "CIN",
+      "position": "DST",
+      "opponent": "BAL",
+      "seasonAverage": 9,
+      "opponentAverageAllowed": 4.5,
+      "recentAverage": 5.3,
+      "projection": 6.6,
+      "history": [
+        {
+          "opponent": "TB",
+          "pointsAllowed": 27,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 4,
+          "touchdowns": 1,
+          "fantasyPoints": 18
+        },
+        {
+          "opponent": "HOU",
+          "pointsAllowed": 6,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 11
+        },
+        {
+          "opponent": "PIT",
+          "pointsAllowed": 30,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        },
+        {
+          "opponent": "JAX",
+          "pointsAllowed": 22,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "MIA",
+          "pointsAllowed": 24,
+          "sacks": 3,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 9
+        }
+      ],
+      "likely10": false,
+      "likely12": false,
+      "reason": "Week 7 vs BAL; 9.0 D/ST points per game, while BAL has allowed 4.5 per game to opposing defenses."
+    },
+    {
+      "name": "NO D/ST",
+      "team": "NO",
+      "position": "DST",
+      "opponent": "PIT",
+      "seasonAverage": 5.2,
+      "opponentAverageAllowed": 7.5,
+      "recentAverage": 7.3,
+      "projection": 6.5,
+      "history": [
+        {
+          "opponent": "DET",
+          "pointsAllowed": 31,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "BAL",
+          "pointsAllowed": 17,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "LV",
+          "pointsAllowed": 35,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "ATL",
+          "pointsAllowed": 45,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": -3
+        },
+        {
+          "opponent": "MIN",
+          "pointsAllowed": 23,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 2,
+          "touchdowns": 1,
+          "fantasyPoints": 12
+        },
+        {
+          "opponent": "NYG",
+          "pointsAllowed": 27,
+          "sacks": 5,
+          "interceptions": 3,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 13
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs PIT; 5.2 D/ST points per game, while PIT has allowed 7.5 per game to opposing defenses."
+    },
+    {
+      "name": "HOU D/ST",
+      "team": "HOU",
+      "position": "DST",
+      "opponent": "NYG",
+      "seasonAverage": 5.5,
+      "opponentAverageAllowed": 7.7,
+      "recentAverage": 6,
+      "projection": 6.3,
+      "history": [
+        {
+          "opponent": "BUF",
+          "pointsAllowed": 36,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": -2
+        },
+        {
+          "opponent": "CIN",
+          "pointsAllowed": 20,
+          "sacks": 5,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "IND",
+          "pointsAllowed": 19,
+          "sacks": 4,
+          "interceptions": 1,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 11
+        },
+        {
+          "opponent": "DAL",
+          "pointsAllowed": 34,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "TEN",
+          "pointsAllowed": 3,
+          "sacks": 4,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 15
+        },
+        {
+          "opponent": "JAX",
+          "pointsAllowed": 31,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs NYG; 5.5 D/ST points per game, while NYG has allowed 7.7 per game to opposing defenses."
+    },
+    {
+      "name": "GB D/ST",
+      "team": "GB",
+      "position": "DST",
+      "opponent": "DET",
+      "seasonAverage": 6.5,
+      "opponentAverageAllowed": 1.2,
+      "recentAverage": 11.7,
+      "projection": 6.0,
+      "history": [
+        {
+          "opponent": "MIN",
+          "pointsAllowed": 39,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "NYJ",
+          "pointsAllowed": 17,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "ATL",
+          "pointsAllowed": 35,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": -2
+        },
+        {
+          "opponent": "TB",
+          "pointsAllowed": 14,
+          "sacks": 3,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "CHI",
+          "pointsAllowed": 7,
+          "sacks": 4,
+          "interceptions": 3,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 18
+        },
+        {
+          "opponent": "DAL",
+          "pointsAllowed": 13,
+          "sacks": 1,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 9
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs DET; 6.5 D/ST points per game, while DET has allowed 1.2 per game to opposing defenses."
+    },
+    {
+      "name": "SEA D/ST",
+      "team": "SEA",
+      "position": "DST",
+      "opponent": "KC",
+      "seasonAverage": 7.5,
+      "opponentAverageAllowed": 2.2,
+      "recentAverage": 7.7,
+      "projection": 5.8,
+      "history": [
+        {
+          "opponent": "NE",
+          "pointsAllowed": 10,
+          "sacks": 3,
+          "interceptions": 3,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 13
+        },
+        {
+          "opponent": "ARI",
+          "pointsAllowed": 7,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "WSH",
+          "pointsAllowed": 33,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "LAC",
+          "pointsAllowed": 23,
+          "sacks": 4,
+          "interceptions": 2,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 12
+        },
+        {
+          "opponent": "SF",
+          "pointsAllowed": 32,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 2,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "DEN",
+          "pointsAllowed": 17,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        }
+      ],
+      "likely10": true,
+      "likely12": false,
+      "reason": "Week 7 vs KC; 7.5 D/ST points per game, while KC has allowed 2.2 per game to opposing defenses."
+    },
+    {
+      "name": "BAL D/ST",
+      "team": "BAL",
+      "position": "DST",
+      "opponent": "CIN",
+      "seasonAverage": 5.2,
+      "opponentAverageAllowed": 5.4,
+      "recentAverage": 6.7,
+      "projection": 5.6,
+      "history": [
+        {
+          "opponent": "IND",
+          "pointsAllowed": 23,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "NO",
+          "pointsAllowed": 24,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        },
+        {
+          "opponent": "DAL",
+          "pointsAllowed": 31,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "TEN",
+          "pointsAllowed": 18,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "ATL",
+          "pointsAllowed": 23,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "CLE",
+          "pointsAllowed": 13,
+          "sacks": 5,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 9
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs CIN; 5.2 D/ST points per game, while CIN has allowed 5.4 per game to opposing defenses."
+    },
+    {
+      "name": "NYG D/ST",
+      "team": "NYG",
+      "position": "DST",
+      "opponent": "HOU",
+      "seasonAverage": 5.8,
+      "opponentAverageAllowed": 4.2,
+      "recentAverage": 6.7,
+      "projection": 5.5,
+      "history": [
+        {
+          "opponent": "DAL",
+          "pointsAllowed": 20,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        },
+        {
+          "opponent": "LAR",
+          "pointsAllowed": 28,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "TEN",
+          "pointsAllowed": 7,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "ARI",
+          "pointsAllowed": 24,
+          "sacks": 2,
+          "interceptions": 3,
+          "fumbleRecoveries": 0,
+          "touchdowns": 1,
+          "fantasyPoints": 14
+        },
+        {
+          "opponent": "WSH",
+          "pointsAllowed": 27,
+          "sacks": 5,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "NO",
+          "pointsAllowed": 34,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs HOU; 5.8 D/ST points per game, while HOU has allowed 4.2 per game to opposing defenses."
+    },
+    {
+      "name": "TB D/ST",
+      "team": "TB",
+      "position": "DST",
+      "opponent": "CAR",
+      "seasonAverage": 5.7,
+      "opponentAverageAllowed": 3,
+      "recentAverage": 6.3,
+      "projection": 5.0,
+      "history": [
+        {
+          "opponent": "CIN",
+          "pointsAllowed": 33,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 1,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "CLE",
+          "pointsAllowed": 23,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "MIN",
+          "pointsAllowed": 23,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "GB",
+          "pointsAllowed": 17,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "DAL",
+          "pointsAllowed": 16,
+          "sacks": 0,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 7
+        },
+        {
+          "opponent": "PIT",
+          "pointsAllowed": 26,
+          "sacks": 5,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 7
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs CAR; 5.7 D/ST points per game, while CAR has allowed 3.0 per game to opposing defenses."
+    },
+    {
+      "name": "DET D/ST",
+      "team": "DET",
+      "position": "DST",
+      "opponent": "GB",
+      "seasonAverage": 4.8,
+      "opponentAverageAllowed": 4.8,
+      "recentAverage": 5.3,
+      "projection": 4.9,
+      "history": [
+        {
+          "opponent": "NO",
+          "pointsAllowed": 30,
+          "sacks": 5,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 10
+        },
+        {
+          "opponent": "BUF",
+          "pointsAllowed": 41,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": -2
+        },
+        {
+          "opponent": "NYJ",
+          "pointsAllowed": 24,
+          "sacks": 5,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 7
+        },
+        {
+          "opponent": "CAR",
+          "pointsAllowed": 32,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "ARI",
+          "pointsAllowed": 21,
+          "sacks": 5,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 7
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs GB; 4.8 D/ST points per game, while GB has allowed 4.8 per game to opposing defenses."
+    },
+    {
+      "name": "LV D/ST",
+      "team": "LV",
+      "position": "DST",
+      "opponent": "LAR",
+      "seasonAverage": 5.7,
+      "opponentAverageAllowed": 6.2,
+      "recentAverage": 0.3,
+      "projection": 4.5,
+      "history": [
+        {
+          "opponent": "MIA",
+          "pointsAllowed": 13,
+          "sacks": 5,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 13
+        },
+        {
+          "opponent": "LAC",
+          "pointsAllowed": 14,
+          "sacks": 3,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 10
+        },
+        {
+          "opponent": "NO",
+          "pointsAllowed": 27,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 3,
+          "touchdowns": 0,
+          "fantasyPoints": 10
+        },
+        {
+          "opponent": "KC",
+          "pointsAllowed": 30,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "NE",
+          "pointsAllowed": 45,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": -1
+        },
+        {
+          "opponent": "BUF",
+          "pointsAllowed": 33,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs LAR; 5.7 D/ST points per game, while LAR has allowed 6.2 per game to opposing defenses."
+    },
+    {
+      "name": "ATL D/ST",
+      "team": "ATL",
+      "position": "DST",
+      "opponent": "SF",
+      "seasonAverage": 5,
+      "opponentAverageAllowed": 0.8,
+      "recentAverage": 6.7,
+      "projection": 4.0,
+      "history": [
+        {
+          "opponent": "PIT",
+          "pointsAllowed": 20,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "CAR",
+          "pointsAllowed": 34,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "GB",
+          "pointsAllowed": 14,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "NO",
+          "pointsAllowed": 24,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "BAL",
+          "pointsAllowed": 30,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 1,
+          "fantasyPoints": 11
+        },
+        {
+          "opponent": "CHI",
+          "pointsAllowed": 31,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs SF; 5.0 D/ST points per game, while SF has allowed 0.8 per game to opposing defenses."
+    },
+    {
+      "name": "IND D/ST",
+      "team": "IND",
+      "position": "DST",
+      "opponent": "MIN",
+      "seasonAverage": 2.5,
+      "opponentAverageAllowed": 6,
+      "recentAverage": 3.3,
+      "projection": 3.9,
+      "history": [
+        {
+          "opponent": "BAL",
+          "pointsAllowed": 41,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 0
+        },
+        {
+          "opponent": "KC",
+          "pointsAllowed": 33,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "HOU",
+          "pointsAllowed": 17,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "WSH",
+          "pointsAllowed": 13,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "PIT",
+          "pointsAllowed": 34,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 0
+        },
+        {
+          "opponent": "TEN",
+          "pointsAllowed": 26,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs MIN; 2.5 D/ST points per game, while MIN has allowed 6.0 per game to opposing defenses."
+    },
+    {
+      "name": "ARI D/ST",
+      "team": "ARI",
+      "position": "DST",
+      "opponent": "DEN",
+      "seasonAverage": 3.2,
+      "opponentAverageAllowed": 4.3,
+      "recentAverage": 3.7,
+      "projection": 3.7,
+      "history": [
+        {
+          "opponent": "LAC",
+          "pointsAllowed": 14,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 8
+        },
+        {
+          "opponent": "SEA",
+          "pointsAllowed": 31,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "SF",
+          "pointsAllowed": 36,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": -2
+        },
+        {
+          "opponent": "NYG",
+          "pointsAllowed": 36,
+          "sacks": 4,
+          "interceptions": 2,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        },
+        {
+          "opponent": "DET",
+          "pointsAllowed": 45,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": -1
+        },
+        {
+          "opponent": "LAR",
+          "pointsAllowed": 16,
+          "sacks": 3,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 6
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs DEN; 3.2 D/ST points per game, while DEN has allowed 4.3 per game to opposing defenses."
+    },
+    {
+      "name": "LAR D/ST",
+      "team": "LAR",
+      "position": "DST",
+      "opponent": "LV",
+      "seasonAverage": 4,
+      "opponentAverageAllowed": 3.3,
+      "recentAverage": 3,
+      "projection": 3.5,
+      "history": [
+        {
+          "opponent": "SF",
+          "pointsAllowed": 27,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "NYG",
+          "pointsAllowed": 6,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 11
+        },
+        {
+          "opponent": "DEN",
+          "pointsAllowed": 30,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "PHI",
+          "pointsAllowed": 20,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "BUF",
+          "pointsAllowed": 37,
+          "sacks": 1,
+          "interceptions": 1,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "ARI",
+          "pointsAllowed": 18,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs LV; 4.0 D/ST points per game, while LV has allowed 3.3 per game to opposing defenses."
+    },
+    {
+      "name": "PHI D/ST",
+      "team": "PHI",
+      "position": "DST",
+      "opponent": "DAL",
+      "seasonAverage": 2.7,
+      "opponentAverageAllowed": 3.5,
+      "recentAverage": 4,
+      "projection": 3.3,
+      "history": [
+        {
+          "opponent": "WSH",
+          "pointsAllowed": 22,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "TEN",
+          "pointsAllowed": 20,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        },
+        {
+          "opponent": "CHI",
+          "pointsAllowed": 27,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 0
+        },
+        {
+          "opponent": "LAR",
+          "pointsAllowed": 24,
+          "sacks": 1,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "JAX",
+          "pointsAllowed": 19,
+          "sacks": 2,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "CAR",
+          "pointsAllowed": 25,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs DAL; 2.7 D/ST points per game, while DAL has allowed 3.5 per game to opposing defenses."
+    },
+    {
+      "name": "DAL D/ST",
+      "team": "DAL",
+      "position": "DST",
+      "opponent": "PHI",
+      "seasonAverage": 2,
+      "opponentAverageAllowed": 5.5,
+      "recentAverage": 2.3,
+      "projection": 3.2,
+      "history": [
+        {
+          "opponent": "NYG",
+          "pointsAllowed": 28,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        },
+        {
+          "opponent": "WSH",
+          "pointsAllowed": 20,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 3
+        },
+        {
+          "opponent": "BAL",
+          "pointsAllowed": 34,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": -1
+        },
+        {
+          "opponent": "HOU",
+          "pointsAllowed": 30,
+          "sacks": 2,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "TB",
+          "pointsAllowed": 24,
+          "sacks": 1,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        },
+        {
+          "opponent": "GB",
+          "pointsAllowed": 23,
+          "sacks": 3,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs PHI; 2.0 D/ST points per game, while PHI has allowed 5.5 per game to opposing defenses."
+    },
+    {
+      "name": "MIA D/ST",
+      "team": "MIA",
+      "position": "DST",
+      "opponent": "NYJ",
+      "seasonAverage": 1.6,
+      "opponentAverageAllowed": 5.7,
+      "recentAverage": 2.7,
+      "projection": 3.2,
+      "history": [
+        {
+          "opponent": "LV",
+          "pointsAllowed": 27,
+          "sacks": 0,
+          "interceptions": 2,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 4
+        },
+        {
+          "opponent": "SF",
+          "pointsAllowed": 35,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": -4
+        },
+        {
+          "opponent": "KC",
+          "pointsAllowed": 24,
+          "sacks": 0,
+          "interceptions": 1,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 2
+        },
+        {
+          "opponent": "MIN",
+          "pointsAllowed": 15,
+          "sacks": 4,
+          "interceptions": 0,
+          "fumbleRecoveries": 0,
+          "touchdowns": 0,
+          "fantasyPoints": 5
+        },
+        {
+          "opponent": "CIN",
+          "pointsAllowed": 31,
+          "sacks": 0,
+          "interceptions": 0,
+          "fumbleRecoveries": 1,
+          "touchdowns": 0,
+          "fantasyPoints": 1
+        }
+      ],
+      "likely10": true,
+      "likely12": true,
+      "reason": "Week 7 vs NYJ; 1.6 D/ST points per game, while NYJ has allowed 5.7 per game to opposing defenses."
+    }
+  ]
+}
