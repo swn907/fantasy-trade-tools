@@ -1,58 +1,30 @@
-FANTASY TRADE TOOLS — 2026 WEEK 3 COMPLETE UPDATE
+FANTASY TRADE TOOLS — WEEK 10 REST-OF-SEASON RATINGS UPDATE
 
-Upload every file in this folder to the root of the GitHub repository. When GitHub asks about duplicate filenames, replacing the existing versions is expected.
+Updated November 11, 2026.
 
-This package starts with the complete Week 2 research update, includes the finalized Week 3 Sunday changes, and now adds the completed Monday Chicago–Philadelphia game.
+Upload every file and folder in this package to the root of the GitHub repository. Replace duplicate files when GitHub asks. The public tools keep individual player values hidden.
 
-The Monday adjustment uses finalized snaps, snap rate, routes, route participation, carries, backfield opportunity share, targets, target share, air yards and air-yards share. Movement remains capped at 3.0 points so one result cannot overwhelm the established rest-of-season tier.
+WHAT CHANGED
 
-The public tools continue to hide individual player values. The separate private reports, including week3_monday_usage_and_value_audit.html, are for the site owner's review only and are not included in the website ZIP.
+- Rebuilt the complete shared value board from the current FantasyPros PPR rest-of-season consensus.
+- Reviewed 354 quarterbacks, running backs, wide receivers and tight ends.
+- Added 82 players who were not present in the October 26 board.
+- Used FantasyPros Weeks 8–10 results and opportunity data to distinguish sustainable role changes from isolated touchdown or efficiency spikes.
+- Used carries plus targets for RB volume, target share for WR/TE volume, and fantasy production for QB recency.
+- Included current injury and role context through the November 11 consensus and injury reports.
+- Added a small +0.6 value adjustment after a player has already completed his bye week.
+- Preserved 1-QB market reality and a modest RB scarcity premium without forcing several players to the same 100 rating.
+- Removed every older Week 3–7 runtime override. The November 11 board is now the only value layer loaded by the site.
 
-The ZIP contains the complete website, not merely the changed pages. Upload all eight HTML files plus new-tools-nav.js so every tool uses the same values and navigation remains consistent.
+OWNER-ONLY REVIEW FILES
 
-New tools included:
+These are intentionally outside the website upload package:
 
-1. League Analyzer (league.html)
-   - Overall power rankings for every imported team.
-   - Separate starter, bench, depth, and positional scores.
-   - Select a team to compare its QB, RB, WR, TE, FLEX, and individual starting slots against every league mate.
-   - Explain strengths, weaknesses, surplus positions, and trade needs without exposing hidden player values.
+- private_owner_week10_ros_rankings.html — every player, value, change, FantasyPros positional rank, and recent role data.
+- private_owner_week10_rating_audit.html — the largest risers and fallers with research notes and sources.
 
-2. Start/Sit Assistant (startsit.html)
-   - Type either player's name and choose from the matching results shown directly underneath; manual line entry has been removed.
-   - Compare players using role, matchup, and an automatic consensus projection.
-   - Automatically fills available NFL lines from the generated weekly-projections.json cache.
-   - The full player database remains automatically comparable when a sportsbook market is unavailable by using a clearly labeled internal position/tier estimate.
-   - Each successful workflow run retains up to eight prior projection snapshots per player so the page can display projection history.
-   - The updater now uses the provider's documented query-parameter authentication, paginates in Amateur-tier-sized batches, supports the current `receptions` market name, and converts available anytime-TD prices into a consensus probability.
-   - Projection cleanup rejects games that have already started, de-duplicates paginated events, keeps only full-game over/under props, selects each book's main line instead of an alternate, and uses only 0.5 anytime-touchdown markets.
-   - Player matching ignores punctuation and capitalization differences such as D'Andre/Dandre, J.K./Jk, and DeVonta/Devonta.
+The separate private-owner research download includes week10-rest-of-season-values.json and week10-rating-research.json for recordkeeping. Those owner files are excluded from the public website ZIP.
 
-LATEST INTERFACE AND SCORING UPDATE
+SPORTSBOOK WORKFLOW
 
-- League Analyzer scores now use 82% optimal-starter strength and 18% weighted usable bench depth. Scores span 55–100 instead of clustering in the 90s.
-- Position-room rankings weight RB/WR depth at 50%, 30%, 14%, and 6%. QB and TE are driven by the starter, plus 15% of a backup's value above the replacement thresholds (60 for QB and 58 for TE). Ordinary backups add nothing; genuinely strong backups add a modest insurance and trade-flexibility bonus.
-- FLEX slots are restricted to RB/WR/TE.
-- Trade Analyzer can import a Sleeper league ID and uses roster checkboxes for both sides of a trade.
-- Target Finder provides an exact rostered-player dropdown and a multi-select protected-player list.
-- Trade Block Finder provides a multi-select protected-player list; checked trade-block players remain mandatory in every generated offer.
-- Site-wide cleanup updates the stale homepage release label, makes Start/Sit wording match its real calculation, and gives Trade Block/Waiver pages accurate browser titles before their interfaces finish loading.
-
-SPORTSGAMEODDS AUTOMATIC UPDATE SETUP
-
-The included .github/workflows/update-projections.yml keeps the API key inside GitHub Actions and publishes only non-secret consensus lines. It runs daily, with an extra refresh on Thursday, Sunday, and Monday, and can also be run manually.
-
-After uploading every file (including the hidden .github folder):
-1. Open the repository's Actions tab.
-2. Select "Update sportsbook projections."
-3. Click "Run workflow" and run it from main.
-4. Wait for the green check. The workflow will update weekly-projections.json and GitHub Pages will redeploy automatically.
-
-The secret must be named SPORTSGAMEODDS_API_KEY. Repository workflow permissions must allow read and write access. Never put the actual key in an HTML or JavaScript file.
-
-If the workflow reports a 403 error, SportsGameOdds says that means the key does not have permission for the requested data. Confirm that the repository secret contains the API key emailed for the active Amateur subscription—not a billing link, account password, or Stripe identifier. The updated workflow prints the provider's safe error message without exposing the key.
-NEW: Streams of the Week (streams.html)
-- Researches 480 offensive depth-chart players across all 32 teams.
-- Covers each team's top 2 QBs, 4 RBs, 6 WRs, and 3 TEs.
-- Uses completed Thursday/Sunday box-score opportunity plus the automatic sportsbook feed.
-- Estimates 10- and 12-team availability or imports a Sleeper league for exact free agents.
+The existing GitHub workflow, API secret, and weekly-projections.json setup are unchanged. This ratings update does not expose the API key and does not require a new secret.
