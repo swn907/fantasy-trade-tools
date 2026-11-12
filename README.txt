@@ -1,30 +1,48 @@
-FANTASY TRADE TOOLS — WEEK 10 REST-OF-SEASON RATINGS UPDATE
+FANTASY TRADE TOOLS — FULL PROJECT REFRESH
 
-Updated November 11, 2026.
+Prepared November 12, 2026.
 
-Upload every file and folder in this package to the root of the GitHub repository. Replace duplicate files when GitHub asks. The public tools keep individual player values hidden.
+HOW TO INSTALL
+
+1. Open the fantasy-trade-tools repository on GitHub.
+2. Choose Add file → Upload files.
+3. Drag every file and folder from the PUBLIC download into the repository root.
+4. Replace files with matching names.
+5. Commit directly to main.
+6. Wait for the GitHub Pages deployment to finish, then hard-refresh the website.
 
 WHAT CHANGED
 
-- Rebuilt the complete shared value board from the current FantasyPros PPR rest-of-season consensus.
-- Reviewed 354 quarterbacks, running backs, wide receivers and tight ends.
-- Added 82 players who were not present in the October 26 board.
-- Used FantasyPros Weeks 8–10 results and opportunity data to distinguish sustainable role changes from isolated touchdown or efficiency spikes.
-- Used carries plus targets for RB volume, target share for WR/TE volume, and fantasy production for QB recency.
-- Included current injury and role context through the November 11 consensus and injury reports.
-- Added a small +0.6 value adjustment after a player has already completed his bye week.
-- Preserved 1-QB market reality and a modest RB scarcity premium without forcing several players to the same 100 rating.
-- Removed every older Week 3–7 runtime override. The November 11 board is now the only value layer loaded by the site.
+- Reorganized the home page into Trade Lab, Team Management, and Weekly Decisions.
+- Added visible ratings and sportsbook-feed freshness indicators across the site.
+- Fixed the Trade Generator JavaScript crash that stopped its team selectors from loading.
+- Removed the obsolete Monday value override so the November 11 board is the only final rating layer.
+- Made Start / Sit reject sportsbook data older than 72 hours instead of presenting it as current.
+- Preserved the old Week 7 streamer research as a clearly labeled archive and stopped it from mixing with props from another week.
+- Standardized every tool switcher so all nine destinations are available from each supported page.
+- Added keyboard skip navigation, visible focus indicators, larger tap targets, programmatic form labels, and live status announcements.
+- Remembered the Sleeper league ID locally in the visitor's own browser so it does not need to be retyped on every tool.
+- Replaced the browser's mismatched native select styling with one consistent dark control style.
+- Reduced the automated projection workflow from ten scheduled runs per week to four targeted lineup windows, which lowers API usage by 60%.
+- Added an eight-minute workflow timeout so a GitHub runner outage does not sit open indefinitely.
 
-OWNER-ONLY REVIEW FILES
+DATA-SAFETY RULES
 
-These are intentionally outside the website upload package:
+- Player ratings: November 11, 2026; 354 QB/RB/WR/TE players.
+- Sportsbook feed: considered current for 72 hours.
+- If the feed is old or unavailable, Start / Sit uses the player-value model and says so clearly.
+- A failed provider response never overwrites the last usable weekly-projections.json file.
+- Streamer recommendations are time-sensitive. This package intentionally labels the October 18 Week 7 model as an archive until a new weekly research dataset is built.
+- The SportsGameOdds secret stays in GitHub Actions. It is never included in the website files.
+- Sleeper league IDs are stored only in local browser storage and are sent only to Sleeper during import.
 
-- private_owner_week10_ros_rankings.html — every player, value, change, FantasyPros positional rank, and recent role data.
-- private_owner_week10_rating_audit.html — the largest risers and fallers with research notes and sources.
+SPORTSBOOK WORKFLOW SCHEDULE
 
-The separate private-owner research download includes week10-rest-of-season-values.json and week10-rating-research.json for recordkeeping. Those owner files are excluded from the public website ZIP.
+- Sunday morning: two refreshes before the main slate.
+- Monday: one refresh before Monday Night Football.
+- Thursday: one refresh before Thursday Night Football.
+- A manual Run workflow button remains available at any time.
 
-SPORTSBOOK WORKFLOW
+OWNER FILES
 
-The existing GitHub workflow, API secret, and weekly-projections.json setup are unchanged. This ratings update does not expose the API key and does not require a new secret.
+The PUBLIC ZIP intentionally excludes the private rating research JSON. Keep owner-only rankings and audit files outside the GitHub repository.

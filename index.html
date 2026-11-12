@@ -1,14 +1,88 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b1020"><title>Fantasy Trade Tools</title>
-<style>
-:root{--panel:#121a2b;--text:#f5f7fb;--muted:#98a2b3;--border:#2a3650;--accent:#6ea8fe;--hot:#ff526b}*{box-sizing:border-box}body{margin:0;min-height:100dvh;background:linear-gradient(180deg,#0b1020,#0f1728);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1180px;margin:auto;padding:42px 18px 58px}.hero{text-align:center}.badge{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:12px}h1{font-size:clamp(38px,7vw,64px);margin:14px 0 0;line-height:1.02}.sub{max-width:720px;margin:14px auto 0;color:var(--muted);line-height:1.55}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:30px}.card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:rgba(18,26,43,.96);border:1px solid var(--border);border-radius:20px;padding:22px;min-height:218px;transition:.18s}.card:hover,.card:focus-visible{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 14px 35px #0004}.card.new{border:2px solid var(--hot);box-shadow:0 0 0 1px #ff526b22,0 14px 34px #ff526b12}.new-label{position:absolute;right:14px;top:14px;padding:5px 9px;border-radius:999px;background:var(--hot);color:white;font-size:11px;font-weight:950;letter-spacing:.08em}.card.new:hover,.card.new:focus-visible{border-color:#ff7890;box-shadow:0 15px 38px #ff526b2b}.icon{font-size:30px}.card h2{font-size:21px;margin:15px 0 0}.card p{color:var(--muted);font-size:13px;line-height:1.5}.open{margin-top:auto;padding-top:18px;color:#86b7ff;font-weight:850;font-size:14px}.note{margin-top:22px;background:#10192a;border:1px solid var(--border);border-radius:16px;padding:15px 17px;color:var(--muted);font-size:13px;line-height:1.55}.footer{text-align:center;color:var(--muted);font-size:11px;margin-top:28px}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:580px){.grid{grid-template-columns:1fr}.card{min-height:0}.wrap{padding-top:28px}}
-</style></head><body><main class="wrap"><section class="hero"><div class="badge">2026 redraft • Live projection updates</div><h1>Fantasy Trade Tools</h1><p class="sub">Choose what you want to do. Every tool uses the same player values and roster-aware trade logic.</p></section><section class="grid">
-<a class="card" href="analyzer.html"><div class="icon">⚖️</div><h2>Analyze a Trade</h2><p>Enter a proposed two- or three-team deal and see which side has the adjusted edge.</p><div class="open">Open analyzer →</div></a>
-<a class="card" href="generator.html"><div class="icon">🔁</div><h2>Generate Trade Ideas</h2><p>Import your league and discover broad trade ideas across every team.</p><div class="open">Generate trades →</div></a>
-<a class="card" href="target.html"><div class="icon">🎯</div><h2>Target a Player</h2><p>Select one player you want and compare realistic packages to acquire them.</p><div class="open">Find target offers →</div></a>
-<a class="card" href="tradefinder.html"><div class="icon">🔄</div><h2>Shop Your Players</h2><p>Choose the players you will trade and browse 2K-style offers from every opponent.</p><div class="open">Find offers →</div></a>
-<a class="card" href="waiver.html"><div class="icon">➕</div><h2>Improve on Waivers</h2><p>Find genuinely available players and see exactly who you should consider dropping.</p><div class="open">Check waivers →</div></a>
-<a class="card" href="league.html"><div class="icon">📊</div><h2>Analyze Your League</h2><p>See league power rankings, positional strengths, bench depth, and every starting-slot rank.</p><div class="open">Analyze league →</div></a>
-<a class="card" href="startsit.html"><div class="icon">🧠</div><h2>Start / Sit Assistant</h2><p>Search any player and compare automatic sportsbook consensus or clearly labeled model projections.</p><div class="open">Compare players →</div></a>
-<a class="card new" href="streams.html"><span class="new-label">NEW</span><div class="icon">🌊</div><h2>Streams of the Week</h2><p>Find likely free-agent starters and waiver pickups for bye weeks, injuries, and one-week matchups.</p><div class="open">Find streamers →</div></a>
-</section><div class="note"><b>Shared value engine.</b> Trade tools include the −60 roster-spot adjustment, one-QB redundancy logic, roster fit, and a best-player premium.</div><div class="footer">Mobile friendly • Built for GitHub Pages</div></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <title>Fantasy Trade Tools</title>
+  <style>
+    :root{--panel:#121a2b;--text:#f5f7fb;--muted:#9da9bd;--border:#2a3650;--accent:#6ea8fe;--warn:#f0b95d}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100dvh;background:radial-gradient(circle at 50% -20%,#172748 0,#0b1020 43%,#0f1728 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+    .wrap{max-width:1180px;margin:auto;padding:48px 18px 70px}
+    .hero{text-align:center;max-width:850px;margin:auto}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:12px}
+    .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:#65d6a4;box-shadow:0 0 0 4px #65d6a420}
+    h1{font-size:clamp(42px,7vw,70px);letter-spacing:-.04em;margin:16px 0 0;line-height:1}
+    .sub{max-width:700px;margin:17px auto 0;color:var(--muted);line-height:1.6;font-size:16px}
+    .status{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:30px 0 42px;overflow:hidden;border:1px solid var(--border);border-radius:17px;background:var(--border)}
+    .status-item{background:#10192a;padding:15px 17px;color:var(--muted);font-size:12px;line-height:1.45}
+    .status-item strong{display:block;color:var(--text);font-size:13px;margin-bottom:2px}
+    .group{margin-top:34px}
+    .group-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:14px}
+    .group h2{font-size:22px;margin:0}
+    .group-head p{margin:0;color:var(--muted);font-size:13px}
+    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:rgba(18,26,43,.97);border:1px solid var(--border);border-radius:20px;padding:22px;min-height:218px;transition:.18s transform,.18s border-color,.18s box-shadow}
+    .card:hover,.card:focus-visible{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 16px 38px #0005}
+    .card.archive{border-color:#705d39;background:linear-gradient(145deg,#171c2b,#1b1b24)}
+    .card-label{position:absolute;right:14px;top:14px;padding:5px 9px;border:1px solid #80683b;border-radius:999px;background:#2a2314;color:#f7d99a;font-size:10px;font-weight:950;letter-spacing:.08em}
+    .icon{font-size:30px}
+    .card h3{font-size:20px;margin:15px 0 0}
+    .card p{color:var(--muted);font-size:13px;line-height:1.55;margin-bottom:10px}
+    .open{margin-top:auto;padding-top:14px;color:#86b7ff;font-weight:850;font-size:14px}
+    .note{margin-top:28px;background:#10192a;border:1px solid var(--border);border-radius:16px;padding:16px 18px;color:var(--muted);font-size:13px;line-height:1.6}
+    .note b{color:var(--text)}
+    .footer{text-align:center;color:var(--muted);font-size:11px;margin-top:30px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.status{grid-template-columns:1fr}.group-head{display:block}.group-head p{margin-top:5px}}
+    @media(max-width:580px){.grid,.grid.two{grid-template-columns:1fr}.card{min-height:0}.wrap{padding-top:30px}.status{margin-bottom:34px}}
+  </style>
+  <link rel="stylesheet" href="project-ui.css?v=20261112b">
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">2026 redraft • shared value engine</div>
+      <h1>Fantasy Trade Tools</h1>
+      <p class="sub">Trade smarter, audit your league, and make weekly lineup decisions with one consistent player-value board.</p>
+    </section>
+
+    <section class="status" aria-label="Project data status">
+      <div class="status-item"><strong>Ratings board</strong><span data-project-ratings>354 players • ratings Nov 11, 2026</span></div>
+      <div class="status-item"><strong>Weekly projections</strong><span data-project-feed>Checking sportsbook feed…</span></div>
+      <div class="status-item"><strong>League privacy</strong>Your Sleeper ID stays in this browser and is sent only to Sleeper when you import.</div>
+    </section>
+
+    <section class="group" aria-labelledby="trade-lab-title">
+      <div class="group-head"><div><h2 id="trade-lab-title">Trade lab</h2><p>Evaluate a deal or discover one from your actual league.</p></div></div>
+      <div class="grid">
+        <a class="card" href="analyzer.html"><div class="icon">⚖️</div><h3>Analyze a Trade</h3><p>Build a two- or three-team deal and see each side’s adjusted value and roster impact.</p><div class="open">Open analyzer →</div></a>
+        <a class="card" href="generator.html"><div class="icon">🔁</div><h3>Generate Trade Ideas</h3><p>Import a league and find realistic, roster-aware ideas across every opponent.</p><div class="open">Generate trades →</div></a>
+        <a class="card" href="target.html"><div class="icon">🎯</div><h3>Target a Player</h3><p>Choose who you want and compare practical packages that could acquire them.</p><div class="open">Find target offers →</div></a>
+        <a class="card" href="tradefinder.html"><div class="icon">🔄</div><h3>Shop Your Players</h3><p>Put players on the block, control package size, and browse offers from every team.</p><div class="open">Find offers →</div></a>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="team-tools-title">
+      <div class="group-head"><div><h2 id="team-tools-title">Team management</h2><p>Find weaknesses, depth advantages, and available upgrades.</p></div></div>
+      <div class="grid two">
+        <a class="card" href="league.html"><div class="icon">📊</div><h3>Analyze Your League</h3><p>See power rankings, position-room strength, bench depth, and every starting-slot rank.</p><div class="open">Analyze league →</div></a>
+        <a class="card" href="waiver.html"><div class="icon">➕</div><h3>Improve on Waivers</h3><p>Find genuinely available players and the realistic drop candidates on your roster.</p><div class="open">Check waivers →</div></a>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="weekly-tools-title">
+      <div class="group-head"><div><h2 id="weekly-tools-title">Weekly decisions</h2><p>Projection tools automatically disclose when their time-sensitive data is stale.</p></div></div>
+      <div class="grid two">
+        <a class="card" href="startsit.html"><div class="icon">🧠</div><h3>Start / Sit Assistant</h3><p>Compare searchable players using sportsbook consensus when fresh and clearly labeled model fallbacks otherwise.</p><div class="open">Compare players →</div></a>
+        <a class="card archive" href="streams.html"><span class="card-label">ARCHIVE</span><div class="icon">🌊</div><h3>Streamer Research</h3><p>Review the preserved Week 7 streamer model. Old weekly recommendations are blocked from appearing current.</p><div class="open">View research archive →</div></a>
+      </div>
+    </section>
+
+    <div class="note"><b>How trade values work.</b> Uneven packages include a −60 roster-spot adjustment, one-QB redundancy, roster fit, and a best-player premium. Individual values remain hidden from public visitors.</div>
+    <div class="footer">Mobile friendly • Built for GitHub Pages • Site refresh Nov 12, 2026</div>
+  </main>
+  <script src="project-ui.js?v=20261112b"></script>
+</body>
+</html>
