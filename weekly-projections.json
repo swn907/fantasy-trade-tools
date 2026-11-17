@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-17T02:28:25.804053+00:00",
+  "generatedAt": "2026-11-17T21:48:07.467267+00:00",
   "source": "SportsGameOdds",
   "league": "NFL",
-  "eventCount": 19,
-  "playerCount": 29,
+  "eventCount": 31,
+  "playerCount": 83,
   "players": [
     {
       "name": "Aaron Jones",
@@ -16,50 +16,50 @@
           "mean": 1.5,
           "min": 1.5,
           "max": 1.5,
-          "bookCount": 2,
+          "bookCount": 1,
           "books": [
             {
               "id": "bovada",
               "line": 1.5,
-              "odds": "-160"
-            },
-            {
-              "id": "draftkings",
-              "line": 1.5,
-              "odds": "-152"
+              "odds": "-139"
             }
           ]
         },
         "receiving_yards": {
-          "median": 9.5,
-          "mean": 9.5,
+          "median": 17.0,
+          "mean": 17.0,
           "min": 9.5,
-          "max": 9.5,
+          "max": 24.5,
           "bookCount": 2,
           "books": [
             {
-              "id": "bovada",
-              "line": 9.5,
-              "odds": "-115"
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "+400"
             },
             {
-              "id": "draftkings",
+              "id": "bovada",
               "line": 9.5,
-              "odds": "-113"
+              "odds": "-110"
             }
           ]
         },
         "rushing_yards": {
           "median": 31.5,
-          "mean": 31.25,
-          "min": 30.5,
-          "max": 31.5,
-          "bookCount": 4,
+          "mean": 30.5,
+          "min": 24.5,
+          "max": 34.5,
+          "bookCount": 5,
           "books": [
             {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "-250"
+            },
+            {
               "id": "bovada",
-              "line": 31.5,
-              "odds": "-115"
+              "line": 34.5,
+              "odds": "-118"
             },
             {
               "id": "caesars",
@@ -67,9 +67,9 @@
               "odds": "-112"
             },
             {
-              "id": "draftkings",
+              "id": "espnbet",
               "line": 31.5,
-              "odds": "-112"
+              "odds": "-110"
             },
             {
               "id": "fanduel",
@@ -97,6 +97,96 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIN @ SF",
+          "markets": {
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 1
+            },
+            "receiving_yards": {
+              "median": 17.0,
+              "bookCount": 2
+            },
+            "rushing_yards": {
+              "median": 31.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alvin Kamara",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 14.5,
+          "mean": 14.5,
+          "min": 14.5,
+          "max": 14.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 14.5,
+              "odds": "-112"
+            },
+            {
+              "id": "draftkings",
+              "line": 14.5,
+              "odds": "-117"
+            },
+            {
+              "id": "fanduel",
+              "line": 14.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "-150"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "-141"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-158"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 14.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -111,7 +201,7 @@
           "mean": 2.5,
           "min": 2.5,
           "max": 2.5,
-          "bookCount": 5,
+          "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
@@ -121,7 +211,7 @@
             {
               "id": "bovada",
               "line": 2.5,
-              "odds": "-105"
+              "odds": "+100"
             },
             {
               "id": "caesars",
@@ -131,7 +221,12 @@
             {
               "id": "draftkings",
               "line": 2.5,
-              "odds": "-105"
+              "odds": "-101"
+            },
+            {
+              "id": "espnbet",
+              "line": 2.5,
+              "odds": "+100"
             },
             {
               "id": "fanduel",
@@ -142,15 +237,15 @@
         },
         "receiving_yards": {
           "median": 23.5,
-          "mean": 23.3,
+          "mean": 23.33,
           "min": 22.5,
           "max": 23.5,
-          "bookCount": 5,
+          "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
               "line": 22.5,
-              "odds": "-120"
+              "odds": "-115"
             },
             {
               "id": "bovada",
@@ -165,7 +260,12 @@
             {
               "id": "draftkings",
               "line": 23.5,
-              "odds": "-112"
+              "odds": "-110"
+            },
+            {
+              "id": "espnbet",
+              "line": 23.5,
+              "odds": "-115"
             },
             {
               "id": "fanduel",
@@ -203,6 +303,20 @@
               "bookCount": 5
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 23.5,
+              "bookCount": 6
+            }
+          }
         }
       ]
     },
@@ -217,7 +331,7 @@
           "mean": 1.5,
           "min": 1.5,
           "max": 1.5,
-          "bookCount": 4,
+          "bookCount": 5,
           "books": [
             {
               "id": "bovada",
@@ -227,45 +341,55 @@
             {
               "id": "caesars",
               "line": 1.5,
-              "odds": "+125"
+              "odds": "+140"
             },
             {
               "id": "draftkings",
               "line": 1.5,
-              "odds": "+138"
+              "odds": "+133"
+            },
+            {
+              "id": "espnbet",
+              "line": 1.5,
+              "odds": "+140"
             },
             {
               "id": "fanduel",
               "line": 1.5,
-              "odds": "+122"
+              "odds": "+144"
             }
           ]
         },
         "receiving_yards": {
-          "median": 16.5,
-          "mean": 16.5,
-          "min": 16.5,
-          "max": 16.5,
-          "bookCount": 4,
+          "median": 14.5,
+          "mean": 14.9,
+          "min": 14.5,
+          "max": 15.5,
+          "bookCount": 5,
           "books": [
             {
               "id": "bovada",
-              "line": 16.5,
+              "line": 15.5,
               "odds": "-120"
             },
             {
               "id": "caesars",
-              "line": 16.5,
+              "line": 14.5,
               "odds": "-115"
             },
             {
               "id": "draftkings",
-              "line": 16.5,
+              "line": 15.5,
               "odds": "-116"
             },
             {
+              "id": "espnbet",
+              "line": 14.5,
+              "odds": "-120"
+            },
+            {
               "id": "fanduel",
-              "line": 16.5,
+              "line": 14.5,
               "odds": "-114"
             }
           ]
@@ -299,6 +423,380 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 5
+            },
+            "receiving_yards": {
+              "median": 14.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Audric Estime",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 21.5,
+          "mean": 21.5,
+          "min": 21.5,
+          "max": 21.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 21.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 21.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "rushing_yards": {
+              "median": 21.5,
+              "bookCount": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bhayshul Tuten",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 74.0,
+          "mean": 74.0,
+          "min": 73.5,
+          "max": 74.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 73.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 73.5,
+              "odds": "-113"
+            },
+            {
+              "id": "espnbet",
+              "line": 74.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 74.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 13.5,
+          "mean": 13.83,
+          "min": 13.5,
+          "max": 14.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 13.5,
+              "odds": "-117"
+            },
+            {
+              "id": "draftkings",
+              "line": 14.5,
+              "odds": "-116"
+            },
+            {
+              "id": "fanduel",
+              "line": 13.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "-176"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "-192"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "-188"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "rushing_yards": {
+              "median": 74.0,
+              "bookCount": 4
+            },
+            "receiving_yards": {
+              "median": 13.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Brenton Strange",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 32.5,
+          "mean": 32.83,
+          "min": 32.5,
+          "max": 33.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 32.5,
+              "odds": "-118"
+            },
+            {
+              "id": "draftkings",
+              "line": 33.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 32.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 3.5,
+          "mean": 3.17,
+          "min": 2.5,
+          "max": 3.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 3.5,
+              "odds": "+126"
+            },
+            {
+              "id": "draftkings",
+              "line": 3.5,
+              "odds": "+113"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-174"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 32.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Brevyn Spannford",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 23.5,
+          "mean": 22.83,
+          "min": 21.5,
+          "max": 23.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 23.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 21.5,
+              "odds": "-110"
+            },
+            {
+              "id": "fanduel",
+              "line": 23.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "-120"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "-106"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-120"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "receiving_yards": {
+              "median": 23.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Brian Thomas",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 11.5,
+          "mean": 11.5,
+          "min": 10.5,
+          "max": 12.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 11.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 10.5,
+              "odds": "-113"
+            },
+            {
+              "id": "fanduel",
+              "line": 12.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "+166"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "+177"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "+168"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 11.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -309,15 +807,20 @@
       "startsAt": "2026-11-23T01:20:00.000Z",
       "markets": {
         "passing_yards": {
-          "median": 244.5,
-          "mean": 245.0,
-          "min": 244.5,
-          "max": 246.5,
-          "bookCount": 4,
+          "median": 245.5,
+          "mean": 245.67,
+          "min": 243.5,
+          "max": 249.5,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 249.5,
+              "odds": "-120"
+            },
+            {
               "id": "bovada",
-              "line": 244.5,
+              "line": 243.5,
               "odds": "-115"
             },
             {
@@ -327,8 +830,13 @@
             },
             {
               "id": "draftkings",
-              "line": 244.5,
-              "odds": "-112"
+              "line": 243.5,
+              "odds": "-113"
+            },
+            {
+              "id": "espnbet",
+              "line": 246.5,
+              "odds": "-110"
             },
             {
               "id": "fanduel",
@@ -338,26 +846,36 @@
           ]
         },
         "rushing_yards": {
-          "median": 16.5,
-          "mean": 16.5,
+          "median": 17.5,
+          "mean": 18.33,
           "min": 16.5,
-          "max": 16.5,
-          "bookCount": 4,
+          "max": 24.5,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "+120"
+            },
+            {
               "id": "bovada",
-              "line": 16.5,
+              "line": 17.5,
               "odds": "-115"
             },
             {
               "id": "caesars",
               "line": 16.5,
-              "odds": "-113"
+              "odds": "-114"
             },
             {
               "id": "draftkings",
-              "line": 16.5,
-              "odds": "-112"
+              "line": 17.5,
+              "odds": "-110"
+            },
+            {
+              "id": "espnbet",
+              "line": 17.5,
+              "odds": "-105"
             },
             {
               "id": "fanduel",
@@ -371,17 +889,22 @@
           "mean": 0.5,
           "min": 0.5,
           "max": 0.5,
-          "bookCount": 3,
+          "bookCount": 4,
           "books": [
             {
               "id": "bovada",
               "line": 0.5,
-              "odds": "-110"
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "-115"
             },
             {
               "id": "draftkings",
               "line": 0.5,
-              "odds": "-110"
+              "odds": "-113"
             },
             {
               "id": "fanduel",
@@ -395,8 +918,13 @@
           "mean": 1.5,
           "min": 1.5,
           "max": 1.5,
-          "bookCount": 4,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 1.5,
+              "odds": "-135"
+            },
             {
               "id": "bovada",
               "line": 1.5,
@@ -413,9 +941,14 @@
               "odds": "-115"
             },
             {
+              "id": "espnbet",
+              "line": 1.5,
+              "odds": "-115"
+            },
+            {
               "id": "fanduel",
               "line": 1.5,
-              "odds": "-120"
+              "odds": "-114"
             }
           ]
         }
@@ -442,6 +975,562 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIN @ SF",
+          "markets": {
+            "passing_yards": {
+              "median": 245.5,
+              "bookCount": 6
+            },
+            "rushing_yards": {
+              "median": 17.5,
+              "bookCount": 6
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 4
+            },
+            "passing_touchdowns": {
+              "median": 1.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Caleb Douglas",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 4.5,
+          "mean": 4.5,
+          "min": 4.5,
+          "max": 4.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 4.5,
+              "odds": "+110"
+            },
+            {
+              "id": "caesars",
+              "line": 4.5,
+              "odds": "+109"
+            },
+            {
+              "id": "draftkings",
+              "line": 4.5,
+              "odds": "+110"
+            },
+            {
+              "id": "espnbet",
+              "line": 4.5,
+              "odds": "+105"
+            },
+            {
+              "id": "fanduel",
+              "line": 4.5,
+              "odds": "+102"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 50.0,
+          "mean": 50.5,
+          "min": 49.5,
+          "max": 52.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "-125"
+            },
+            {
+              "id": "bovada",
+              "line": 49.5,
+              "odds": "-110"
+            },
+            {
+              "id": "caesars",
+              "line": 50.5,
+              "odds": "-117"
+            },
+            {
+              "id": "draftkings",
+              "line": 49.5,
+              "odds": "-109"
+            },
+            {
+              "id": "espnbet",
+              "line": 52.5,
+              "odds": "-105"
+            },
+            {
+              "id": "fanduel",
+              "line": 51.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "receiving_receptions": {
+              "median": 4.5,
+              "bookCount": 5
+            },
+            "receiving_yards": {
+              "median": 50.0,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Caleb Williams",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "passing_yards": {
+          "median": 249.5,
+          "mean": 249.75,
+          "min": 249.5,
+          "max": 250.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 249.5,
+              "odds": "-135"
+            },
+            {
+              "id": "caesars",
+              "line": 249.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 250.5,
+              "odds": "-111"
+            },
+            {
+              "id": "fanduel",
+              "line": 249.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "rushing_yards": {
+          "median": 17.5,
+          "mean": 17.5,
+          "min": 17.5,
+          "max": 17.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 17.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 17.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 1,
+          "books": [
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "+134"
+            }
+          ]
+        },
+        "passing_touchdowns": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+151"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "+137"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "+148"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "passing_yards": {
+              "median": 249.5,
+              "bookCount": 4
+            },
+            "rushing_yards": {
+              "median": 17.5,
+              "bookCount": 2
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 1
+            },
+            "passing_touchdowns": {
+              "median": 2.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cameron Skattebo",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 52.5,
+          "mean": 52.75,
+          "min": 52.5,
+          "max": 53.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 52.5,
+              "odds": "-110"
+            },
+            {
+              "id": "draftkings",
+              "line": 52.5,
+              "odds": "-110"
+            },
+            {
+              "id": "espnbet",
+              "line": 53.5,
+              "odds": "+100"
+            },
+            {
+              "id": "fanduel",
+              "line": 52.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 13.5,
+          "mean": 13.83,
+          "min": 13.5,
+          "max": 14.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 13.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 14.5,
+              "odds": "-117"
+            },
+            {
+              "id": "fanduel",
+              "line": 13.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+138"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "+128"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "+134"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "rushing_yards": {
+              "median": 52.5,
+              "bookCount": 4
+            },
+            "receiving_yards": {
+              "median": 13.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cameron Ward",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "passing_yards": {
+          "median": 237.0,
+          "mean": 237.0,
+          "min": 236.5,
+          "max": 237.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 236.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 237.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 1,
+          "books": [
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "+114"
+            }
+          ]
+        },
+        "passing_touchdowns": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "-103"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "-106"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "passing_yards": {
+              "median": 237.0,
+              "bookCount": 2
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 1
+            },
+            "passing_touchdowns": {
+              "median": 1.5,
+              "bookCount": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Carnell Tate",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 5.5,
+          "mean": 5.5,
+          "min": 5.5,
+          "max": 5.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 5.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 5.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 64.5,
+          "mean": 64.5,
+          "min": 64.5,
+          "max": 64.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 64.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 64.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 2
+            },
+            "receiving_yards": {
+              "median": 64.5,
+              "bookCount": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ceedee Lamb",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 92.5,
+          "mean": 92.5,
+          "min": 92.5,
+          "max": 92.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 92.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 92.5,
+              "odds": "-111"
+            },
+            {
+              "id": "fanduel",
+              "line": 92.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 7.5,
+          "mean": 7.5,
+          "min": 7.5,
+          "max": 7.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 7.5,
+              "odds": "-127"
+            },
+            {
+              "id": "draftkings",
+              "line": 7.5,
+              "odds": "-123"
+            },
+            {
+              "id": "fanduel",
+              "line": 7.5,
+              "odds": "-132"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "receiving_yards": {
+              "median": 92.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 7.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -453,11 +1542,36 @@
       "markets": {
         "rushing_yards": {
           "median": 43.5,
-          "mean": 43.5,
+          "mean": 43.67,
           "min": 43.5,
-          "max": 43.5,
-          "bookCount": 1,
+          "max": 44.5,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 43.5,
+              "odds": "-115"
+            },
+            {
+              "id": "bovada",
+              "line": 43.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 43.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 43.5,
+              "odds": "-112"
+            },
+            {
+              "id": "espnbet",
+              "line": 44.5,
+              "odds": "-110"
+            },
             {
               "id": "fanduel",
               "line": 43.5,
@@ -466,26 +1580,36 @@
           ]
         },
         "receiving_yards": {
-          "median": 25.5,
+          "median": 26.5,
           "mean": 26.5,
           "min": 25.5,
-          "max": 29.5,
-          "bookCount": 4,
+          "max": 28.5,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 28.5,
+              "odds": "+100"
+            },
+            {
               "id": "bovada",
-              "line": 25.5,
-              "odds": "-115"
+              "line": 26.5,
+              "odds": "-110"
             },
             {
               "id": "caesars",
-              "line": 29.5,
-              "odds": "+104"
+              "line": 25.5,
+              "odds": "-114"
             },
             {
               "id": "draftkings",
-              "line": 25.5,
-              "odds": "-116"
+              "line": 26.5,
+              "odds": "-108"
+            },
+            {
+              "id": "espnbet",
+              "line": 26.5,
+              "odds": "-110"
             },
             {
               "id": "fanduel",
@@ -499,12 +1623,17 @@
           "mean": 4.5,
           "min": 4.5,
           "max": 4.5,
-          "bookCount": 4,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 4.5,
+              "odds": "-110"
+            },
             {
               "id": "bovada",
               "line": 4.5,
-              "odds": "-110"
+              "odds": "-115"
             },
             {
               "id": "caesars",
@@ -514,7 +1643,12 @@
             {
               "id": "draftkings",
               "line": 4.5,
-              "odds": "-106"
+              "odds": "-114"
+            },
+            {
+              "id": "espnbet",
+              "line": 4.5,
+              "odds": "+100"
             },
             {
               "id": "fanduel",
@@ -542,6 +1676,24 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "rushing_yards": {
+              "median": 43.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 26.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 4.5,
+              "bookCount": 6
+            }
+          }
         }
       ]
     },
@@ -552,21 +1704,36 @@
       "startsAt": "2026-11-24T01:15:00.000Z",
       "markets": {
         "receiving_yards": {
-          "median": 40.5,
-          "mean": 40.17,
-          "min": 39.5,
-          "max": 40.5,
-          "bookCount": 3,
+          "median": 41.5,
+          "mean": 41.67,
+          "min": 40.5,
+          "max": 42.5,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 42.5,
+              "odds": "-120"
+            },
+            {
+              "id": "bovada",
+              "line": 41.5,
+              "odds": "-115"
+            },
+            {
               "id": "caesars",
-              "line": 39.5,
-              "odds": "-139"
+              "line": 41.5,
+              "odds": "-113"
             },
             {
               "id": "draftkings",
-              "line": 40.5,
-              "odds": "-109"
+              "line": 41.5,
+              "odds": "-111"
+            },
+            {
+              "id": "espnbet",
+              "line": 42.5,
+              "odds": "-105"
             },
             {
               "id": "fanduel",
@@ -580,17 +1747,32 @@
           "mean": 4.5,
           "min": 4.5,
           "max": 4.5,
-          "bookCount": 3,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 4.5,
+              "odds": "+100"
+            },
+            {
+              "id": "bovada",
+              "line": 4.5,
+              "odds": "+120"
+            },
             {
               "id": "caesars",
               "line": 4.5,
-              "odds": "+117"
+              "odds": "+112"
             },
             {
               "id": "draftkings",
               "line": 4.5,
-              "odds": "+125"
+              "odds": "+121"
+            },
+            {
+              "id": "espnbet",
+              "line": 4.5,
+              "odds": "+115"
             },
             {
               "id": "fanduel",
@@ -614,6 +1796,146 @@
               "bookCount": 3
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "receiving_yards": {
+              "median": 41.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 4.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Chris Olave",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 69.5,
+          "mean": 70.5,
+          "min": 68.5,
+          "max": 74.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 74.5,
+              "odds": "+100"
+            },
+            {
+              "id": "caesars",
+              "line": 68.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 69.5,
+              "odds": "-111"
+            },
+            {
+              "id": "fanduel",
+              "line": 69.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 5.5,
+          "mean": 5.5,
+          "min": 5.5,
+          "max": 5.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 5.5,
+              "odds": "+109"
+            },
+            {
+              "id": "draftkings",
+              "line": 5.5,
+              "odds": "+118"
+            },
+            {
+              "id": "fanduel",
+              "line": 5.5,
+              "odds": "+106"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 69.5,
+              "bookCount": 4
+            },
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Chris Rodriguez Jr.",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 19.0,
+          "mean": 19.0,
+          "min": 18.5,
+          "max": 19.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 18.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 18.5,
+              "odds": "-114"
+            },
+            {
+              "id": "espnbet",
+              "line": 19.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 19.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "rushing_yards": {
+              "median": 19.0,
+              "bookCount": 4
+            }
+          }
         }
       ]
     },
@@ -624,26 +1946,36 @@
       "startsAt": "2026-11-23T01:20:00.000Z",
       "markets": {
         "rushing_yards": {
-          "median": 49.5,
-          "mean": 49.5,
+          "median": 50.5,
+          "mean": 50.17,
           "min": 49.5,
-          "max": 49.5,
-          "bookCount": 4,
+          "max": 50.5,
+          "bookCount": 6,
           "books": [
             {
-              "id": "bovada",
+              "id": "betmgm",
               "line": 49.5,
+              "odds": "-125"
+            },
+            {
+              "id": "bovada",
+              "line": 50.5,
               "odds": "-115"
             },
             {
               "id": "caesars",
-              "line": 49.5,
-              "odds": "-117"
+              "line": 50.5,
+              "odds": "-125"
             },
             {
               "id": "draftkings",
-              "line": 49.5,
+              "line": 50.5,
               "odds": "-114"
+            },
+            {
+              "id": "espnbet",
+              "line": 50.5,
+              "odds": "-120"
             },
             {
               "id": "fanduel",
@@ -654,15 +1986,20 @@
         },
         "receiving_yards": {
           "median": 33.5,
-          "mean": 33.5,
-          "min": 33.5,
-          "max": 33.5,
-          "bookCount": 4,
+          "mean": 35.83,
+          "min": 32.5,
+          "max": 49.5,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "+200"
+            },
+            {
               "id": "bovada",
-              "line": 33.5,
-              "odds": "-110"
+              "line": 32.5,
+              "odds": "-115"
             },
             {
               "id": "caesars",
@@ -671,8 +2008,13 @@
             },
             {
               "id": "draftkings",
+              "line": 32.5,
+              "odds": "-111"
+            },
+            {
+              "id": "espnbet",
               "line": 33.5,
-              "odds": "-109"
+              "odds": "-115"
             },
             {
               "id": "fanduel",
@@ -686,7 +2028,7 @@
           "mean": 3.5,
           "min": 3.5,
           "max": 3.5,
-          "bookCount": 4,
+          "bookCount": 5,
           "books": [
             {
               "id": "bovada",
@@ -701,7 +2043,12 @@
             {
               "id": "draftkings",
               "line": 3.5,
-              "odds": "-125"
+              "odds": "-122"
+            },
+            {
+              "id": "espnbet",
+              "line": 3.5,
+              "odds": "-130"
             },
             {
               "id": "fanduel",
@@ -729,6 +2076,24 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIN @ SF",
+          "markets": {
+            "rushing_yards": {
+              "median": 50.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 33.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 5
+            }
+          }
         }
       ]
     },
@@ -740,30 +2105,30 @@
       "markets": {
         "passing_yards": {
           "median": 261.5,
-          "mean": 261.17,
-          "min": 257.5,
-          "max": 263.5,
+          "mean": 261.83,
+          "min": 261.5,
+          "max": 262.5,
           "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
-              "line": 257.5,
-              "odds": "-115"
-            },
-            {
-              "id": "bovada",
-              "line": 260.5,
-              "odds": "-115"
-            },
-            {
-              "id": "caesars",
               "line": 262.5,
               "odds": "-115"
             },
             {
+              "id": "bovada",
+              "line": 261.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 261.5,
+              "odds": "-115"
+            },
+            {
               "id": "draftkings",
-              "line": 260.5,
-              "odds": "-112"
+              "line": 261.5,
+              "odds": "-113"
             },
             {
               "id": "espnbet",
@@ -772,14 +2137,14 @@
             },
             {
               "id": "fanduel",
-              "line": 263.5,
+              "line": 261.5,
               "odds": "-114"
             }
           ]
         },
         "passing_touchdowns": {
-          "median": 1.5,
-          "mean": 1.67,
+          "median": 2.5,
+          "mean": 2.33,
           "min": 1.5,
           "max": 2.5,
           "bookCount": 6,
@@ -787,32 +2152,32 @@
             {
               "id": "betmgm",
               "line": 1.5,
-              "odds": "-190"
+              "odds": "-220"
             },
             {
               "id": "bovada",
-              "line": 1.5,
-              "odds": "-210"
+              "line": 2.5,
+              "odds": "+160"
             },
             {
               "id": "caesars",
-              "line": 1.5,
-              "odds": "-205"
+              "line": 2.5,
+              "odds": "+154"
             },
             {
               "id": "draftkings",
-              "line": 1.5,
-              "odds": "-205"
+              "line": 2.5,
+              "odds": "+164"
             },
             {
               "id": "espnbet",
-              "line": 1.5,
-              "odds": "-200"
+              "line": 2.5,
+              "odds": "+160"
             },
             {
               "id": "fanduel",
               "line": 2.5,
-              "odds": "+168"
+              "odds": "+164"
             }
           ]
         },
@@ -821,22 +2186,32 @@
           "mean": 0.5,
           "min": 0.5,
           "max": 0.5,
-          "bookCount": 4,
+          "bookCount": 6,
           "books": [
             {
-              "id": "bovada",
+              "id": "betmgm",
               "line": 0.5,
               "odds": "+125"
             },
             {
+              "id": "bovada",
+              "line": 0.5,
+              "odds": "+110"
+            },
+            {
               "id": "caesars",
               "line": 0.5,
-              "odds": "+124"
+              "odds": "+116"
             },
             {
               "id": "draftkings",
               "line": 0.5,
-              "odds": "+126"
+              "odds": "+111"
+            },
+            {
+              "id": "espnbet",
+              "line": 0.5,
+              "odds": "+120"
             },
             {
               "id": "fanduel",
@@ -850,27 +2225,32 @@
           "mean": 10.5,
           "min": 10.5,
           "max": 10.5,
-          "bookCount": 5,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 10.5,
+              "odds": "-110"
+            },
             {
               "id": "bovada",
               "line": 10.5,
-              "odds": "-120"
+              "odds": "-115"
             },
             {
               "id": "caesars",
               "line": 10.5,
-              "odds": "-112"
+              "odds": "-110"
             },
             {
               "id": "draftkings",
               "line": 10.5,
-              "odds": "-117"
+              "odds": "-110"
             },
             {
               "id": "espnbet",
               "line": 10.5,
-              "odds": "-120"
+              "odds": "-115"
             },
             {
               "id": "fanduel",
@@ -924,6 +2304,282 @@
               "bookCount": 5
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "passing_yards": {
+              "median": 261.5,
+              "bookCount": 6
+            },
+            "passing_touchdowns": {
+              "median": 2.5,
+              "bookCount": 6
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 6
+            },
+            "rushing_yards": {
+              "median": 10.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Colston Loveland",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 50.5,
+          "mean": 50.17,
+          "min": 49.5,
+          "max": 50.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "-150"
+            },
+            {
+              "id": "caesars",
+              "line": 50.5,
+              "odds": "-117"
+            },
+            {
+              "id": "fanduel",
+              "line": 50.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 4.5,
+          "mean": 4.5,
+          "min": 4.5,
+          "max": 4.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 4.5,
+              "odds": "-129"
+            },
+            {
+              "id": "fanduel",
+              "line": 4.5,
+              "odds": "-132"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 50.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 4.5,
+              "bookCount": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dak Prescott",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "passing_yards": {
+          "median": 276.5,
+          "mean": 277.83,
+          "min": 276.5,
+          "max": 280.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 276.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 280.5,
+              "odds": "-111"
+            },
+            {
+              "id": "fanduel",
+              "line": 276.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 1,
+          "books": [
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "+154"
+            }
+          ]
+        },
+        "passing_touchdowns": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "-128"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-118"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "passing_yards": {
+              "median": 276.5,
+              "bookCount": 3
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 1
+            },
+            "passing_touchdowns": {
+              "median": 2.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dalton Kincaid",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 27.5,
+          "mean": 27.33,
+          "min": 24.5,
+          "max": 29.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "-185"
+            },
+            {
+              "id": "bovada",
+              "line": 27.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 27.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 27.5,
+              "odds": "-114"
+            },
+            {
+              "id": "espnbet",
+              "line": 29.5,
+              "odds": "-105"
+            },
+            {
+              "id": "fanduel",
+              "line": 27.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 2.5,
+              "odds": "+130"
+            },
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+121"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "+131"
+            },
+            {
+              "id": "espnbet",
+              "line": 2.5,
+              "odds": "+110"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "+116"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "receiving_yards": {
+              "median": 27.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 5
+            }
+          }
         }
       ]
     },
@@ -938,7 +2594,7 @@
           "mean": 3.5,
           "min": 3.5,
           "max": 3.5,
-          "bookCount": 5,
+          "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
@@ -948,7 +2604,7 @@
             {
               "id": "bovada",
               "line": 3.5,
-              "odds": "+105"
+              "odds": "-105"
             },
             {
               "id": "caesars",
@@ -958,18 +2614,23 @@
             {
               "id": "draftkings",
               "line": 3.5,
-              "odds": "+106"
+              "odds": "-104"
+            },
+            {
+              "id": "espnbet",
+              "line": 3.5,
+              "odds": "+105"
             },
             {
               "id": "fanduel",
               "line": 3.5,
-              "odds": "-102"
+              "odds": "+112"
             }
           ]
         },
         "receiving_yards": {
-          "median": 30.0,
-          "mean": 30.33,
+          "median": 31.0,
+          "mean": 30.83,
           "min": 29.5,
           "max": 32.5,
           "bookCount": 6,
@@ -981,18 +2642,18 @@
             },
             {
               "id": "bovada",
-              "line": 30.5,
-              "odds": "-110"
+              "line": 31.5,
+              "odds": "-120"
             },
             {
               "id": "caesars",
-              "line": 29.5,
+              "line": 30.5,
               "odds": "-114"
             },
             {
               "id": "draftkings",
-              "line": 30.5,
-              "odds": "-109"
+              "line": 31.5,
+              "odds": "-115"
             },
             {
               "id": "espnbet",
@@ -1035,6 +2696,115 @@
               "bookCount": 6
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 31.0,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dandre Swift",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 63.5,
+          "mean": 67.17,
+          "min": 63.5,
+          "max": 74.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 74.5,
+              "odds": "+140"
+            },
+            {
+              "id": "caesars",
+              "line": 63.5,
+              "odds": "-117"
+            },
+            {
+              "id": "fanduel",
+              "line": 63.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+100"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-102"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 14.5,
+          "mean": 17.83,
+          "min": 14.5,
+          "max": 24.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "+140"
+            },
+            {
+              "id": "caesars",
+              "line": 14.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 14.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "rushing_yards": {
+              "median": 63.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 2
+            },
+            "receiving_yards": {
+              "median": 14.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -1045,36 +2815,36 @@
       "startsAt": "2026-11-20T01:15:00.000Z",
       "markets": {
         "passing_yards": {
-          "median": 182.0,
-          "mean": 182.5,
-          "min": 180.5,
-          "max": 184.5,
+          "median": 181.5,
+          "mean": 181.0,
+          "min": 178.5,
+          "max": 182.5,
           "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
-              "line": 180.5,
+              "line": 178.5,
               "odds": "-115"
             },
             {
               "id": "bovada",
-              "line": 184.5,
+              "line": 181.5,
               "odds": "-115"
             },
             {
               "id": "caesars",
-              "line": 181.5,
+              "line": 180.5,
               "odds": "-114"
             },
             {
               "id": "draftkings",
-              "line": 184.5,
-              "odds": "-113"
+              "line": 181.5,
+              "odds": "-111"
             },
             {
               "id": "espnbet",
               "line": 182.5,
-              "odds": "-120"
+              "odds": "-110"
             },
             {
               "id": "fanduel",
@@ -1093,32 +2863,32 @@
             {
               "id": "betmgm",
               "line": 0.5,
-              "odds": "-175"
+              "odds": "-140"
             },
             {
               "id": "bovada",
               "line": 0.5,
-              "odds": "-160"
+              "odds": "-150"
             },
             {
               "id": "caesars",
               "line": 0.5,
-              "odds": "-150"
+              "odds": "-143"
             },
             {
               "id": "draftkings",
               "line": 0.5,
-              "odds": "-158"
+              "odds": "-145"
             },
             {
               "id": "espnbet",
               "line": 0.5,
-              "odds": "-155"
+              "odds": "-140"
             },
             {
               "id": "fanduel",
               "line": 0.5,
-              "odds": "-146"
+              "odds": "-154"
             }
           ]
         },
@@ -1127,27 +2897,32 @@
           "mean": 0.5,
           "min": 0.5,
           "max": 0.5,
-          "bookCount": 5,
+          "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
               "line": 0.5,
-              "odds": "-160"
+              "odds": "-165"
             },
             {
               "id": "bovada",
               "line": 0.5,
-              "odds": "-170"
+              "odds": "-210"
             },
             {
               "id": "caesars",
               "line": 0.5,
-              "odds": "-175"
+              "odds": "-190"
             },
             {
               "id": "draftkings",
               "line": 0.5,
-              "odds": "-167"
+              "odds": "-203"
+            },
+            {
+              "id": "espnbet",
+              "line": 0.5,
+              "odds": "-175"
             },
             {
               "id": "fanduel",
@@ -1158,30 +2933,25 @@
         },
         "rushing_yards": {
           "median": 7.5,
-          "mean": 7.83,
+          "mean": 7.7,
           "min": 7.5,
           "max": 8.5,
-          "bookCount": 6,
+          "bookCount": 5,
           "books": [
-            {
-              "id": "betmgm",
-              "line": 8.5,
-              "odds": "-115"
-            },
             {
               "id": "bovada",
               "line": 7.5,
-              "odds": "-120"
+              "odds": "-115"
             },
             {
               "id": "caesars",
               "line": 7.5,
-              "odds": "-110"
+              "odds": "-107"
             },
             {
               "id": "draftkings",
               "line": 7.5,
-              "odds": "-120"
+              "odds": "-112"
             },
             {
               "id": "espnbet",
@@ -1240,6 +3010,100 @@
               "bookCount": 6
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "passing_yards": {
+              "median": 181.5,
+              "bookCount": 6
+            },
+            "passing_touchdowns": {
+              "median": 0.5,
+              "bookCount": 6
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 6
+            },
+            "rushing_yards": {
+              "median": 7.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Darnell Mooney",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 14.5,
+          "mean": 14.83,
+          "min": 14.5,
+          "max": 15.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 14.5,
+              "odds": "-118"
+            },
+            {
+              "id": "draftkings",
+              "line": 14.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 15.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "-103"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "+102"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "-106"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 14.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -1259,7 +3123,7 @@
             {
               "id": "bovada",
               "line": 59.5,
-              "odds": "+103"
+              "odds": "+110"
             },
             {
               "id": "caesars",
@@ -1269,7 +3133,7 @@
             {
               "id": "espnbet",
               "line": 59.5,
-              "odds": "-105"
+              "odds": "+100"
             }
           ]
         }
@@ -1294,6 +3158,16 @@
               "bookCount": 3
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "rushing_yards": {
+              "median": 59.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -1308,27 +3182,32 @@
           "mean": 1.5,
           "min": 1.5,
           "max": 1.5,
-          "bookCount": 5,
+          "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
               "line": 1.5,
-              "odds": "-150"
+              "odds": "-155"
             },
             {
               "id": "bovada",
               "line": 1.5,
-              "odds": "-130"
+              "odds": "-150"
             },
             {
               "id": "caesars",
               "line": 1.5,
-              "odds": "-136"
+              "odds": "-141"
             },
             {
               "id": "draftkings",
               "line": 1.5,
-              "odds": "-129"
+              "odds": "-146"
+            },
+            {
+              "id": "espnbet",
+              "line": 1.5,
+              "odds": "-150"
             },
             {
               "id": "fanduel",
@@ -1339,10 +3218,10 @@
         },
         "receiving_yards": {
           "median": 15.5,
-          "mean": 15.1,
-          "min": 14.5,
-          "max": 15.5,
-          "bookCount": 5,
+          "mean": 15.83,
+          "min": 15.5,
+          "max": 16.5,
+          "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
@@ -1351,8 +3230,8 @@
             },
             {
               "id": "bovada",
-              "line": 14.5,
-              "odds": "-120"
+              "line": 16.5,
+              "odds": "-110"
             },
             {
               "id": "caesars",
@@ -1361,8 +3240,13 @@
             },
             {
               "id": "draftkings",
-              "line": 14.5,
-              "odds": "-115"
+              "line": 16.5,
+              "odds": "-108"
+            },
+            {
+              "id": "espnbet",
+              "line": 15.5,
+              "odds": "-120"
             },
             {
               "id": "fanduel",
@@ -1400,6 +3284,243 @@
               "bookCount": 5
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 15.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Devaughn Vele",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+125"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "+121"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "+122"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 22.5,
+          "mean": 23.0,
+          "min": 22.5,
+          "max": 24.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "+105"
+            },
+            {
+              "id": "caesars",
+              "line": 22.5,
+              "odds": "-113"
+            },
+            {
+              "id": "draftkings",
+              "line": 22.5,
+              "odds": "-113"
+            },
+            {
+              "id": "fanduel",
+              "line": 22.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 3
+            },
+            "receiving_yards": {
+              "median": 22.5,
+              "bookCount": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Devin Singletary",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 12.5,
+          "mean": 12.5,
+          "min": 12.5,
+          "max": 12.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 12.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 12.5,
+              "odds": "-110"
+            },
+            {
+              "id": "espnbet",
+              "line": 12.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 12.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "rushing_yards": {
+              "median": 12.5,
+              "bookCount": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dj Moore",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 3.5,
+          "mean": 3.5,
+          "min": 3.5,
+          "max": 3.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 3.5,
+              "odds": "+110"
+            },
+            {
+              "id": "caesars",
+              "line": 3.5,
+              "odds": "+105"
+            },
+            {
+              "id": "draftkings",
+              "line": 3.5,
+              "odds": "+108"
+            },
+            {
+              "id": "espnbet",
+              "line": 3.5,
+              "odds": "+100"
+            },
+            {
+              "id": "fanduel",
+              "line": 3.5,
+              "odds": "-102"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 47.5,
+          "mean": 47.83,
+          "min": 47.5,
+          "max": 49.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "-120"
+            },
+            {
+              "id": "bovada",
+              "line": 47.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 47.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 47.5,
+              "odds": "-113"
+            },
+            {
+              "id": "espnbet",
+              "line": 47.5,
+              "odds": "-120"
+            },
+            {
+              "id": "fanduel",
+              "line": 47.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 5
+            },
+            "receiving_yards": {
+              "median": 47.5,
+              "bookCount": 6
+            }
+          }
         }
       ]
     },
@@ -1410,30 +3531,40 @@
       "startsAt": "2026-11-23T01:20:00.000Z",
       "markets": {
         "receiving_yards": {
-          "median": 65.0,
-          "mean": 65.0,
-          "min": 64.5,
-          "max": 65.5,
-          "bookCount": 4,
+          "median": 62.5,
+          "mean": 64.17,
+          "min": 61.5,
+          "max": 74.5,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 74.5,
+              "odds": "+120"
+            },
+            {
               "id": "bovada",
-              "line": 65.5,
+              "line": 62.5,
               "odds": "-115"
             },
             {
               "id": "caesars",
-              "line": 64.5,
-              "odds": "-117"
+              "line": 61.5,
+              "odds": "-110"
             },
             {
               "id": "draftkings",
-              "line": 65.5,
-              "odds": "-111"
+              "line": 62.5,
+              "odds": "-113"
+            },
+            {
+              "id": "espnbet",
+              "line": 62.5,
+              "odds": "-115"
             },
             {
               "id": "fanduel",
-              "line": 64.5,
+              "line": 61.5,
               "odds": "-114"
             }
           ]
@@ -1443,27 +3574,32 @@
           "mean": 5.5,
           "min": 5.5,
           "max": 5.5,
-          "bookCount": 4,
+          "bookCount": 5,
           "books": [
             {
               "id": "bovada",
               "line": 5.5,
-              "odds": "-110"
+              "odds": "+110"
             },
             {
               "id": "caesars",
               "line": 5.5,
-              "odds": "-102"
+              "odds": "+112"
             },
             {
               "id": "draftkings",
               "line": 5.5,
-              "odds": "-108"
+              "odds": "+109"
+            },
+            {
+              "id": "espnbet",
+              "line": 5.5,
+              "odds": "+110"
             },
             {
               "id": "fanduel",
               "line": 5.5,
-              "odds": "-106"
+              "odds": "+106"
             }
           ]
         }
@@ -1482,6 +3618,236 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIN @ SF",
+          "markets": {
+            "receiving_yards": {
+              "median": 62.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "George Pickens",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 67.5,
+          "mean": 67.17,
+          "min": 66.5,
+          "max": 67.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 67.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 66.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 67.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 5.5,
+          "mean": 5.5,
+          "min": 5.5,
+          "max": 5.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 5.5,
+              "odds": "+112"
+            },
+            {
+              "id": "draftkings",
+              "line": 5.5,
+              "odds": "+119"
+            },
+            {
+              "id": "fanduel",
+              "line": 5.5,
+              "odds": "+110"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "receiving_yards": {
+              "median": 67.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Isaiah Likely",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 5.5,
+          "mean": 5.5,
+          "min": 5.5,
+          "max": 5.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 5.5,
+              "odds": "+106"
+            },
+            {
+              "id": "draftkings",
+              "line": 5.5,
+              "odds": "-101"
+            },
+            {
+              "id": "fanduel",
+              "line": 5.5,
+              "odds": "+106"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 54.5,
+          "mean": 54.17,
+          "min": 53.5,
+          "max": 54.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 53.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 54.5,
+              "odds": "-110"
+            },
+            {
+              "id": "fanduel",
+              "line": 54.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 3
+            },
+            "receiving_yards": {
+              "median": 54.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Jakobi Meyers",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 3.5,
+          "mean": 3.5,
+          "min": 3.5,
+          "max": 3.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 3.5,
+              "odds": "+121"
+            },
+            {
+              "id": "draftkings",
+              "line": 3.5,
+              "odds": "+121"
+            },
+            {
+              "id": "fanduel",
+              "line": 3.5,
+              "odds": "+120"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 41.5,
+          "mean": 41.83,
+          "min": 41.5,
+          "max": 42.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 41.5,
+              "odds": "-117"
+            },
+            {
+              "id": "draftkings",
+              "line": 41.5,
+              "odds": "-110"
+            },
+            {
+              "id": "fanduel",
+              "line": 42.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 3
+            },
+            "receiving_yards": {
+              "median": 41.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -1492,12 +3858,17 @@
       "startsAt": "2026-11-24T01:15:00.000Z",
       "markets": {
         "receiving_yards": {
-          "median": 95.0,
-          "mean": 95.75,
+          "median": 94.5,
+          "mean": 94.83,
           "min": 93.5,
-          "max": 99.5,
-          "bookCount": 4,
+          "max": 98.5,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 98.5,
+              "odds": "-115"
+            },
             {
               "id": "bovada",
               "line": 94.5,
@@ -1505,13 +3876,18 @@
             },
             {
               "id": "caesars",
-              "line": 99.5,
-              "odds": "-103"
+              "line": 93.5,
+              "odds": "-115"
             },
             {
               "id": "draftkings",
-              "line": 95.5,
-              "odds": "-113"
+              "line": 94.5,
+              "odds": "-112"
+            },
+            {
+              "id": "espnbet",
+              "line": 94.5,
+              "odds": "-115"
             },
             {
               "id": "fanduel",
@@ -1525,8 +3901,13 @@
           "mean": 8.5,
           "min": 8.5,
           "max": 8.5,
-          "bookCount": 4,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 8.5,
+              "odds": "+105"
+            },
             {
               "id": "bovada",
               "line": 8.5,
@@ -1540,7 +3921,12 @@
             {
               "id": "draftkings",
               "line": 8.5,
-              "odds": "+105"
+              "odds": "+108"
+            },
+            {
+              "id": "espnbet",
+              "line": 8.5,
+              "odds": "+110"
             },
             {
               "id": "fanduel",
@@ -1564,6 +3950,260 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "receiving_yards": {
+              "median": 94.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 8.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "James Cook",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 97.5,
+          "mean": 97.67,
+          "min": 96.5,
+          "max": 99.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 99.5,
+              "odds": "-120"
+            },
+            {
+              "id": "bovada",
+              "line": 97.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 96.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 97.5,
+              "odds": "-114"
+            },
+            {
+              "id": "espnbet",
+              "line": 97.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 97.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 1.5,
+              "odds": "+105"
+            },
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "+108"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "+104"
+            },
+            {
+              "id": "espnbet",
+              "line": 1.5,
+              "odds": "+110"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "+112"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 9.5,
+          "mean": 11.67,
+          "min": 8.5,
+          "max": 24.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "+340"
+            },
+            {
+              "id": "bovada",
+              "line": 9.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 8.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 9.5,
+              "odds": "-111"
+            },
+            {
+              "id": "espnbet",
+              "line": 9.5,
+              "odds": "-105"
+            },
+            {
+              "id": "fanduel",
+              "line": 8.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "rushing_yards": {
+              "median": 97.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 5
+            },
+            "receiving_yards": {
+              "median": 9.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Javonte Williams",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 80.5,
+          "mean": 80.17,
+          "min": 79.5,
+          "max": 80.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 80.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 80.5,
+              "odds": "-112"
+            },
+            {
+              "id": "fanduel",
+              "line": 79.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 10.5,
+          "mean": 10.17,
+          "min": 9.5,
+          "max": 10.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 10.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 9.5,
+              "odds": "-119"
+            },
+            {
+              "id": "fanduel",
+              "line": 10.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+134"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "+145"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "+134"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "rushing_yards": {
+              "median": 80.5,
+              "bookCount": 3
+            },
+            "receiving_yards": {
+              "median": 10.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -1575,20 +4215,30 @@
       "markets": {
         "rushing_yards": {
           "median": 35.5,
-          "mean": 36.83,
-          "min": 35.5,
-          "max": 39.5,
-          "bookCount": 3,
+          "mean": 35.7,
+          "min": 34.5,
+          "max": 36.5,
+          "bookCount": 5,
           "books": [
             {
+              "id": "bovada",
+              "line": 36.5,
+              "odds": "-110"
+            },
+            {
               "id": "caesars",
-              "line": 39.5,
-              "odds": "+105"
+              "line": 35.5,
+              "odds": "-114"
             },
             {
               "id": "draftkings",
-              "line": 35.5,
-              "odds": "-114"
+              "line": 36.5,
+              "odds": "-108"
+            },
+            {
+              "id": "espnbet",
+              "line": 34.5,
+              "odds": "-130"
             },
             {
               "id": "fanduel",
@@ -1598,25 +4248,40 @@
           ]
         },
         "passing_yards": {
-          "median": 220.5,
-          "mean": 223.17,
-          "min": 219.5,
+          "median": 228.5,
+          "mean": 228.0,
+          "min": 225.5,
           "max": 229.5,
-          "bookCount": 3,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 228.5,
+              "odds": "-115"
+            },
+            {
+              "id": "bovada",
+              "line": 228.5,
+              "odds": "-115"
+            },
+            {
               "id": "caesars",
-              "line": 229.5,
-              "odds": "+103"
+              "line": 227.5,
+              "odds": "-114"
             },
             {
               "id": "draftkings",
-              "line": 219.5,
-              "odds": "-112"
+              "line": 228.5,
+              "odds": "-113"
+            },
+            {
+              "id": "espnbet",
+              "line": 229.5,
+              "odds": "-110"
             },
             {
               "id": "fanduel",
-              "line": 220.5,
+              "line": 225.5,
               "odds": "-114"
             }
           ]
@@ -1626,22 +4291,37 @@
           "mean": 1.5,
           "min": 1.5,
           "max": 1.5,
-          "bookCount": 3,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 1.5,
+              "odds": "-115"
+            },
+            {
+              "id": "bovada",
+              "line": 1.5,
+              "odds": "-115"
+            },
             {
               "id": "caesars",
               "line": 1.5,
-              "odds": "-110"
+              "odds": "-117"
             },
             {
               "id": "draftkings",
               "line": 1.5,
-              "odds": "-103"
+              "odds": "-112"
+            },
+            {
+              "id": "espnbet",
+              "line": 1.5,
+              "odds": "-115"
             },
             {
               "id": "fanduel",
               "line": 1.5,
-              "odds": "-118"
+              "odds": "-122"
             }
           ]
         },
@@ -1650,12 +4330,32 @@
           "mean": 0.5,
           "min": 0.5,
           "max": 0.5,
-          "bookCount": 1,
+          "bookCount": 5,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 0.5,
+              "odds": "+105"
+            },
+            {
+              "id": "bovada",
+              "line": 0.5,
+              "odds": "+105"
+            },
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "+106"
+            },
             {
               "id": "draftkings",
               "line": 0.5,
-              "odds": "+102"
+              "odds": "+106"
+            },
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "+120"
             }
           ]
         }
@@ -1682,6 +4382,186 @@
               "bookCount": 1
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "rushing_yards": {
+              "median": 35.5,
+              "bookCount": 5
+            },
+            "passing_yards": {
+              "median": 228.5,
+              "bookCount": 6
+            },
+            "passing_touchdowns": {
+              "median": 1.5,
+              "bookCount": 6
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Jj Mccarthy",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "passing_yards": {
+          "median": 216.5,
+          "mean": 217.1,
+          "min": 216.5,
+          "max": 218.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 216.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 216.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 216.5,
+              "odds": "-111"
+            },
+            {
+              "id": "espnbet",
+              "line": 218.5,
+              "odds": "-110"
+            },
+            {
+              "id": "fanduel",
+              "line": 217.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 0.5,
+              "odds": "-150"
+            },
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "-152"
+            },
+            {
+              "id": "draftkings",
+              "line": 0.5,
+              "odds": "-155"
+            },
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "-180"
+            }
+          ]
+        },
+        "rushing_yards": {
+          "median": 16.5,
+          "mean": 16.5,
+          "min": 16.5,
+          "max": 16.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 16.5,
+              "odds": "-112"
+            },
+            {
+              "id": "draftkings",
+              "line": 16.5,
+              "odds": "-113"
+            },
+            {
+              "id": "espnbet",
+              "line": 16.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 16.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_touchdowns": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 1.5,
+              "odds": "+160"
+            },
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "+165"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "+164"
+            },
+            {
+              "id": "espnbet",
+              "line": 1.5,
+              "odds": "+165"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "+162"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "passing_yards": {
+              "median": 216.5,
+              "bookCount": 5
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 4
+            },
+            "rushing_yards": {
+              "median": 16.5,
+              "bookCount": 4
+            },
+            "passing_touchdowns": {
+              "median": 1.5,
+              "bookCount": 5
+            }
+          }
         }
       ]
     },
@@ -1692,26 +4572,36 @@
       "startsAt": "2026-11-24T01:15:00.000Z",
       "markets": {
         "passing_yards": {
-          "median": 301.5,
-          "mean": 303.25,
+          "median": 300.5,
+          "mean": 301.17,
           "min": 300.5,
-          "max": 309.5,
-          "bookCount": 4,
+          "max": 304.5,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 304.5,
+              "odds": "-115"
+            },
+            {
               "id": "bovada",
-              "line": 301.5,
+              "line": 300.5,
               "odds": "-115"
             },
             {
               "id": "caesars",
-              "line": 309.5,
-              "odds": "+102"
+              "line": 300.5,
+              "odds": "-114"
             },
             {
               "id": "draftkings",
-              "line": 301.5,
-              "odds": "-112"
+              "line": 300.5,
+              "odds": "-111"
+            },
+            {
+              "id": "espnbet",
+              "line": 300.5,
+              "odds": "-115"
             },
             {
               "id": "fanduel",
@@ -1725,8 +4615,28 @@
           "mean": 7.5,
           "min": 7.5,
           "max": 7.5,
-          "bookCount": 1,
+          "bookCount": 5,
           "books": [
+            {
+              "id": "bovada",
+              "line": 7.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 7.5,
+              "odds": "-109"
+            },
+            {
+              "id": "draftkings",
+              "line": 7.5,
+              "odds": "-110"
+            },
+            {
+              "id": "espnbet",
+              "line": 7.5,
+              "odds": "-110"
+            },
             {
               "id": "fanduel",
               "line": 7.5,
@@ -1739,27 +4649,71 @@
           "mean": 2.5,
           "min": 2.5,
           "max": 2.5,
-          "bookCount": 4,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 2.5,
+              "odds": "+110"
+            },
             {
               "id": "bovada",
               "line": 2.5,
-              "odds": "-105"
+              "odds": "+100"
             },
             {
               "id": "caesars",
               "line": 2.5,
-              "odds": "-106"
+              "odds": "+100"
             },
             {
               "id": "draftkings",
               "line": 2.5,
-              "odds": "-103"
+              "odds": "-101"
+            },
+            {
+              "id": "espnbet",
+              "line": 2.5,
+              "odds": "+100"
             },
             {
               "id": "fanduel",
               "line": 2.5,
               "odds": "-106"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 0.5,
+              "odds": "+120"
+            },
+            {
+              "id": "bovada",
+              "line": 0.5,
+              "odds": "+110"
+            },
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "+111"
+            },
+            {
+              "id": "draftkings",
+              "line": 0.5,
+              "odds": "+112"
+            },
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "+120"
             }
           ]
         }
@@ -1782,6 +4736,28 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "passing_yards": {
+              "median": 300.5,
+              "bookCount": 6
+            },
+            "rushing_yards": {
+              "median": 7.5,
+              "bookCount": 5
+            },
+            "passing_touchdowns": {
+              "median": 2.5,
+              "bookCount": 6
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 5
+            }
+          }
         }
       ]
     },
@@ -1792,31 +4768,31 @@
       "startsAt": "2026-11-20T01:15:00.000Z",
       "markets": {
         "rushing_yards": {
-          "median": 51.5,
-          "mean": 51.33,
+          "median": 50.5,
+          "mean": 50.67,
           "min": 50.5,
           "max": 51.5,
           "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
-              "line": 51.5,
+              "line": 50.5,
               "odds": "-115"
             },
             {
               "id": "bovada",
-              "line": 51.5,
-              "odds": "-120"
+              "line": 50.5,
+              "odds": "-115"
             },
             {
               "id": "caesars",
-              "line": 51.5,
-              "odds": "-112"
+              "line": 50.5,
+              "odds": "-117"
             },
             {
               "id": "draftkings",
-              "line": 51.5,
-              "odds": "-115"
+              "line": 50.5,
+              "odds": "-114"
             },
             {
               "id": "espnbet",
@@ -1832,15 +4808,15 @@
         },
         "receiving_yards": {
           "median": 19.5,
-          "mean": 19.33,
-          "min": 18.5,
+          "mean": 19.0,
+          "min": 16.5,
           "max": 19.5,
           "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
-              "line": 18.5,
-              "odds": "-115"
+              "line": 16.5,
+              "odds": "-120"
             },
             {
               "id": "bovada",
@@ -1855,7 +4831,7 @@
             {
               "id": "draftkings",
               "line": 19.5,
-              "odds": "-114"
+              "odds": "-113"
             },
             {
               "id": "espnbet",
@@ -1871,20 +4847,20 @@
         },
         "receiving_receptions": {
           "median": 3.5,
-          "mean": 3.17,
+          "mean": 3.33,
           "min": 2.5,
           "max": 3.5,
           "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
-              "line": 3.5,
-              "odds": "+125"
+              "line": 2.5,
+              "odds": "-135"
             },
             {
               "id": "bovada",
-              "line": 2.5,
-              "odds": "-180"
+              "line": 3.5,
+              "odds": "+125"
             },
             {
               "id": "caesars",
@@ -1893,13 +4869,13 @@
             },
             {
               "id": "draftkings",
-              "line": 2.5,
-              "odds": "-173"
+              "line": 3.5,
+              "odds": "+127"
             },
             {
               "id": "espnbet",
               "line": 3.5,
-              "odds": "+125"
+              "odds": "+120"
             },
             {
               "id": "fanduel",
@@ -1945,6 +4921,24 @@
               "bookCount": 6
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "rushing_yards": {
+              "median": 50.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 19.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 6
+            }
+          }
         }
       ]
     },
@@ -1956,23 +4950,28 @@
       "markets": {
         "rushing_yards": {
           "median": 46.5,
-          "mean": 46.75,
+          "mean": 47.1,
           "min": 46.5,
-          "max": 47.5,
-          "bookCount": 4,
+          "max": 49.5,
+          "bookCount": 5,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "+105"
+            },
             {
               "id": "bovada",
               "line": 46.5,
-              "odds": "-120"
+              "odds": "-114"
             },
             {
               "id": "caesars",
-              "line": 47.5,
-              "odds": "-112"
+              "line": 46.5,
+              "odds": "-107"
             },
             {
-              "id": "draftkings",
+              "id": "espnbet",
               "line": 46.5,
               "odds": "-115"
             },
@@ -1994,6 +4993,328 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIN @ SF",
+          "markets": {
+            "rushing_yards": {
+              "median": 46.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Jordyn Tyson",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 60.0,
+          "mean": 57.5,
+          "min": 49.5,
+          "max": 60.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "-185"
+            },
+            {
+              "id": "caesars",
+              "line": 59.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 60.5,
+              "odds": "-113"
+            },
+            {
+              "id": "fanduel",
+              "line": 60.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 5.5,
+          "mean": 5.5,
+          "min": 5.5,
+          "max": 5.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 5.5,
+              "odds": "-109"
+            },
+            {
+              "id": "draftkings",
+              "line": 5.5,
+              "odds": "-111"
+            },
+            {
+              "id": "fanduel",
+              "line": 5.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 60.0,
+              "bookCount": 4
+            },
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Josh Allen",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "passing_yards": {
+          "median": 229.5,
+          "mean": 232.33,
+          "min": 227.5,
+          "max": 249.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 249.5,
+              "odds": "+135"
+            },
+            {
+              "id": "bovada",
+              "line": 229.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 228.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 229.5,
+              "odds": "-112"
+            },
+            {
+              "id": "espnbet",
+              "line": 229.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 227.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 1,
+          "books": [
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "+116"
+            }
+          ]
+        },
+        "passing_touchdowns": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 1.5,
+              "odds": "-165"
+            },
+            {
+              "id": "bovada",
+              "line": 1.5,
+              "odds": "-160"
+            },
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "-148"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "-156"
+            },
+            {
+              "id": "espnbet",
+              "line": 1.5,
+              "odds": "-155"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "-148"
+            }
+          ]
+        },
+        "rushing_yards": {
+          "median": 27.5,
+          "mean": 27.17,
+          "min": 24.5,
+          "max": 28.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "-175"
+            },
+            {
+              "id": "bovada",
+              "line": 27.5,
+              "odds": "-110"
+            },
+            {
+              "id": "caesars",
+              "line": 27.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 27.5,
+              "odds": "-109"
+            },
+            {
+              "id": "espnbet",
+              "line": 28.5,
+              "odds": "-110"
+            },
+            {
+              "id": "fanduel",
+              "line": 27.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "passing_yards": {
+              "median": 229.5,
+              "bookCount": 6
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 1
+            },
+            "passing_touchdowns": {
+              "median": 1.5,
+              "bookCount": 6
+            },
+            "rushing_yards": {
+              "median": 27.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Josh Cameron",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 12.5,
+          "mean": 12.17,
+          "min": 11.5,
+          "max": 12.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 11.5,
+              "odds": "-118"
+            },
+            {
+              "id": "draftkings",
+              "line": 12.5,
+              "odds": "-111"
+            },
+            {
+              "id": "fanduel",
+              "line": 12.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "+142"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "+138"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "+148"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 12.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -2005,11 +5326,16 @@
       "markets": {
         "receiving_yards": {
           "median": 82.5,
-          "mean": 82.25,
-          "min": 81.5,
+          "mean": 80.7,
+          "min": 74.5,
           "max": 82.5,
-          "bookCount": 4,
+          "bookCount": 5,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 74.5,
+              "odds": "-175"
+            },
             {
               "id": "bovada",
               "line": 82.5,
@@ -2021,9 +5347,9 @@
               "odds": "-113"
             },
             {
-              "id": "draftkings",
+              "id": "espnbet",
               "line": 82.5,
-              "odds": "-113"
+              "odds": "-120"
             },
             {
               "id": "fanduel",
@@ -2033,26 +5359,26 @@
           ]
         },
         "receiving_receptions": {
-          "median": 7.0,
-          "mean": 7.0,
+          "median": 6.5,
+          "mean": 6.75,
           "min": 6.5,
           "max": 7.5,
           "bookCount": 4,
           "books": [
             {
               "id": "bovada",
-              "line": 7.5,
-              "odds": "+110"
+              "line": 6.5,
+              "odds": "-154"
             },
             {
               "id": "caesars",
               "line": 6.5,
-              "odds": "-145"
+              "odds": "-150"
             },
             {
-              "id": "draftkings",
+              "id": "espnbet",
               "line": 7.5,
-              "odds": "+113"
+              "odds": "+110"
             },
             {
               "id": "fanduel",
@@ -2076,6 +5402,97 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIN @ SF",
+          "markets": {
+            "receiving_yards": {
+              "median": 82.5,
+              "bookCount": 5
+            },
+            "receiving_receptions": {
+              "median": 6.5,
+              "bookCount": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Juwan Johnson",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+147"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "+141"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "+146"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 20.0,
+          "mean": 21.0,
+          "min": 19.5,
+          "max": 24.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "+115"
+            },
+            {
+              "id": "caesars",
+              "line": 19.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 20.5,
+              "odds": "-113"
+            },
+            {
+              "id": "fanduel",
+              "line": 19.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 3
+            },
+            "receiving_yards": {
+              "median": 20.0,
+              "bookCount": 4
+            }
+          }
         }
       ]
     },
@@ -2087,11 +5504,36 @@
       "markets": {
         "rushing_yards": {
           "median": 26.5,
-          "mean": 26.5,
-          "min": 26.5,
+          "mean": 26.17,
+          "min": 24.5,
           "max": 26.5,
-          "bookCount": 1,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "-175"
+            },
+            {
+              "id": "bovada",
+              "line": 26.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 26.5,
+              "odds": "-125"
+            },
+            {
+              "id": "draftkings",
+              "line": 26.5,
+              "odds": "-114"
+            },
+            {
+              "id": "espnbet",
+              "line": 26.5,
+              "odds": "-120"
+            },
             {
               "id": "fanduel",
               "line": 26.5,
@@ -2110,6 +5552,282 @@
               "bookCount": 1
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIN @ SF",
+          "markets": {
+            "rushing_yards": {
+              "median": 26.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kalif Raymond",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 21.5,
+          "mean": 22.5,
+          "min": 21.5,
+          "max": 24.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "-130"
+            },
+            {
+              "id": "caesars",
+              "line": 21.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 21.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+115"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "+110"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 21.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kayshon Boutte",
+      "eventID": "YlZBEbhTgV80ZeTIIyqm",
+      "matchup": "IND @ HOU",
+      "startsAt": "2026-11-20T01:15:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 28.5,
+          "mean": 28.67,
+          "min": 28.5,
+          "max": 29.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 28.5,
+              "odds": "-115"
+            },
+            {
+              "id": "bovada",
+              "line": 28.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 28.5,
+              "odds": "-113"
+            },
+            {
+              "id": "draftkings",
+              "line": 28.5,
+              "odds": "-110"
+            },
+            {
+              "id": "espnbet",
+              "line": 29.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 28.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 2.5,
+              "odds": "+110"
+            },
+            {
+              "id": "bovada",
+              "line": 2.5,
+              "odds": "+120"
+            },
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+121"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "+119"
+            },
+            {
+              "id": "espnbet",
+              "line": 2.5,
+              "odds": "+120"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "+116"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_yards": {
+              "median": 28.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Khalil Shakir",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 2.5,
+              "odds": "-130"
+            },
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "-137"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "-130"
+            },
+            {
+              "id": "espnbet",
+              "line": 2.5,
+              "odds": "-135"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-144"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 30.5,
+          "mean": 30.0,
+          "min": 24.5,
+          "max": 32.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "-235"
+            },
+            {
+              "id": "bovada",
+              "line": 30.5,
+              "odds": "-120"
+            },
+            {
+              "id": "caesars",
+              "line": 31.5,
+              "odds": "-117"
+            },
+            {
+              "id": "draftkings",
+              "line": 30.5,
+              "odds": "-115"
+            },
+            {
+              "id": "espnbet",
+              "line": 30.5,
+              "odds": "-130"
+            },
+            {
+              "id": "fanduel",
+              "line": 32.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 5
+            },
+            "receiving_yards": {
+              "median": 30.5,
+              "bookCount": 6
+            }
+          }
         }
       ]
     },
@@ -2121,25 +5839,30 @@
       "markets": {
         "passing_yards": {
           "median": 232.5,
-          "mean": 232.5,
-          "min": 232.5,
-          "max": 232.5,
-          "bookCount": 4,
+          "mean": 234.7,
+          "min": 227.5,
+          "max": 249.5,
+          "bookCount": 5,
           "books": [
             {
+              "id": "betmgm",
+              "line": 249.5,
+              "odds": "+120"
+            },
+            {
               "id": "bovada",
-              "line": 232.5,
-              "odds": "-115"
+              "line": 227.5,
+              "odds": "-118"
             },
             {
               "id": "caesars",
-              "line": 232.5,
+              "line": 231.5,
               "odds": "-114"
             },
             {
-              "id": "draftkings",
+              "id": "espnbet",
               "line": 232.5,
-              "odds": "-113"
+              "odds": "-115"
             },
             {
               "id": "fanduel",
@@ -2153,17 +5876,12 @@
           "mean": 0.5,
           "min": 0.5,
           "max": 0.5,
-          "bookCount": 3,
+          "bookCount": 2,
           "books": [
             {
               "id": "bovada",
               "line": 0.5,
-              "odds": "-185"
-            },
-            {
-              "id": "draftkings",
-              "line": 0.5,
-              "odds": "-179"
+              "odds": "-159"
             },
             {
               "id": "fanduel",
@@ -2177,12 +5895,17 @@
           "mean": 1.5,
           "min": 1.5,
           "max": 1.5,
-          "bookCount": 4,
+          "bookCount": 5,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 1.5,
+              "odds": "+120"
+            },
             {
               "id": "bovada",
               "line": 1.5,
-              "odds": "+110"
+              "odds": "+115"
             },
             {
               "id": "caesars",
@@ -2190,14 +5913,14 @@
               "odds": "+118"
             },
             {
-              "id": "draftkings",
+              "id": "espnbet",
               "line": 1.5,
-              "odds": "+110"
+              "odds": "+120"
             },
             {
               "id": "fanduel",
               "line": 1.5,
-              "odds": "+114"
+              "odds": "+116"
             }
           ]
         }
@@ -2220,6 +5943,229 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIN @ SF",
+          "markets": {
+            "passing_yards": {
+              "median": 232.5,
+              "bookCount": 5
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 2
+            },
+            "passing_touchdowns": {
+              "median": 1.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kyle Mccord",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "passing_yards": {
+          "median": 184.5,
+          "mean": 186.5,
+          "min": 182.5,
+          "max": 199.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 199.5,
+              "odds": "+125"
+            },
+            {
+              "id": "bovada",
+              "line": 182.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 183.5,
+              "odds": "-113"
+            },
+            {
+              "id": "draftkings",
+              "line": 182.5,
+              "odds": "-111"
+            },
+            {
+              "id": "espnbet",
+              "line": 185.5,
+              "odds": "-110"
+            },
+            {
+              "id": "fanduel",
+              "line": 185.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 1,
+          "books": [
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "-158"
+            }
+          ]
+        },
+        "passing_touchdowns": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 0.5,
+              "odds": "-190"
+            },
+            {
+              "id": "bovada",
+              "line": 0.5,
+              "odds": "-200"
+            },
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "-193"
+            },
+            {
+              "id": "draftkings",
+              "line": 0.5,
+              "odds": "-194"
+            },
+            {
+              "id": "espnbet",
+              "line": 0.5,
+              "odds": "-200"
+            },
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "-210"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "passing_yards": {
+              "median": 184.5,
+              "bookCount": 6
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 1
+            },
+            "passing_touchdowns": {
+              "median": 0.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kyle Monangai",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 5.5,
+          "mean": 5.5,
+          "min": 5.5,
+          "max": 5.5,
+          "bookCount": 1,
+          "books": [
+            {
+              "id": "fanduel",
+              "line": 5.5,
+              "odds": "-102"
+            }
+          ]
+        },
+        "rushing_yards": {
+          "median": 48.5,
+          "mean": 48.83,
+          "min": 48.5,
+          "max": 49.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "-120"
+            },
+            {
+              "id": "caesars",
+              "line": 48.5,
+              "odds": "-117"
+            },
+            {
+              "id": "fanduel",
+              "line": 48.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "-205"
+            },
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "-225"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 5.5,
+              "bookCount": 1
+            },
+            "rushing_yards": {
+              "median": 48.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 0.5,
+              "bookCount": 2
+            }
+          }
         }
       ]
     },
@@ -2239,7 +6185,7 @@
             {
               "id": "betmgm",
               "line": 2.5,
-              "odds": "-105"
+              "odds": "-111"
             },
             {
               "id": "bovada",
@@ -2249,12 +6195,12 @@
             {
               "id": "caesars",
               "line": 2.5,
-              "odds": "-118"
+              "odds": "-122"
             },
             {
               "id": "draftkings",
               "line": 2.5,
-              "odds": "-119"
+              "odds": "-118"
             },
             {
               "id": "espnbet",
@@ -2278,7 +6224,7 @@
             {
               "id": "betmgm",
               "line": 28.5,
-              "odds": "-120"
+              "odds": "-115"
             },
             {
               "id": "bovada",
@@ -2293,7 +6239,7 @@
             {
               "id": "draftkings",
               "line": 28.5,
-              "odds": "-114"
+              "odds": "-111"
             },
             {
               "id": "espnbet",
@@ -2336,6 +6282,256 @@
               "bookCount": 6
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 29.0,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Luther Burden III",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 59.5,
+          "mean": 64.5,
+          "min": 59.5,
+          "max": 74.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 74.5,
+              "odds": "+150"
+            },
+            {
+              "id": "caesars",
+              "line": 59.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 59.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 4.5,
+          "mean": 4.5,
+          "min": 4.5,
+          "max": 4.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 4.5,
+              "odds": "-108"
+            },
+            {
+              "id": "fanduel",
+              "line": 4.5,
+              "odds": "-110"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 59.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 4.5,
+              "bookCount": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Malik Nabers",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 64.5,
+          "mean": 64.83,
+          "min": 64.5,
+          "max": 65.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 64.5,
+              "odds": "-113"
+            },
+            {
+              "id": "draftkings",
+              "line": 64.5,
+              "odds": "-113"
+            },
+            {
+              "id": "fanduel",
+              "line": 65.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 5.5,
+          "mean": 5.5,
+          "min": 5.5,
+          "max": 5.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 5.5,
+              "odds": "-117"
+            },
+            {
+              "id": "draftkings",
+              "line": 5.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 5.5,
+              "odds": "-120"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 64.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Malik Washington",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 3.5,
+          "mean": 3.5,
+          "min": 3.5,
+          "max": 3.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 3.5,
+              "odds": "-145"
+            },
+            {
+              "id": "caesars",
+              "line": 3.5,
+              "odds": "-141"
+            },
+            {
+              "id": "draftkings",
+              "line": 3.5,
+              "odds": "-142"
+            },
+            {
+              "id": "espnbet",
+              "line": 3.5,
+              "odds": "-150"
+            },
+            {
+              "id": "fanduel",
+              "line": 3.5,
+              "odds": "-158"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 33.5,
+          "mean": 35.67,
+          "min": 31.5,
+          "max": 49.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "+180"
+            },
+            {
+              "id": "bovada",
+              "line": 31.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 33.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 31.5,
+              "odds": "-112"
+            },
+            {
+              "id": "espnbet",
+              "line": 33.5,
+              "odds": "-120"
+            },
+            {
+              "id": "fanduel",
+              "line": 34.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 5
+            },
+            "receiving_yards": {
+              "median": 33.5,
+              "bookCount": 6
+            }
+          }
         }
       ]
     },
@@ -2346,25 +6542,30 @@
       "startsAt": "2026-11-24T01:15:00.000Z",
       "markets": {
         "receiving_yards": {
-          "median": 24.0,
-          "mean": 25.0,
-          "min": 22.5,
-          "max": 29.5,
-          "bookCount": 4,
+          "median": 24.5,
+          "mean": 24.5,
+          "min": 24.5,
+          "max": 24.5,
+          "bookCount": 5,
           "books": [
             {
               "id": "bovada",
-              "line": 23.5,
+              "line": 24.5,
               "odds": "-115"
             },
             {
               "id": "caesars",
-              "line": 29.5,
-              "odds": "-103"
+              "line": 24.5,
+              "odds": "-115"
             },
             {
               "id": "draftkings",
-              "line": 22.5,
+              "line": 24.5,
+              "odds": "-111"
+            },
+            {
+              "id": "espnbet",
+              "line": 24.5,
               "odds": "-115"
             },
             {
@@ -2379,7 +6580,7 @@
           "mean": 2.5,
           "min": 2.5,
           "max": 2.5,
-          "bookCount": 4,
+          "bookCount": 5,
           "books": [
             {
               "id": "bovada",
@@ -2389,12 +6590,17 @@
             {
               "id": "caesars",
               "line": 2.5,
-              "odds": "+112"
+              "odds": "+118"
             },
             {
               "id": "draftkings",
               "line": 2.5,
-              "odds": "+109"
+              "odds": "+107"
+            },
+            {
+              "id": "espnbet",
+              "line": 2.5,
+              "odds": "+115"
             },
             {
               "id": "fanduel",
@@ -2418,6 +6624,92 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "receiving_yards": {
+              "median": 24.5,
+              "bookCount": 5
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Nate Boerkircher",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 10.5,
+          "mean": 10.83,
+          "min": 10.5,
+          "max": 11.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 10.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 11.5,
+              "odds": "-113"
+            },
+            {
+              "id": "fanduel",
+              "line": 10.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "+122"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "+118"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "+120"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 10.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -2428,75 +6720,80 @@
       "startsAt": "2026-11-20T01:15:00.000Z",
       "markets": {
         "receiving_yards": {
-          "median": 66.5,
-          "mean": 66.33,
-          "min": 65.5,
-          "max": 67.5,
+          "median": 70.0,
+          "mean": 69.83,
+          "min": 68.5,
+          "max": 70.5,
           "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
-              "line": 65.5,
+              "line": 68.5,
               "odds": "-115"
             },
             {
               "id": "bovada",
-              "line": 65.5,
+              "line": 70.5,
               "odds": "-115"
             },
             {
               "id": "caesars",
-              "line": 66.5,
-              "odds": "-114"
+              "line": 69.5,
+              "odds": "-134"
             },
             {
               "id": "draftkings",
-              "line": 66.5,
-              "odds": "-110"
+              "line": 70.5,
+              "odds": "-114"
             },
             {
               "id": "espnbet",
-              "line": 66.5,
-              "odds": "-120"
+              "line": 69.5,
+              "odds": "-125"
             },
             {
               "id": "fanduel",
-              "line": 67.5,
+              "line": 70.5,
               "odds": "-114"
             }
           ]
         },
         "receiving_receptions": {
           "median": 4.5,
-          "mean": 4.5,
+          "mean": 4.67,
           "min": 4.5,
-          "max": 4.5,
-          "bookCount": 5,
+          "max": 5.5,
+          "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
-              "line": 4.5,
-              "odds": "-125"
+              "line": 5.5,
+              "odds": "+140"
             },
             {
               "id": "bovada",
               "line": 4.5,
-              "odds": "-115"
+              "odds": "-150"
             },
             {
               "id": "caesars",
               "line": 4.5,
-              "odds": "-110"
+              "odds": "-160"
             },
             {
               "id": "draftkings",
               "line": 4.5,
-              "odds": "-111"
+              "odds": "-145"
+            },
+            {
+              "id": "espnbet",
+              "line": 4.5,
+              "odds": "-140"
             },
             {
               "id": "fanduel",
               "line": 4.5,
-              "odds": "-122"
+              "odds": "-148"
             }
           ]
         }
@@ -2529,6 +6826,367 @@
               "bookCount": 5
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_yards": {
+              "median": 70.0,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 4.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Noah Fant",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 6.5,
+          "mean": 11.0,
+          "min": 6.5,
+          "max": 24.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 24.5,
+              "odds": "+290"
+            },
+            {
+              "id": "caesars",
+              "line": 6.5,
+              "odds": "-112"
+            },
+            {
+              "id": "draftkings",
+              "line": 6.5,
+              "odds": "-111"
+            },
+            {
+              "id": "fanduel",
+              "line": 6.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "-225"
+            },
+            {
+              "id": "draftkings",
+              "line": 0.5,
+              "odds": "-219"
+            },
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "-250"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 6.5,
+              "bookCount": 4
+            },
+            "receiving_receptions": {
+              "median": 0.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ollie Gordon",
+      "eventID": "6Gfje0CU0lNBNJInVzHW",
+      "matchup": "MIA @ BUF",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 61.5,
+          "mean": 62.83,
+          "min": 56.5,
+          "max": 74.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 74.5,
+              "odds": "+135"
+            },
+            {
+              "id": "bovada",
+              "line": 63.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 59.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 63.5,
+              "odds": "-114"
+            },
+            {
+              "id": "espnbet",
+              "line": 59.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 56.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "MIA @ BUF",
+          "markets": {
+            "rushing_yards": {
+              "median": 61.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Parker Washington",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 64.5,
+          "mean": 64.83,
+          "min": 64.5,
+          "max": 65.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 64.5,
+              "odds": "-115"
+            },
+            {
+              "id": "draftkings",
+              "line": 65.5,
+              "odds": "-110"
+            },
+            {
+              "id": "fanduel",
+              "line": 64.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 4.5,
+          "mean": 4.5,
+          "min": 4.5,
+          "max": 4.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 4.5,
+              "odds": "+111"
+            },
+            {
+              "id": "draftkings",
+              "line": 4.5,
+              "odds": "-102"
+            },
+            {
+              "id": "fanduel",
+              "line": 4.5,
+              "odds": "+114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 64.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 4.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rome Odunze",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 45.5,
+          "mean": 46.83,
+          "min": 45.5,
+          "max": 49.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 49.5,
+              "odds": "-125"
+            },
+            {
+              "id": "caesars",
+              "line": 45.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 45.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 3.5,
+          "mean": 3.5,
+          "min": 3.5,
+          "max": 3.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 3.5,
+              "odds": "+134"
+            },
+            {
+              "id": "fanduel",
+              "line": 3.5,
+              "odds": "+134"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 45.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ryan Flournoy",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 42.5,
+          "mean": 42.17,
+          "min": 41.5,
+          "max": 42.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 42.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 41.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 42.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 3.5,
+          "mean": 3.5,
+          "min": 3.5,
+          "max": 3.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 3.5,
+              "odds": "-130"
+            },
+            {
+              "id": "draftkings",
+              "line": 3.5,
+              "odds": "-128"
+            },
+            {
+              "id": "fanduel",
+              "line": 3.5,
+              "odds": "-130"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "receiving_yards": {
+              "median": 42.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 3.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -2539,16 +7197,31 @@
       "startsAt": "2026-11-24T01:15:00.000Z",
       "markets": {
         "rushing_yards": {
-          "median": 20.0,
-          "mean": 20.0,
-          "min": 19.5,
+          "median": 20.5,
+          "mean": 20.5,
+          "min": 20.5,
           "max": 20.5,
-          "bookCount": 2,
+          "bookCount": 5,
           "books": [
             {
+              "id": "bovada",
+              "line": 20.5,
+              "odds": "-110"
+            },
+            {
               "id": "caesars",
-              "line": 19.5,
-              "odds": "-137"
+              "line": 20.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 20.5,
+              "odds": "-108"
+            },
+            {
+              "id": "espnbet",
+              "line": 20.5,
+              "odds": "-115"
             },
             {
               "id": "fanduel",
@@ -2568,6 +7241,16 @@
               "bookCount": 2
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "rushing_yards": {
+              "median": 20.5,
+              "bookCount": 5
+            }
+          }
         }
       ]
     },
@@ -2579,8 +7262,8 @@
       "markets": {
         "rushing_yards": {
           "median": 27.5,
-          "mean": 28.0,
-          "min": 27.5,
+          "mean": 27.67,
+          "min": 26.5,
           "max": 29.5,
           "bookCount": 6,
           "books": [
@@ -2591,23 +7274,23 @@
             },
             {
               "id": "bovada",
-              "line": 27.5,
-              "odds": "-110"
+              "line": 26.5,
+              "odds": "-120"
             },
             {
               "id": "caesars",
               "line": 27.5,
-              "odds": "-128"
+              "odds": "-125"
             },
             {
               "id": "draftkings",
-              "line": 27.5,
-              "odds": "-109"
+              "line": 26.5,
+              "odds": "-116"
             },
             {
               "id": "espnbet",
               "line": 29.5,
-              "odds": "-105"
+              "odds": "+100"
             },
             {
               "id": "fanduel",
@@ -2626,7 +7309,7 @@
             {
               "id": "bovada",
               "line": 0.5,
-              "odds": "-123"
+              "odds": "-127"
             }
           ]
         }
@@ -2659,6 +7342,20 @@
               "bookCount": 1
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "rushing_yards": {
+              "median": 27.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 0.5,
+              "bookCount": 1
+            }
+          }
         }
       ]
     },
@@ -2669,21 +7366,36 @@
       "startsAt": "2026-11-24T01:15:00.000Z",
       "markets": {
         "receiving_yards": {
-          "median": 43.5,
-          "mean": 45.17,
+          "median": 45.0,
+          "mean": 44.83,
           "min": 42.5,
-          "max": 49.5,
-          "bookCount": 3,
+          "max": 47.5,
+          "bookCount": 6,
           "books": [
             {
+              "id": "betmgm",
+              "line": 47.5,
+              "odds": "-111"
+            },
+            {
+              "id": "bovada",
+              "line": 45.5,
+              "odds": "-115"
+            },
+            {
               "id": "caesars",
-              "line": 49.5,
-              "odds": "+112"
+              "line": 44.5,
+              "odds": "-115"
             },
             {
               "id": "draftkings",
+              "line": 45.5,
+              "odds": "-113"
+            },
+            {
+              "id": "espnbet",
               "line": 43.5,
-              "odds": "-111"
+              "odds": "-120"
             },
             {
               "id": "fanduel",
@@ -2697,17 +7409,32 @@
           "mean": 4.5,
           "min": 4.5,
           "max": 4.5,
-          "bookCount": 3,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 4.5,
+              "odds": "+105"
+            },
+            {
+              "id": "bovada",
+              "line": 4.5,
+              "odds": "-105"
+            },
             {
               "id": "caesars",
               "line": 4.5,
-              "odds": "+113"
+              "odds": "+108"
             },
             {
               "id": "draftkings",
               "line": 4.5,
-              "odds": "+110"
+              "odds": "-106"
+            },
+            {
+              "id": "espnbet",
+              "line": 4.5,
+              "odds": "+105"
             },
             {
               "id": "fanduel",
@@ -2731,6 +7458,122 @@
               "bookCount": 3
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "receiving_yards": {
+              "median": 45.0,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 4.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tank Dell",
+      "eventID": "YlZBEbhTgV80ZeTIIyqm",
+      "matchup": "IND @ HOU",
+      "startsAt": "2026-11-20T01:15:00.000Z",
+      "markets": {
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 2.5,
+              "odds": "-135"
+            },
+            {
+              "id": "bovada",
+              "line": 2.5,
+              "odds": "-125"
+            },
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "-117"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "-125"
+            },
+            {
+              "id": "espnbet",
+              "line": 2.5,
+              "odds": "-130"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-118"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 36.5,
+          "mean": 36.5,
+          "min": 35.5,
+          "max": 37.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 35.5,
+              "odds": "-115"
+            },
+            {
+              "id": "bovada",
+              "line": 37.5,
+              "odds": "-110"
+            },
+            {
+              "id": "caesars",
+              "line": 36.5,
+              "odds": "-113"
+            },
+            {
+              "id": "draftkings",
+              "line": 37.5,
+              "odds": "-109"
+            },
+            {
+              "id": "espnbet",
+              "line": 35.5,
+              "odds": "-125"
+            },
+            {
+              "id": "fanduel",
+              "line": 36.5,
+              "odds": "-114"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 36.5,
+              "bookCount": 6
+            }
+          }
         }
       ]
     },
@@ -2742,11 +7585,16 @@
       "markets": {
         "receiving_yards": {
           "median": 74.5,
-          "mean": 75.5,
+          "mean": 74.67,
           "min": 73.5,
-          "max": 79.5,
-          "bookCount": 4,
+          "max": 77.5,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 77.5,
+              "odds": "-115"
+            },
             {
               "id": "bovada",
               "line": 73.5,
@@ -2754,13 +7602,18 @@
             },
             {
               "id": "caesars",
-              "line": 79.5,
-              "odds": "+101"
+              "line": 74.5,
+              "odds": "-114"
             },
             {
               "id": "draftkings",
+              "line": 73.5,
+              "odds": "-114"
+            },
+            {
+              "id": "espnbet",
               "line": 74.5,
-              "odds": "-111"
+              "odds": "-120"
             },
             {
               "id": "fanduel",
@@ -2774,12 +7627,17 @@
           "mean": 5.5,
           "min": 5.5,
           "max": 5.5,
-          "bookCount": 4,
+          "bookCount": 6,
           "books": [
+            {
+              "id": "betmgm",
+              "line": 5.5,
+              "odds": "-115"
+            },
             {
               "id": "bovada",
               "line": 5.5,
-              "odds": "-115"
+              "odds": "-110"
             },
             {
               "id": "caesars",
@@ -2789,7 +7647,12 @@
             {
               "id": "draftkings",
               "line": 5.5,
-              "odds": "-112"
+              "odds": "-109"
+            },
+            {
+              "id": "espnbet",
+              "line": 5.5,
+              "odds": "-105"
             },
             {
               "id": "fanduel",
@@ -2813,6 +7676,620 @@
               "bookCount": 4
             }
           }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "CIN @ WAS",
+          "markets": {
+            "receiving_yards": {
+              "median": 74.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Theo Johnson",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 7.5,
+          "mean": 7.5,
+          "min": 7.5,
+          "max": 7.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 7.5,
+              "odds": "-109"
+            },
+            {
+              "id": "draftkings",
+              "line": 7.5,
+              "odds": "-106"
+            },
+            {
+              "id": "fanduel",
+              "line": 7.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "-193"
+            },
+            {
+              "id": "draftkings",
+              "line": 0.5,
+              "odds": "-200"
+            },
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "-210"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 7.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 0.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tony Pollard",
+      "eventID": "Z6YQV980wVl0tPjqtZAx",
+      "matchup": "TEN @ DAL",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "rushing_yards": {
+          "median": 63.0,
+          "mean": 63.0,
+          "min": 62.5,
+          "max": 63.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 62.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 63.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_yards": {
+          "median": 13.5,
+          "mean": 13.5,
+          "min": 12.5,
+          "max": 14.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 12.5,
+              "odds": "-114"
+            },
+            {
+              "id": "fanduel",
+              "line": 14.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+131"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-102"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "TEN @ DAL",
+          "markets": {
+            "rushing_yards": {
+              "median": 63.0,
+              "bookCount": 2
+            },
+            "receiving_yards": {
+              "median": 13.5,
+              "bookCount": 2
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Travis Etienne Jr.",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 13.5,
+          "mean": 13.83,
+          "min": 13.5,
+          "max": 14.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 13.5,
+              "odds": "-113"
+            },
+            {
+              "id": "draftkings",
+              "line": 14.5,
+              "odds": "-111"
+            },
+            {
+              "id": "fanduel",
+              "line": 13.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "rushing_yards": {
+          "median": 29.5,
+          "mean": 29.5,
+          "min": 29.5,
+          "max": 29.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 29.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 29.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "+101"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "+102"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-102"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "receiving_yards": {
+              "median": 13.5,
+              "bookCount": 3
+            },
+            "rushing_yards": {
+              "median": 29.5,
+              "bookCount": 2
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Travis Hunter",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 8.5,
+          "mean": 8.83,
+          "min": 8.5,
+          "max": 9.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 8.5,
+              "odds": "-117"
+            },
+            {
+              "id": "draftkings",
+              "line": 9.5,
+              "odds": "-116"
+            },
+            {
+              "id": "fanduel",
+              "line": 8.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "+144"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "+126"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "+154"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "receiving_yards": {
+              "median": 8.5,
+              "bookCount": 3
+            },
+            "receiving_receptions": {
+              "median": 1.5,
+              "bookCount": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trevor Lawrence",
+      "eventID": "kYt26vF1J3Rg4RKPcseO",
+      "matchup": "JAX @ NYG",
+      "startsAt": "2026-11-22T21:25:00.000Z",
+      "markets": {
+        "passing_yards": {
+          "median": 242.5,
+          "mean": 242.7,
+          "min": 242.5,
+          "max": 243.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 242.5,
+              "odds": "-115"
+            },
+            {
+              "id": "caesars",
+              "line": 242.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 242.5,
+              "odds": "-113"
+            },
+            {
+              "id": "espnbet",
+              "line": 243.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 242.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 0.5,
+              "odds": "-120"
+            },
+            {
+              "id": "caesars",
+              "line": 0.5,
+              "odds": "-113"
+            },
+            {
+              "id": "draftkings",
+              "line": 0.5,
+              "odds": "-116"
+            },
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "+106"
+            }
+          ]
+        },
+        "rushing_yards": {
+          "median": 8.5,
+          "mean": 8.5,
+          "min": 8.5,
+          "max": 8.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 8.5,
+              "odds": "-113"
+            },
+            {
+              "id": "draftkings",
+              "line": 8.5,
+              "odds": "-117"
+            },
+            {
+              "id": "espnbet",
+              "line": 8.5,
+              "odds": "-120"
+            },
+            {
+              "id": "fanduel",
+              "line": 8.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_touchdowns": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 1.5,
+              "odds": "-160"
+            },
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "-143"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "-157"
+            },
+            {
+              "id": "espnbet",
+              "line": 1.5,
+              "odds": "-155"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "-146"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "JAX @ NYG",
+          "markets": {
+            "passing_yards": {
+              "median": 242.5,
+              "bookCount": 5
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 4
+            },
+            "rushing_yards": {
+              "median": 8.5,
+              "bookCount": 4
+            },
+            "passing_touchdowns": {
+              "median": 1.5,
+              "bookCount": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tyler Shough",
+      "eventID": "ENpY3uFolXG37Gstwzpt",
+      "matchup": "NO @ CHI",
+      "startsAt": "2026-11-22T18:00:00.000Z",
+      "markets": {
+        "passing_yards": {
+          "median": 242.0,
+          "mean": 243.75,
+          "min": 241.5,
+          "max": 249.5,
+          "bookCount": 4,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 249.5,
+              "odds": "+105"
+            },
+            {
+              "id": "caesars",
+              "line": 241.5,
+              "odds": "-114"
+            },
+            {
+              "id": "draftkings",
+              "line": 241.5,
+              "odds": "-112"
+            },
+            {
+              "id": "fanduel",
+              "line": 242.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "rushing_yards": {
+          "median": 18.5,
+          "mean": 18.5,
+          "min": 18.5,
+          "max": 18.5,
+          "bookCount": 2,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 18.5,
+              "odds": "-113"
+            },
+            {
+              "id": "fanduel",
+              "line": 18.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "passing_interceptions": {
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5,
+          "bookCount": 1,
+          "books": [
+            {
+              "id": "fanduel",
+              "line": 0.5,
+              "odds": "-174"
+            }
+          ]
+        },
+        "passing_touchdowns": {
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1.5,
+          "max": 1.5,
+          "bookCount": 3,
+          "books": [
+            {
+              "id": "caesars",
+              "line": 1.5,
+              "odds": "+163"
+            },
+            {
+              "id": "draftkings",
+              "line": 1.5,
+              "odds": "+166"
+            },
+            {
+              "id": "fanduel",
+              "line": 1.5,
+              "odds": "+158"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "NO @ CHI",
+          "markets": {
+            "passing_yards": {
+              "median": 242.0,
+              "bookCount": 4
+            },
+            "rushing_yards": {
+              "median": 18.5,
+              "bookCount": 2
+            },
+            "passing_interceptions": {
+              "median": 0.5,
+              "bookCount": 1
+            },
+            "passing_touchdowns": {
+              "median": 1.5,
+              "bookCount": 3
+            }
+          }
         }
       ]
     },
@@ -2824,20 +8301,20 @@
       "markets": {
         "receiving_receptions": {
           "median": 5.5,
-          "mean": 5.5,
-          "min": 5.5,
+          "mean": 5.17,
+          "min": 4.5,
           "max": 5.5,
           "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
               "line": 5.5,
-              "odds": "+105"
+              "odds": "-110"
             },
             {
               "id": "bovada",
-              "line": 5.5,
-              "odds": "+115"
+              "line": 4.5,
+              "odds": "-150"
             },
             {
               "id": "caesars",
@@ -2846,8 +8323,8 @@
             },
             {
               "id": "draftkings",
-              "line": 5.5,
-              "odds": "+118"
+              "line": 4.5,
+              "odds": "-151"
             },
             {
               "id": "espnbet",
@@ -2862,21 +8339,21 @@
           ]
         },
         "receiving_yards": {
-          "median": 42.0,
-          "mean": 41.67,
+          "median": 41.5,
+          "mean": 41.5,
           "min": 40.5,
           "max": 42.5,
           "bookCount": 6,
           "books": [
             {
               "id": "betmgm",
-              "line": 40.5,
+              "line": 41.5,
               "odds": "-115"
             },
             {
               "id": "bovada",
-              "line": 42.5,
-              "odds": "-115"
+              "line": 41.5,
+              "odds": "-120"
             },
             {
               "id": "caesars",
@@ -2885,8 +8362,8 @@
             },
             {
               "id": "draftkings",
-              "line": 42.5,
-              "odds": "-110"
+              "line": 41.5,
+              "odds": "-115"
             },
             {
               "id": "espnbet",
@@ -2927,6 +8404,117 @@
             "receiving_yards": {
               "median": 42.0,
               "bookCount": 6
+            }
+          }
+        },
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_receptions": {
+              "median": 5.5,
+              "bookCount": 6
+            },
+            "receiving_yards": {
+              "median": 41.5,
+              "bookCount": 6
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Xavier Hutchinson",
+      "eventID": "YlZBEbhTgV80ZeTIIyqm",
+      "matchup": "IND @ HOU",
+      "startsAt": "2026-11-20T01:15:00.000Z",
+      "markets": {
+        "receiving_yards": {
+          "median": 34.5,
+          "mean": 34.83,
+          "min": 34.5,
+          "max": 36.5,
+          "bookCount": 6,
+          "books": [
+            {
+              "id": "betmgm",
+              "line": 36.5,
+              "odds": "-105"
+            },
+            {
+              "id": "bovada",
+              "line": 34.5,
+              "odds": "-110"
+            },
+            {
+              "id": "caesars",
+              "line": 34.5,
+              "odds": "-117"
+            },
+            {
+              "id": "draftkings",
+              "line": 34.5,
+              "odds": "-110"
+            },
+            {
+              "id": "espnbet",
+              "line": 34.5,
+              "odds": "-115"
+            },
+            {
+              "id": "fanduel",
+              "line": 34.5,
+              "odds": "-114"
+            }
+          ]
+        },
+        "receiving_receptions": {
+          "median": 2.5,
+          "mean": 2.5,
+          "min": 2.5,
+          "max": 2.5,
+          "bookCount": 5,
+          "books": [
+            {
+              "id": "bovada",
+              "line": 2.5,
+              "odds": "-180"
+            },
+            {
+              "id": "caesars",
+              "line": 2.5,
+              "odds": "-170"
+            },
+            {
+              "id": "draftkings",
+              "line": 2.5,
+              "odds": "-175"
+            },
+            {
+              "id": "espnbet",
+              "line": 2.5,
+              "odds": "-190"
+            },
+            {
+              "id": "fanduel",
+              "line": 2.5,
+              "odds": "-188"
+            }
+          ]
+        }
+      },
+      "history": [
+        {
+          "generatedAt": "2026-11-17T21:48:07.467267+00:00",
+          "matchup": "IND @ HOU",
+          "markets": {
+            "receiving_yards": {
+              "median": 34.5,
+              "bookCount": 6
+            },
+            "receiving_receptions": {
+              "median": 2.5,
+              "bookCount": 5
             }
           }
         }
