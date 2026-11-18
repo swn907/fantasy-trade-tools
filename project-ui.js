@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const RATINGS_FALLBACK={ratingsUpdated:'2026-11-11',playerCount:354};
+  const RATINGS_FALLBACK={ratingsUpdated:'2026-11-18',playerCount:355};
   const FEED_MAX_AGE_HOURS=72;
 
   function ready(fn){
@@ -114,12 +114,23 @@
       if(result.ok)version={...version,...await result.json()};
     }catch{}
     try{
+      const result=await fetch('week10-rest-of-season-values.json',{cache:'no-store'});
+      if(result.ok){
+        const board=await result.json();
+        version={
+          ...version,
+          ratingsUpdated:board.generatedAt||board.sourceUpdated||version.ratingsUpdated,
+          playerCount:Number(board.playerCount)||(Array.isArray(board.players)?board.players.length:version.playerCount)
+        };
+      }
+    }catch{}
+    try{
       const result=await fetch('weekly-projections.json',{cache:'no-store'});
       if(result.ok)feed=await result.json();
     }catch{}
 
     document.querySelectorAll('[data-project-ratings]').forEach(node=>{
-      node.textContent=`${version.playerCount||354} players • ratings ${readableDate(version.ratingsUpdated)}`;
+      node.textContent=`${version.playerCount||RATINGS_FALLBACK.playerCount} players • ratings ${readableDate(version.ratingsUpdated)}`;
     });
     const ratings=`Ratings ${readableDate(version.ratingsUpdated)}`;
     if(feed?.generatedAt){
