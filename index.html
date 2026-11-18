@@ -49,7 +49,7 @@
     </section>
 
     <section class="status" aria-label="Project data status">
-      <div class="status-item"><strong>Ratings board</strong><span data-project-ratings>354 players • ratings Nov 11, 2026</span></div>
+      <div class="status-item"><strong>Ratings board</strong><span data-project-ratings>355 players • ratings Nov 18, 2026</span></div>
       <div class="status-item"><strong>Weekly projections</strong><span data-project-feed>Checking sportsbook feed…</span></div>
       <div class="status-item"><strong>League privacy</strong>Your Sleeper ID stays in this browser and is sent only to Sleeper when you import.</div>
     </section>
@@ -81,8 +81,25 @@
     </section>
 
     <div class="note"><b>How trade values work.</b> Uneven packages include a −60 roster-spot adjustment, one-QB redundancy, roster fit, and a best-player premium. Individual values remain hidden from public visitors.</div>
-    <div class="footer">Mobile friendly • Built for GitHub Pages • Site refresh Nov 12, 2026</div>
+    <div class="footer">Mobile friendly • Built for GitHub Pages • Site refresh Nov 18, 2026</div>
   </main>
   <script src="project-ui.js?v=20261112b"></script>
+  <script>
+    (async function syncRatingsStatus(){
+      const status=document.querySelector("[data-project-ratings]");
+      if(!status)return;
+      try{
+        const response=await fetch("week10-rest-of-season-values.json",{cache:"no-store"});
+        if(!response.ok)throw new Error("ratings feed unavailable");
+        const board=await response.json();
+        const count=Number(board.playerCount)||(Array.isArray(board.players)?board.players.length:0);
+        const rawDate=board.generatedAt||board.sourceUpdated;
+        const date=rawDate?new Date(`${rawDate}T12:00:00`).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"current";
+        if(count)status.textContent=`${count} players • ratings ${date}`;
+      }catch(error){
+        // Keep the correct embedded fallback when the network is temporarily unavailable.
+      }
+    })();
+  </script>
 </body>
 </html>
